@@ -1,0 +1,39 @@
+.TextoInicial{
+   
+    color: #fff;
+    height: 300px;
+    width: 100%;
+    font-family: cursive;
+}
+
+h1 { 
+    color: #f7f7f7; 
+    font-family: "Great Vibes", cursive; 
+    font-size: 50px; line-height: 160px; 
+    font-weight: normal; 
+    margin-bottom: 0px; 
+    margin-top: 40px;
+    text-align: center; 
+    text-shadow: 0 1px 1px #fff; 
+}
+
+.tituloClasses{
+    color: gray;
+    font-family:Arial, Helvetica, sans-serif; 
+    margin:0px;
+    margin-top: 0px;
+    margin-left:110px;
+    margin-bottom:10px;
+    text-align: left;
+    font-size: 30px; line-height: 70px;
+    /* text-shadow: 0 1px 1px gray; */
+}
+
+.divTitulo{
+    background-color:white;
+}
+
+#easyPaginate {width:300px;}
+#easyPaginate img {display:block;margin-bottom:10px;}
+.easyPaginateNav a {padding:5px;}
+.easyPaginateNav a.current {font-weight:bold;text-decoration:underline;}
