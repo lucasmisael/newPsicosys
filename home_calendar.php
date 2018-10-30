@@ -14,18 +14,15 @@
     <script src='fullcalendar/lib/moment.min.js'></script>
     <script src='fullcalendar/fullcalendar.js'></script>
 
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- <script type="text/javascript" src="bootstrap-datepicker.de.js" charset="UTF-8"></script> -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <!-- datepicker -->
+    <link rel="stylesheet" type="text/css" href="lib/externos/datetimepicker/jquery.datetimepicker.css"/ >
 
-
-  <!-- datepicker -->
-<link rel="stylesheet" type="text/css" href="lib/externos/datetimepicker/jquery.datetimepicker.css"/ >
-<!-- <script src="lib/externos/datetimepicker/jquery.js"></script> -->
-<script src="lib/externos/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>    
+    <script src="lib/externos/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>    
     <!-- script de tradução -->
     <script src='fullcalendar/locale/pt-br.js'></script>
         
@@ -40,25 +37,40 @@
                     center: 'title',
                     right: 'month,agendaWeek,agendaDay'
                 },
-                 // navLinks: trçue,
+                 
                 editable: true,
                 eventLimit: true, 
                 events: 'fullcalendar/eventos.php',           
                 eventColor: '#a6bbf2',
 
-                
-             eventClick:  function(event, jsEvent, view) {
-                // console.log(event.start._i);
-                $("#nome").val(event.title);
-                $("#data").val(event.start._i);
-                // $('#modalBody').html(event.description);
-            //     $('#eventUrl').attr('href',event.url);
-            //     $('#calendarModal').modal();
-                $("#myModal").modal();
-            },
-            
-            // editable: true,ç8
-            // eventLimit: true // allow "more" link when too many events
+                editable:true,
+                eventClick:  function(event, jsEvent, view) {
+                    
+
+                    $("#nome").val(event.title);
+                    $("#data").val(event.start._i);
+                    $("#myModal").modal();
+
+                    var dados = jQuery(this).serialize();
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "fullcalendar/alterar_evento.php",
+                        data: dados,
+                        success: function(data){ 
+                    alert('oi');  
+                            if(data == "1"){
+                                alert("Cadastrado com sucesso! ");
+                                //atualiza a página!
+                                location.reload();
+                            }else{
+                                alert("Houve algum problema.. ");
+                            }
+                        }
+                    });                
+                    return false;
+                },
+        
             }); 
             
             //CADASTRA NOVO EVENTO
@@ -83,25 +95,17 @@
                 });                
                 return false;
             }); 
-       }); 
-
-    //   $(document).ready(function(){
-    //     $("#btn_incluir").click(function(){
-    //         $("#modalcadastro").modal();
-    //     });
-    // });
-
-   
-        $(document).ready(function(){
+       
             $("#myBtn").click(function(){
                 $("#myModal").modal();
-        });
+            });
         
-        //DATE TIME PARA CALENDARIO
-        $('#data').datetimepicker();
-    });
+            //DATE TIME PARA CALENDARIO
+            $('#data').datetimepicker();        
 
-                
+       }); 
+
+       
     </script>
     
     <style>
@@ -122,27 +126,26 @@
 
     <br/>
     
-<div id="myModal" class="modal fade">
-    <div class="modal-dialog">        
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
-                <h4 id="modalTitle" class="modal-title"></h4>
-            </div> 
-            <div id="modalBody" class="modal-body">        
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">        
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                    <h4 id="modalTitle" class="modal-title"></h4>
+                </div> 
                 <form id="novo_evento" action="" method="post">
-                    Nome do Evento: <input id="nome" type="text" name="nome" class="form-control" required/><br/><br/>            
-                    Data do Evento: <input id="data" type="text" name="data" class="form-control" required/><br/><br/>            
-                     
+                    <div id="modalBody" class="modal-body">        
+                        Nome do Evento: <input id="nome" type="text" name="nome" class="form-control" required/><br/><br/>            
+                        Data do Evento: <input id="data" type="text" name="data" class="form-control" required/><br/><br/>            
+                         
+                    </div>
+                     <div id="modal-footer" class="modal-footer">
+                        <button type="submit" href="fullcalendar/cadastrar_evento.php" class="btn btn-primary btn-lg"> Cadastrar novo evento </button>
+                    </div>        
+                </form>
             </div>
-                 <div id="modal-footer" class="modal-footer">
-                    <button type="submit" href="fullcalendar/cadastrar_evento.php" class="btn btn-primary btn-lg"> Cadastrar novo evento </button>
-                </div>        
-            </form>
         </div>
     </div>
-</div>
-
 
 
 </body>
