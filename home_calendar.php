@@ -51,24 +51,10 @@
                     $("#data").val(event.start._i);
                     $("#myModal").modal();
 
-                    var dados = jQuery(this).serialize();
-                    
-                    $.ajax({
-                        type: "POST",
-                        url: "fullcalendar/alterar_evento.php",
-                        data: dados,
-                        success: function(data){ 
-                    alert('oi');  
-                            if(data == "1"){
-                                alert("Cadastrado com sucesso! ");
-                                //atualiza a página!
-                                location.reload();
-                            }else{
-                                alert("Houve algum problema.. ");
-                            }
-                        }
-                    });                
-                    return false;
+                    $('#submit_btn').hide();
+                    $('#update_btn').show();
+                    teste(event);
+
                 },
         
             }); 
@@ -83,7 +69,8 @@
                     data: dados,
                     success: function(data)
                     {   
-                        console.log(data);
+                    
+                        // console.log(url);
                         if(data == "1"){
                             alert("Cadastrado com sucesso! ");
                             //atualiza a página!
@@ -95,7 +82,35 @@
                 });                
                 return false;
             }); 
-       
+            
+            //Alterar Evento
+         function teste(event){
+            var e = event;
+            console.log(e);
+           $(document).on('click', '#update_btn', function(){
+                
+                var dados = jQuery(this).serialize();
+                var url = "fullcalendar/alterar_evento.php?id='"+event.id+"'";     
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: dados,
+                    success: function(data){
+                        alert(event.id);
+                        if(data == "1"){
+                            alert("Alterado com sucesso! ");
+                            //atualiza a página!
+                            location.reload();
+                        }else{
+                            alert("Houve algum problema.. ");
+                        }
+                    }
+                });     
+            });
+         }   
+
+
+
             $("#myBtn").click(function(){
                 $("#myModal").modal();
             });
@@ -140,7 +155,8 @@
                          
                     </div>
                      <div id="modal-footer" class="modal-footer">
-                        <button type="submit" href="fullcalendar/cadastrar_evento.php" class="btn btn-primary btn-lg"> Cadastrar novo evento </button>
+                        <button type="submit" id="submit_btn" class="btn btn-primary btn-lg"> Cadastrar </button>
+                        <button type="button" id="update_btn" class="btn btn-info btn-lg" style="display: none;">Alterar</button>
                     </div>        
                 </form>
             </div>
