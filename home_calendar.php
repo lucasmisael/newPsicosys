@@ -53,7 +53,9 @@
 
                     $('#submit_btn').hide();
                     $('#update_btn').show();
-                    teste(event);
+                    $('#delete_btn').show();
+                    
+                    funcoes(event);
 
                 },
         
@@ -72,7 +74,7 @@
                     
                         // console.log(url);
                         if(data == "1"){
-                            alert("Cadastrado com sucesso! ");
+                            // alert("Cadastrado com sucesso! ");
                             //atualiza a página!
                             location.reload();
                         }else{
@@ -83,22 +85,48 @@
                 return false;
             }); 
             
-            //Alterar Evento
-         function teste(event){
+            //funcoes Evento
+         function funcoes(event){
             var e = event;
-            console.log(e);
-           $(document).on('click', '#update_btn', function(){
+            
+            $(document).on('click', '#update_btn', function(){
                 
                 var dados = jQuery(this).serialize();
-                var url = "fullcalendar/alterar_evento.php?id='"+event.id+"'";     
+                var url = "fullcalendar/alterar_evento.php?id="+event.id+"&nome='"+$('#nome').val()+"'&data='"+$('#data').val()+"'";     
+
+                // alert(url);
                 $.ajax({
-                    type: 'POST',
+                    type: 'GET',
                     url: url,
                     data: dados,
                     success: function(data){
-                        alert(event.id);
+                        
                         if(data == "1"){
-                            alert("Alterado com sucesso! ");
+                            // alert("Alterado com sucesso! ");
+                            //atualiza a página!
+                            location.reload();
+                        }else{
+                            alert("Houve algum problema.. ");
+                        }
+                    }
+                });     
+            });
+
+
+            $(document).on('click', '#delete_btn', function(){
+                
+                var dados = jQuery(this).serialize();
+                var url = "fullcalendar/deletar_evento.php?id="+event.id;     
+
+                alert(url);
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: dados,
+                    success: function(data){
+                        
+                        if(data == "1"){
+                            // alert("Alterado com sucesso! ");
                             //atualiza a página!
                             location.reload();
                         }else{
@@ -157,6 +185,7 @@
                      <div id="modal-footer" class="modal-footer">
                         <button type="submit" id="submit_btn" class="btn btn-primary btn-lg"> Cadastrar </button>
                         <button type="button" id="update_btn" class="btn btn-info btn-lg" style="display: none;">Alterar</button>
+                        <button type="button" id="delete_btn" class="btn btn-danger btn-lg" style="display: none;">Excluir</button>
                     </div>        
                 </form>
             </div>
