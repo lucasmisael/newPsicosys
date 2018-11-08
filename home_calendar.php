@@ -219,7 +219,7 @@
 
                            foreach ($col as $key => $value) {
                             
-                            echo '<option value="'.$value['Cliente_Desc'].'""><input id="idcli" type="hidden" value="'.$value['Cliente_Cod'].'"></option>';
+                            echo '<option value="'.$value['Colaborador_Desc'].'""><input id="idcol" type="hidden" value="'.$value['Colaborador_Cod'].'"></option>';
                                
                            }
                             
