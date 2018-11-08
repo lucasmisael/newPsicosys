@@ -20,36 +20,42 @@
         
         
         function botoesRodape($labelAzul='', $labelVermelho='', $centraliza = ''){
-            if($centraliza != true){
+            // if($centraliza != true){
                 $cache="
-                <div class='container'>
-                <div class='col-xs-12 col-md-12'>"; 
+
+                <div class='container col-md-12' style='margin-top:20px'>
+                "; 
                 if ($labelAzul!==''){
-                    $cache.="<button type='submit' id='btnCadastrar' onclick='' class='btn btn-primary  pull-right'style='margin:5px;' >$labelAzul</button>";
+
+                    $cache.="<div class='row col-md-3'>
+                                <button type='submit' id='btnCadastrar' onclick='' class='btn btn-primary btn-block'  >$labelAzul</button>
+                            </div>";
                 }
                 if ($labelVermelho!==''){
-                    $cache.="<button type='button' id='btnCancelar' class='btn btn-danger pull-right' style='margin:5px;'onclick='cancelar()'>$labelVermelho</button>";
+                    $cache.="<div class='col-md-3'>
+                                <button type='button' id='btnCancelar' class='btn btn-danger btn-block '  onclick='cancelar()'>$labelVermelho</button>
+                            </div>";
                 }
                 $cache.="
                 </div>
-                </div>
+
                 ";
-            }
-            else {
-                $cache="
-                <div class='container'>
-                <div  class=' col-md-offset-5 col-xs-4 col-md-6'>"; 
-                if ($labelAzul!==''){
-                    $cache.="<button type='submit' id='btnCadastrar' class='btn btn-primary btn-md  '  style='margin:5px'>$labelAzul</button>";
-                }
-                if ($labelVermelho!==''){
-                    $cache.="<button type='button' id='btnCancelar' class='btn btn-danger  btn-md'   onclick='cancelar()'>$labelVermelho</button>";
-                }
-                $cache.="
-                </div>
-                </div>
-                ";
-            }
+            // }
+            // else {
+            //     $cache="
+            //     <div class='container'>
+            //     <div  class=' col-md-offset-5 col-xs-4 col-md-6'>"; 
+            //     if ($labelAzul!==''){
+            //         $cache.="<button type='submit' id='btnCadastrar' class='btn btn-primary btn-md  '  style='margin:5px'>$labelAzul</button>";
+            //     }
+            //     if ($labelVermelho!==''){
+            //         $cache.="<button type='button' id='btnCancelar' class='btn btn-danger  btn-md'   onclick='cancelar()'>$labelVermelho</button>";
+            //     }
+            //     $cache.="
+            //     </div>
+            //     </div>
+            //     ";
+            // }
             
             $cache .="<script> 
                         function cancelar(){ window.location.href='./menuPrincipal.php';}
@@ -102,17 +108,17 @@
             $cache = $this->gnElm('select', $attr, true, $cache);
             
             $cache = "
-                <div class='col-sn-12 col-md-6'>
-                    <label for='$attr[banco]'>$attr[label]: </label>
+                <div class='col-sn-12 col-md-".$attr['tamanho']."'>
+                    <label for='$attr[banco]'>$attr[label]: </label> 
                     $cache
                 </div>";
             return $cache;
         }
 
         function input ($attr=array()){
-
-            $imput = "<div class='col-sn-12 col-md-6'>
-                <label for='{$attr['banco']}'>{$attr['label']}: </label>";
+            // print_r($attr['tamanho']);
+            $imput = "<div class='col-sn-12 col-md-".$attr['tamanho']."'>
+                <label for='{$attr['banco']}'>{$attr['label']}: </label> <br>";
                 $imput.= $this->gnElm('input', $attr);
             $imput.= "</div>";
             return $imput;

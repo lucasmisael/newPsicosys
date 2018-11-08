@@ -32,6 +32,18 @@ class usuario extends gn_tabela
                 "label"    => "Usuário",
                 "pesquisa" => true,
                 "required" => true,
+                "tamanho"  => 6
+            ),
+            "usuario_senha" => array(
+                "tagname"  => "input",
+                "type"     => "password",
+                "class"    => 'form-control ',
+                "banco"    => "usuario_senha",
+                "id"       => "usuario_senha",
+                "label"    => "Senha",
+                "pesquisa" => false,
+                "requerid" => true,
+                "tamanho"  => 6
             ),
             "usuario_email" => array(
                 "tagname"  => "input",
@@ -40,15 +52,7 @@ class usuario extends gn_tabela
                 "id"       => "usuario_email",
                 "label"    => "E-mail",
                 "pesquisa" => true,
-            ),
-            "usuario_senha" => array(
-                "tagname"  => "input",
-                "class"    => 'form-control ',
-                "banco"    => "usuario_senha",
-                "id"       => "usuario_senha",
-                "label"    => "Senha",
-                "pesquisa" => false,
-                "requerid" => true,
+                "tamanho"  => 6
             ),
         );
         

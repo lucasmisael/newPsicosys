@@ -12,17 +12,55 @@
             <!-- Includes -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
-            <link rel="stylesheet" type="text/css" media="screen" href="lib/bootstrap/css/bootstrap.min.css" />
-            <link rel="stylesheet" href="lib/externos/bootstrap.min.css">
             <!-- <script src="lib/bootstrap/js/npm.js"></script> -->
             <script src="lib/externos/jquery.min.js"></script>
             <script src="lib/bootstrap/js/jquery-3.3.1.min.js"></script>
-            <!-- //?? MASCARAS AQUI  -->
             <script src="lib/externos/bootstrap.min.js"></script>
-            <link rel="stylesheet" type="text/css" media="screen" href="lib/bootstrap/css/PsicoSysCss.css"/>
-            
-            
+           
+            <!-- //?? MASCARAS AQUI  -->
+            <script src="lib/js/index.js"></script>
+            <script src="lib/externos/jQuery-Mask/src/jquery.mask.js"></script>
 
+            <!-- Calendario -->
+            <link rel="stylesheet" type="text/css" href="lib/externos/datetimepicker/jquery.datetimepicker.css"/ >
+            
+            <!-- datepicker -->
+            <script type="text/javascript" charset="utf8" src="lib/externos/datepicker/jquery-ui.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="lib/externos/datepicker/jquery-ui.min.css"/ >
+
+            <!-- DataTables -->
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+            
+            <!-- Checkbox -->
+            <script type="text/javascript" charset="utf8" src="lib/externos/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="lib/externos/bootstrap-toggle/css/bootstrap-toggle.min.css"/ >
+
+            <!-- Select --><!-- 
+            <link href="lib/externos/multiple/fSelect.css" rel="stylesheet">
+            <script src="lib/externos/multiple/fSelect.js"></script>
+ -->
+           <!-- combobox -->
+            <link href="lib/externos/flexdatalist/jquery.flexdatalist.min.css" rel="stylesheet">
+            <script src="lib/externos/flexdatalist/jquery.flexdatalist.min.js"></script>           
+
+
+
+
+            
+           <!--  <link rel="stylesheet" href="lib/externos/fastsearch-master/dist/fastselect.min.css">
+            <script src="lib/externos/fastsearch-master/dist/fastselect.standalone.js"></script> -->
+          <!--   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+
+
+
+
+           <!-- Estilos paginas -->
+            <link rel="stylesheet" type="text/css" media="screen" href="lib/bootstrap/css/PsicoSysCss.css"/>
+            <link rel="stylesheet" type="text/css" media="screen" href="lib/bootstrap/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="lib/externos/bootstrap.min.css">
             <meta http-equiv="cache-control" content="max-age=0" />
             <meta http-equiv="cache-control" content="no-cache" />
             <meta http-equiv="expires" content="0" />
@@ -30,17 +68,7 @@
             <meta http-equiv="pragma" content="no-cache" />
 
 
-
-         <!-- <script src="http://code.jquery.com/jquery-1.6.3.min.js"></script> -->
-        <!-- <script type="text/javascript" charset="utf-8" src="lib/externos/jquery-3.3.1.min.js"></script> -->
-            <!-- <script type="text/javascript" charset="utf-8" src="lib/script/datatables.js"></script> -->
             
-            <!-- <script src="main.js"></script> -->
-            
-            <!-- DataTables -->
-            <!-- <link rel="stylesheet" type="text/css" href="lib/Script/DataTables-1.10.18/css/dataTables.bootstrap.css"/> -->
-            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
 
             <!--********************************Inicio Menu ********************** -->
@@ -102,15 +130,6 @@
                 </nav>
             
 
-            <script>
-                function destroySession(){
-                    session_destroy();
-                }
-
-                $(document).ready( function () {
-                    $('#consultar').dataTable();
-                } );
-            </script>
         <?php
         
     }

@@ -1,4 +1,6 @@
 <?php
+        // require_once('./Class/class.gn_tabela.php');
+        require_once("fullcalendar/buscar.php");
         require_once("header.php");
         makeHeather();
 ?>
@@ -7,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta lang="pt-BR">
-    <title> Calendário Dinâmico com PHP + FullCalendar </title>
+    <title> Eventos Psicosys </title>
     
     <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
     <script src='fullcalendar/lib/jquery.min.js'></script>
@@ -48,6 +50,9 @@
                     
 
                     $("#nome").val(event.title);
+                    // console.log(event);
+                    // $("#prof_nome").val(event.PROF_NOME);
+                    // $("#cli_nome").val(event.CLI_NOME);
                     $("#data").val(event.start._i);
                     $("#myModal").modal();
 
@@ -65,14 +70,15 @@
             $('#novo_evento').submit(function(){
                 //serialize() junta todos os dados do form e deixa pronto pra ser enviado pelo ajax
                 var dados = jQuery(this).serialize();
+                let url = "fullcalendar/cadastrar_evento.php?cli='"+$('#cliente').val()+"'&idcli='"+$('#idcli').val()+"'&prof='"+$('#colaborador').val()+"'&idcol='"+$('#idcol').val()+"'&dataini='"+$('#data').val()+"'"; 
                 $.ajax({
-                    type: "POST",
-                    url: "fullcalendar/cadastrar_evento.php",
+                    type: "GET",
+                    url: url,
                     data: dados,
                     success: function(data)
                     {   
-                    
-                        // console.log(url);
+                        alert(url);
+                        
                         if(data == "1"){
                             // alert("Cadastrado com sucesso! ");
                             //atualiza a página!
@@ -93,6 +99,8 @@
                 
                 var dados = jQuery(this).serialize();
                 var url = "fullcalendar/alterar_evento.php?id="+event.id+"&nome='"+$('#nome').val()+"'&data='"+$('#data').val()+"'";     
+
+                // var url = "fullcalendar/alterar_evento.php?id="+event.id+"&prof_nome='"+$('#prof_nome').val()+"'&cli_nome='"+$('#cli_nome').val()+"'&data='"+$('#data').val()+"'";     
 
                 // alert(url);
                 $.ajax({
@@ -178,9 +186,50 @@
                 </div> 
                 <form id="novo_evento" action="" method="post">
                     <div id="modalBody" class="modal-body">        
-                        Nome do Evento: <input id="nome" type="text" name="nome" class="form-control" required/><br/><br/>            
-                        Data do Evento: <input id="data" type="text" name="data" class="form-control" required/><br/><br/>            
-                         
+                       <!--  Profissional: <input id="prof_nome" type="text" name="prof_nome" class="form-control" required/><br/><br/>
+                        Cliente: <input id="cli_nome" type="text" name="cli_nome" class="form-control" required/><br/><br/>             -->
+                       <!-- COMBOBOX PROFISSIONAL -->
+                        Cliente: 
+                         <input type='text'  placeholder='Digite o nome do Cliente' id="cliente" class='flexdatalist form-control' data-min-length='1' multiple='multiple'  list='clientes'  name='str_clientes' >
+                        <datalist >
+                        <?php 
+
+                            $a = new buscar();
+                            $cli = $a->getClientes();
+
+                           foreach ($cli as $key => $value) {
+                            
+                            echo '<option value="'.$value['Cliente_Desc'].'""><input id="idcli" type="hidden" value="'.$value['Cliente_Cod'].'"></option>';
+                               
+                           }
+                            
+                            
+
+                        ?>
+
+                        </datalist><br/><br/>
+                        <!-- COMBOBOX CLIENTE -->
+                        Profissional:
+                        <input type='text' id="colaborador"  placeholder='Digite o nome do Profissional' class='flexdatalist form-control' data-min-length='1' multiple='multiple'  list='colaborador'  name='str_colaborador'>
+                        <datalist >
+                        <?php 
+
+                            
+                            $col = $a->getProfissionais();
+
+                           foreach ($col as $key => $value) {
+                            
+                            echo '<option value="'.$value['Cliente_Desc'].'""><input id="idcli" type="hidden" value="'.$value['Cliente_Cod'].'"></option>';
+                               
+                           }
+                            
+                            
+
+                        ?>
+                        </datalist><br/><br/>
+                        <!-- CALENDARIO -->
+                        Data do Evento: <input id="data" type="text" name="data" class="form-control" required/>
+                                                 
                     </div>
                      <div id="modal-footer" class="modal-footer">
                         <button type="submit" id="submit_btn" class="btn btn-primary btn-lg"> Cadastrar </button>
