@@ -1,27 +1,27 @@
 <?php
 
-// DOCUMENTADO EM CLASS.COLABORADOR.PHP
+// DOCUMENTADO EM CLASS.PROFISSIONAL.PHP
 
 require_once('Class/class.gn_tabela.php');
 
-class colaborador extends gn_tabela 
+class profissional extends gn_tabela 
 {
     function __construct(){
         
         parent::__construct();
         
-        $this->classe = "colaborador";
+        $this->classe = "profissional";
         
-        $this->tabela = "tab_colaboradores";
+        $this->tabela = "tab_profissionais";
         
-        $this->chave = "Colaborador_Cod";
+        $this->chave = "Prof_Cod";
         
         $this->campos = array(
-            "Colaborador_Desc" => array(
+            "Prof_Nome" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Colaborador_Desc",
-                "id"       => "Colaborador_Desc",
+                "banco"    => "Prof_Nome",
+                "id"       => "Prof_Nome",
                 "label"    => "Nome",
                 "orderBy"  => true, //?? Pendente
                 "type"     => "text",
@@ -29,11 +29,11 @@ class colaborador extends gn_tabela
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
-            "Colaborador_Status" => array(
+            "Prof_Status" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Colaborador_Status",
-                "id"       => "Colaborador_Status",
+                "banco"    => "Prof_Status",
+                "id"       => "Prof_Status",
                 "label"    => "Status ",
                 "callback" => "lista_callback_check",
                 "type"     => "checkbox",
@@ -49,31 +49,31 @@ class colaborador extends gn_tabela
 
                 // "data-height"=>"50"
             ),
-            "Colaborador_Especialidade" => array(
+            "Prof_Especialidade" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Colaborador_Especialidade",
-                "id"       => "Colaborador_Especialidade",
+                "banco"    => "Prof_Especialidade",
+                "id"       => "Prof_Especialidade",
                 "label"    => "Especialidade",
                 "type"     => "text",
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
-            "Colaborador_Cnpj_Cpf" => array(
+            "Prof_Cnpj_Cpf" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcpf' ,
-                "banco"    => "Colaborador_Cnpj_Cpf",
-                "id"       => "Colaborador_Cnpj_Cpf",
+                "banco"    => "Prof_Cnpj_Cpf",
+                "id"       => "Prof_Cnpj_Cpf",
                 "label"    => "CNPJ/CPF",
                 "type"     => "text",
                 "pesquisa" => false,
                 "tamanho"  => 6,
             ),
-            "Cliente_Tipo" => array( 
+            "Prof_Tipo" => array( 
                 "tagname"  => "select",
                 "class"    => 'form-control selectmultiple' ,
-                "banco"    => "Colaborador_TipoCrianca",
-                 "id"      => "Colaborador_TipoCrianca",
+                "banco"    => "Prof_Tipo_Crianca",
+                 "id"      => "Prof_Tipo_Crianca",
                 "label"    => "Atende",
                 "pesquisa" => true,
                 "multiple" =>"multiple",
@@ -85,11 +85,11 @@ class colaborador extends gn_tabela
                     'Idoso'      => "Idoso"       ,   
                 ),
             ),
-            // "Colaborador_TipoCrianca" => array(
+            // "Prof_Tipo_Crianca" => array(
             //     "tagname"  => "input",
             //     "class"    => 'form-control select' ,
-            //     "banco"    => "Colaborador_TipoCrianca",
-            //     "id"       => "Colaborador_TipoCrianca",
+            //     "banco"    => "Prof_Tipo_Crianca",
+            //     "id"       => "Prof_Tipo_Crianca",
             //     "callback" => "lista_callback_check",
             //     "label"    => "Criança",
             //     "type"     => "select",
@@ -97,11 +97,11 @@ class colaborador extends gn_tabela
             //     "pesquisa" => true,
             //     "tamanho"  => 6,
             // ),
-            // "Colaborador_TipoAdolescente" => array(
+            // "Prof_Tipo_Adolescente" => array(
             //     "tagname"  => "input",
             //     "class"    => 'form-control ' ,
-            //     "banco"    => "Colaborador_TipoAdolescente",
-            //     "id"       => "Colaborador_TipoAdolescente",
+            //     "banco"    => "Prof_Tipo_Adolescente",
+            //     "id"       => "Prof_Tipo_Adolescente",
             //     "callback" => "lista_callback_check",
             //     "label"    => "Adolescente",
             //     "type"     => "checkbox",
@@ -109,11 +109,11 @@ class colaborador extends gn_tabela
             //     "pesquisa" => true,
             //     "tamanho"  => 3,
             // ),
-            // "Colaborador_TipoAdulto" => array(
+            // "Prof_Tipo_Adulto" => array(
             //     "tagname"  => "input",
             //     "class"    => 'form-control ' ,
-            //     "banco"    => "Colaborador_TipoAdulto",
-            //     "id"       => "Colaborador_TipoAdulto",
+            //     "banco"    => "Prof_Tipo_Adulto",
+            //     "id"       => "Prof_Tipo_Adulto",
             //     "callback" => "lista_callback_check",
             //     "label"    => "Adulto",
             //     "type"     => "checkbox",
@@ -121,11 +121,11 @@ class colaborador extends gn_tabela
             //     "pesquisa" => true,
             //     "tamanho"  => 3,
             // ),
-            // "Colaborador_TipoIdoso" => array(
+            // "Prof_Tipo_Idoso" => array(
             //     "tagname"  => "input",
             //     "class"    => 'form-control ' ,
-            //     "banco"    => "Colaborador_TipoIdoso",
-            //     "id"       => "Colaborador_TipoIdoso",
+            //     "banco"    => "Prof_Tipo_Idoso",
+            //     "id"       => "Prof_Tipo_Idoso",
             //     "callback" => "lista_callback_check",
             //     "label"    => "Idoso",
             //     "type"     => "checkbox",
@@ -133,23 +133,23 @@ class colaborador extends gn_tabela
             //     "pesquisa" => true,
             //     "tamanho"  => 3,
             // ),
-            "Colaborador_Data_Nasc" => array(
+            "Prof_Data_Nasc" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control datepicker ' ,
-                "banco"    => "Colaborador_Data_Nasc",
-                "id"       => "Colaborador_Data_Nasc",
+                "banco"    => "Prof_Data_Nasc",
+                "id"       => "Prof_Data_Nasc",
                 "label"    => "Data Nascimento",
                 "callback" => "lista_callback_data",
                 "type"     => "date",
                 "pesquisa" => true,
                 "tamanho"  => 3,
-                "onchange" => "calcYearOld(this, \"Colaborador_Idade\");",
+                "onchange" => "calcYearOld(this, \"Prof_Idade\");",
             ),
-            "Colaborador_Idade" => array(
+            "Prof_Idade" => array(
                 "tagname"        => "input",
                 "class"          => 'form-control ' ,
-                "banco"          => "Colaborador_Idade" ,
-                "id"             => "Colaborador_Idade" ,
+                "banco"          => "Prof_Idade" ,
+                "id"             => "Prof_Idade" ,
                 "label"          => "Idade",
                 "type"           => "text",
                 "pesquisa"       => false,
@@ -158,112 +158,112 @@ class colaborador extends gn_tabela
                 "tamanho"        => 3,
                 "custonSelect"   => "
                     CASE
-                        WHEN Colaborador_Data_Nasc <> '0000-00-00' 
-                        THEN (SELECT YEAR(CURRENT_TIMESTAMP) - YEAR(Colaborador_Data_Nasc) - 
-                            (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(Colaborador_Data_Nasc, 5))) 
+                        WHEN Prof_Data_Nasc <> '0000-00-00' 
+                        THEN (SELECT YEAR(CURRENT_TIMESTAMP) - YEAR(Prof_Data_Nasc) - 
+                            (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(Prof_Data_Nasc, 5))) 
                         ELSE NULL
-                    END Colaborador_Idade",
+                    END Prof_Idade",
             ),
-            "Colaborador_Endereco" => array(
+            "Prof_Endereco" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Colaborador_Endereco",
-                "id"       => "Colaborador_Endereco",
+                "banco"    => "Prof_Endereco",
+                "id"       => "Prof_Endereco",
                 "label"    => "Endereço",
                 "type"     => "text",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Colaborador_Cep" => array(
+            "Prof_Cep" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcep ' ,
-                "banco"    => "Colaborador_Cep",
-                "id"       => "Colaborador_Cep",
+                "banco"    => "Prof_Cep",
+                "id"       => "Prof_Cep",
                 "label"    => "CEP",
                 "type"     => "text",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Colaborador_Fone1" => array(
+            "Prof_Fone1" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskfone' ,
-                "banco"    => "Colaborador_Fone1",
-                "id"       => "Colaborador_Fone1",
+                "banco"    => "Prof_Fone1",
+                "id"       => "Prof_Fone1",
                 "label"    => "Fone(1)",
                 "type"     => "text",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Colaborador_Fone2" => array(
+            "Prof_Fone2" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskfone' ,
-                "banco"    => "Colaborador_Fone2",
-                "id"       => "Colaborador_Fone2",
+                "banco"    => "Prof_Fone2",
+                "id"       => "Prof_Fone2",
                 "label"    => "Fone(2)",
                 "type"     => "text",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Colaborador_Celular1" => array(
+            "Prof_Cel1" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcel ' ,
-                "banco"    => "Colaborador_Celular1",
-                "id"       => "Colaborador_Celular1",
+                "banco"    => "Prof_Cel1",
+                "id"       => "Prof_Cel1",
                 "label"    => "Celular(1)",
                 "type"     => "text",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Colaborador_Celular2" => array(
+            "Prof_Cel2" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcel ' ,
-                "banco"    => "Colaborador_Celular2",
-                "id"       => "Colaborador_Celular2",
+                "banco"    => "Prof_Cel2",
+                "id"       => "Prof_Cel2",
                 "label"    => "Celular(2)",
                 "type"     => "text",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Colaborador_Convenio" => array(
+            "Prof_Convenio" => array(
                 "tagname"      => "select",
                 "class"        => 'form-control ' ,
                 "type"         => "db",
-                "banco"        => "Colaborador_Convenio",
-                "id"           => "Colaborador_Convenio",
+                "banco"        => "Prof_Convenio",
+                "id"           => "Prof_Convenio",
                 "label"        => "Convênio",
-                "custonSelect" => "tab_convenios.Convenio_Desc",
-                "custonFrom"   => "LEFT OUTER JOIN tab_convenios ON (tab_convenios.Convenio_Cod = tab_colaboradores.Colaborador_Convenio)",
-                "SQL"          => "SELECT Convenio_Cod, Convenio_Desc from tab_convenios",
-                "SELECT_VALUE" => 'Convenio_Cod' ,
-                "SELECT_NAME"  => 'Convenio_Desc',
+                "custonSelect" => "tab_convenios.Conv_Nome",
+                "custonFrom"   => "LEFT OUTER JOIN tab_convenios ON (tab_convenios.Conv_Cod = tab_Profissionais.Prof_Convenio)",
+                "SQL"          => "SELECT Conv_Cod, Conv_Nome from tab_convenios",
+                "SELECT_VALUE" => 'Conv_Cod' ,
+                "SELECT_NAME"  => 'Conv_Nome',
                 "pesquisa"     => false,
                 "tamanho"      => 3,
             ),
-            "Colaborador_Conselho" => array(
+            "Prof_Conselho" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Colaborador_Conselho",
-                "id"       => "Colaborador_Conselho",
+                "banco"    => "Prof_Conselho",
+                "id"       => "Prof_Conselho",
                 "label"    => "Conselho",
                 "type"     => "text",
                 "pesquisa" => false,
                 "tamanho"  => 3,
             ),
-            "Colaborador_Email" => array(
+            "Prof_Email" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Colaborador_Email",
-                "id"       => "Colaborador_Email",
+                "banco"    => "Prof_Email",
+                "id"       => "Prof_Email",
                 "label"    => "E-mail",
                 "type"     => "text",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Colaborador_Observacao" => array(
+            "Prof_Obs" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Colaborador_Observacao",
-                "id"       => "Colaborador_Observacao",
+                "banco"    => "Prof_Obs",
+                "id"       => "Prof_Obs",
                 "label"    => "Observação",
                 "type"     => "textarea",
                 "pesquisa" => true,

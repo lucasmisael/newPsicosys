@@ -1,6 +1,6 @@
 <?php
 
-// http://localhost/Psicosys/cadastrar.php?tabela=usuario
+// http://localhost/newPsicosys/cadastrar.php?tabela=usuario
 
 // tabela passada por parametro , 
 $tabela = $_REQUEST ['tabela'];

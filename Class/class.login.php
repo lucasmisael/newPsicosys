@@ -20,7 +20,7 @@
             // Cria a conexao com o banco
             $conn = new mysqli($servername, $username, $password, $database);
         
-            $resultado = mysqli_query($conn,"select * from tab_usuarios where usuario_nome ='" . $usuario . "' and usuario_senha = '" . $senha."'");
+            $resultado = mysqli_query($conn,"select * from tab_usuarios where usu_nome ='" . $usuario . "' and usu_senha = '" . $senha."'");
             $rows = mysqli_num_rows($resultado );
             
             

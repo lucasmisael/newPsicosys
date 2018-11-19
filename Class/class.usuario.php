@@ -20,36 +20,36 @@ class usuario extends gn_tabela
         $this->tabela = "tab_usuarios";
         
         // chave da tabela
-        $this->chave = "usuario_cod";
+        $this->chave = "usu_cod";
         
         // campos da tabela
         $this->campos = array(
-            "usuario_nome" => array(
+            "usu_nome" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "usuario_nome",
-                "id"       => "usuario_nome",
+                "banco"    => "usu_nome",
+                "id"       => "usu_nome",
                 "label"    => "Usuário",
                 "pesquisa" => true,
                 "required" => true,
                 "tamanho"  => 6
             ),
-            "usuario_senha" => array(
+            "usu_senha" => array(
                 "tagname"  => "input",
                 "type"     => "password",
                 "class"    => 'form-control ',
-                "banco"    => "usuario_senha",
-                "id"       => "usuario_senha",
+                "banco"    => "usu_senha",
+                "id"       => "usu_senha",
                 "label"    => "Senha",
                 "pesquisa" => false,
                 "requerid" => true,
                 "tamanho"  => 6
             ),
-            "usuario_email" => array(
+            "usu_email" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "usuario_email",
-                "id"       => "usuario_email",
+                "banco"    => "usu_email",
+                "id"       => "usu_email",
                 "label"    => "E-mail",
                 "pesquisa" => true,
                 "tamanho"  => 6

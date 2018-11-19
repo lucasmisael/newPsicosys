@@ -84,7 +84,7 @@
                     <!-- Buttons para Atalhos -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     
-                    <!-- DropDown Opções Colaboradores -->
+                    <!-- DropDown Opções Profissionais -->
                         <ul class="nav navbar-nav">
                             
                             <?php
@@ -95,7 +95,7 @@
                                 
                                 $tabelas = array(
                                     "Cliente"     ,
-                                    "Colaborador" ,
+                                    "Profissional" ,
                                     "Convenio"    ,
                                     "Usuario"     ,
                                 );

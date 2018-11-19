@@ -87,8 +87,8 @@ class gn_tabela
         $s = "";
         if($this->tabela == "tab_clientes")
             $s = "Cliente_Desc";
-        if($this->tabela == "tab_colaboradores")
-            $s = "Colaborador_Desc";
+        if($this->tabela == "tab_profissionais")
+            $s = "Prof_Nome";
         if($this->tabela == "tab_convenios")
             $s = "Convenio_Desc";
         if($this->tabela == "tab_usuarios")
@@ -482,10 +482,10 @@ class gn_tabela
         // echo "$SQL";exit();
         // teste
         
-        $servername  =  "localhost" ; // Server em que esta o banco
-        $username    =  "root"      ; // usuario do banco
-        $password    =  ""          ; // senha do banco
-        $database    =  "psicosys"  ; // banco de dados
+        $servername  =  "localhost"    ; // Server em que esta o banco
+        $username    =  "root"         ; // usuario do banco
+        $password    =  ""             ; // senha do banco
+        $database    =  "newpsicosys"  ; // banco de dados
         
         
         // Cria a conexao com o banco

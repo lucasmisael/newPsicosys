@@ -13,26 +13,26 @@ class convenio extends gn_tabela
         $this->classe = "convenio";
         
         $this->tabela = "tab_convenios";
-        
-        $this->chave = "Convenio_Cod";
+    
+        $this->chave = "Conv_Cod";
         
         $this->campos = array(
-            "Convenio_Desc" => array(
+            "Conv_Nome" => array(
                 "tagname"   => "input",
                 "class"     => 'form-control ' ,
-                "banco"     => "Convenio_Desc",
-                "id"        => "Convenio_Desc",
+                "banco"     => "Conv_Nome",
+                "id"        => "Conv_Nome",
                 "label"     => "Convênio",
                 "orderBy"   => true, //?? Pendente
                 "required"  => true,
                 "pesquisa"  => true,
                 "tamanho"   => 6,
             ),
-            "Convenio_Status" => array(
+            "Conv_Status" => array(
                 "tagname"    => "input",
                 "class"      => 'form-control ' ,
-                "banco"      => "Convenio_Status",
-                "id"         => "Convenio_Status",
+                "banco"      => "Conv_Status",
+                "id"         => "Conv_Status",
                 "callback"   => "lista_callback_check",
                 "label"      => "Ativo",
                 "type"       => "checkbox",
@@ -41,92 +41,92 @@ class convenio extends gn_tabela
                 "pesquisa"   => true,
                 "tamanho"    => 1,
             ),
-            "Convenio_Cnpj" => array(
+            "Conv_Cnpj" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcnpj' ,
-                "banco"    => "Convenio_Cnpj",
-                "id"       => "Convenio_Cnpj",
+                "banco"    => "Conv_Cnpj",
+                "id"       => "Conv_Cnpj",
                 "label"    => "CNPJ",
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
-            "Convenio_Email" => array(
+            "Conv_Email" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Convenio_Email",
-                "id"       => "Convenio_Email",
+                "banco"    => "Conv_Email",
+                "id"       => "Conv_Email",
                 "label"    => "E-mail",
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
-            "Convenio_End" => array(
+            "Conv_Endereco" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Convenio_Endereco",
-                "id"       => "Convenio_Endereco",
+                "banco"    => "Conv_Endereco",
+                "id"       => "Conv_Endereco",
                 "label"    => "Endereço",
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
-            "Convenio_Cep" => array(
+            "Conv_Cep" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcep' ,
-                "banco"    => "Convenio_Cep",
-                "id"       => "Convenio_Cep",
+                "banco"    => "Conv_Cep",
+                "id"       => "Conv_Cep",
                 "label"    => "CEP",
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
-            "Convenio_Contato_Fone" => array(
+            "Conv_Contato_Fone" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Convenio_Contato_Fone",
-                "id"       => "Convenio_Contato_Fone",
+                "banco"    => "Conv_Contato_Fone",
+                "id"       => "Conv_Contato_Fone",
                 "label"    => "Contato",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Convenio_Fone" => array(
+            "Conv_Fone" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskfone' ,
-                "banco"    => "Convenio_Fone",
-                "id"       => "Convenio_Fone",
+                "banco"    => "Conv_Fone",
+                "id"       => "Conv_Fone",
                 "label"    => "Fone",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Convenio_Contato_Cel" => array(
+            "Conv_Contato_Cel" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Convenio_Contato_Cel",
-                "id"       => "Convenio_Contato_Cel",
+                "banco"    => "Conv_Contato_Cel",
+                "id"       => "Conv_Contato_Cel",
                 "label"    => "Contato ",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Convenio_Cel" => array(
+            "Conv_Cel" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcel' ,
-                "banco"    => "Convenio_Cel",
-                "id"       => "Convenio_Cel",
+                "banco"    => "Conv_Cel",
+                "id"       => "Conv_Cel",
                 "label"    => "Celular",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Convenio_Site" => array(
+            "Conv_Site" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Convenio_Site",
-                "id"       => "Convenio_Site",
+                "banco"    => "Conv_Site",
+                "id"       => "Conv_Site",
                 "label"    => "Site",
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
-            "Convenio_Observacao" => array(
+            "Conv_Obs" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Convenio_Observacao",
-                "id"       => "Convenio_Observacao",
+                "banco"    => "Conv_Obs",
+                "id"       => "Conv_Obs",
                 "label"    => "Observação",
                 "pesquisa" => true,
                 "tamanho"  => 6,

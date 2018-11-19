@@ -14,29 +14,29 @@ class cliente extends gn_tabela
         
         $this->tabela = "tab_clientes";
         
-        $this->chave = "Cliente_Cod";
+        $this->chave = "Cli_Cod";
         
         $this->campos = array(
-            "Cliente_Data_Cadastro" => array(
+            "Cli_Data_Cadastro" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control datepicker' ,
-                "banco"    => "Cliente_Data_Cadastro",
-                "id"       => "Cliente_Data_Cadastro",
+                "banco"    => "Cli_Data_Cadastro",
+                "id"       => "Cli_Data_Cadastro",
                 "label"    => "Data de Cadastro",
-                "callback"   => "lista_callback_data",
+                "callback" => "lista_callback_data",
                 "type"     => "text",
                 "pesquisa" => false,
                 "tamanho"  => 6,
                 "value"    => date('d/m/Y'),
                 "readonly" => true
-                // "onchange" => "calcYearOld(this, \"Cliente_Idade\");",
+                // "onchange" => "calcYearOld(this, \"Cli_Idade\");",
             ),
             
-            "Cliente_Status" => array(
+            "Cli_Status" => array(
                 "tagname"    => "input",
                 "class"      => 'form-control ' ,
-                "banco"      => "Cliente_Status",
-                "id"         => "Cliente_Status",
+                "banco"      => "Cli_Status",
+                "id"         => "Cli_Status",
                 "callback"   => "lista_callback_check",
                 "label"      => "Ativo",
                 "type"       => "checkbox",
@@ -44,46 +44,46 @@ class cliente extends gn_tabela
                 "pesquisa"   => true,
                 "tamanho"    => 1,
             ),
-            "Cliente_Desc" => array(
+            "Cli_Nome" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ',
-                "banco"    => "Cliente_Desc",
-                "id"       => "Cliente_Desc",
+                "banco"    => "Cli_Nome",
+                "id"       => "Cli_Nome",
                 "label"    => "Nome",
                 "orderBy"  => true, //?? Pendente
                 "required" => true,
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
-            "Cliente_Cpf" => array(
+            "Cli_Cpf" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcpf ',
-                "banco"    => "Cliente_Cpf",
-                "id"       => "Cliente_Cpf",
+                "banco"    => "Cli_Cpf",
+                "id"       => "Cli_Cpf",
                 "label"    => "CPF",
                 "pesquisa" => true,
                 "tamanho"  => 6,
                 "maxlength" => 10,
                 // "onkeyup" => "maskcpf()",
             ),
-            "Cliente_Data_Nasc" => array(
+            "Cli_Data_Nasc" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control datepicker' ,
-                "banco"    => "Cliente_Data_Nasc",
-                "id"       => "Cliente_Data_Nasc",
+                "banco"    => "Cli_Data_Nasc",
+                "id"       => "Cli_Data_Nasc",
                 "label"    => "Data Nascimento",
                 "callback" => "lista_callback_data",
                 "type"     => "date",
                 "pesquisa" => true,
                 "tamanho"  => 3,
-                "onchange" => "calcYearOld(this, \"Cliente_Idade\");",
+                "onchange" => "calcYearOld(this, \"Cli_Idade\");",
             ),
             
-            "Cliente_Idade" => array(
+            "Cli_Idade" => array(
                 "tagname"        => "input",
                 "class"          => 'form-control ' ,
-                "banco"          => "Cliente_Idade" ,
-                "id"             => "Cliente_Idade" ,
+                "banco"          => "Cli_Idade" ,
+                "id"             => "Cli_Idade" ,
                 "label"          => "Idade",
                 "type"           => "text",
                 "pesquisa"       => true,
@@ -92,17 +92,17 @@ class cliente extends gn_tabela
                 "tamanho"        => 3,
                 "custonSelect"   => "
                     CASE
-                        WHEN Cliente_Data_Nasc <> '0000-00-00' 
-                        THEN (SELECT YEAR(CURRENT_TIMESTAMP) - YEAR(Cliente_Data_Nasc) - 
-                            (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(Cliente_Data_Nasc, 5))) 
+                        WHEN Cli_Data_Nasc <> '0000-00-00' 
+                        THEN (SELECT YEAR(CURRENT_TIMESTAMP) - YEAR(Cli_Data_Nasc) - 
+                            (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(Cli_Data_Nasc, 5))) 
                         ELSE NULL
-                    END Cliente_Idade",
+                    END Cli_Idade",
             ),
-            "Cliente_Tipo" => array( 
+            "Cli_Tipo" => array( 
                 "tagname"  => "select",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Tipo",
-                "id"       => "Cliente_Tipo",
+                "banco"    => "Cli_Tipo",
+                "id"       => "Cli_Tipo",
                 "label"    => "Classificação",
                 "pesquisa" => true,
                 "tamanho"  => 3,
@@ -113,11 +113,11 @@ class cliente extends gn_tabela
                     'Idoso'      => "Idoso"       ,   
                 ),
             ),
-            "Cliente_Periodo" => array( 
+            "Cli_Periodo" => array( 
                 "tagname"  => "select",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Periodo",
-                "id"       => "Cliente_Periodo",
+                "banco"    => "Cli_Periodo",
+                "id"       => "Cli_Periodo",
                 "label"    => "Preferência Período",
                 "pesquisa" => true,
                 "tamanho"  => 3,
@@ -128,156 +128,156 @@ class cliente extends gn_tabela
                     'Sabado' => "Sábado",   
                 ),
             ),
-            "Cliente_Cod_Cid" => array(
+            "Cli_Cod_Cid" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Cod_Cid",
-                "id"       => "Cliente_Cod_Cid",
+                "banco"    => "Cli_Cod_Cid",
+                "id"       => "Cli_Cod_Cid",
                 "label"    => "Código CID",
                 "pesquisa" => false,
                 "tamanho"  => 6,
             ),
-            "Cliente_Liberacao" => array(
+            "Cli_Liberacao" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Liberacao",
-                "id"       => "Cliente_Liberacao",
+                "banco"    => "Cli_Liberacao",
+                "id"       => "Cli_Liberacao",
                 "label"    => "Liberação (Código ou Nº Carteirinha)",
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
-            "Cliente_Endereco" => array(
+            "Cli_Endereco" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Endereco",
-                "id"       => "Cliente_Endereco",
+                "banco"    => "Cli_Endereco",
+                "id"       => "Cli_Endereco",
                 "label"    => "Endereço",
                 "pesquisa" => false,
                 "tamanho"  => 6,
             ),
-            "Cliente_Cep" => array(
+            "Cli_Cep" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcep' ,
-                "banco"    => "Cliente_Cep",
-                "id"       => "Cliente_Cep",
+                "banco"    => "Cli_Cep",
+                "id"       => "Cli_Cep",
                 "label"    => "CEP",
                 "pesquisa" => false,
                 "tamanho"  => 6,
             ),
-            "Cliente_Contato_Fone1" => array(
+            "Cli_Contato_Fone1" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Contato_Fone1",
-                "id"       => "Cliente_Contato_Fone1",
+                "banco"    => "Cli_Contato_Fone1",
+                "id"       => "Cli_Contato_Fone1",
                 "label"    => "Contato ",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Cliente_Fone1" => array(
+            "Cli_Fone1" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskfone' ,
                 // "type"  => "phone",
-                "banco"    => "Cliente_Fone1",
-                "id"       => "Cliente_Fone1",
+                "banco"    => "Cli_Fone1",
+                "id"       => "Cli_Fone1",
                 "label"    => "Fone(1)",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
             
-            "Cliente_Contato_Fone2" => array(
+            "Cli_Contato_Fone2" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Contato_Fone2",
-                "id"       => "Cliente_Contato_Fone2",
+                "banco"    => "Cli_Contato_Fone2",
+                "id"       => "Cli_Contato_Fone2",
                 "label"    => "Contato ",
                 "pesquisa" => false,
                 "tamanho"  => 3,
             ),
-            "Cliente_Fone2" => array(
+            "Cli_Fone2" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskfone' ,
-                "banco"    => "Cliente_Fone2",
-                "id"       => "Cliente_Fone2",
+                "banco"    => "Cli_Fone2",
+                "id"       => "Cli_Fone2",
                 "label"    => "Fone(2)",
                 "pesquisa" => false,
                 "tamanho"  => 3,
             ),
-            "Cliente_Contato_Celular1" => array(
+            "Cli_Contato_Cel1" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Contato_Celular1",
-                "id"       => "Cliente_Contato_Celular1",
+                "banco"    => "Cli_Contato_Cel1",
+                "id"       => "Cli_Contato_Cel1",
                 "label"    => "Contato ",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Cliente_Celular1" => array(
+            "Cli_Cel1" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcel ' ,
-                "banco"    => "Cliente_Celular1",
-                "id"       => "Cliente_Celular1",
+                "banco"    => "Cli_Cel1",
+                "id"       => "Cli_Cel1",
                 "label"    => "Celular(1)",
                 "pesquisa" => true,
                 "tamanho"  => 3,
             ),
-            "Cliente_Contato_Celular2" => array(
+            "Cli_Contato_Cel2" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Contato_Celular2",
-                "id"       => "Cliente_Contato_Celular2",
+                "banco"    => "Cli_Contato_Cel2",
+                "id"       => "Cli_Contato_Cel2",
                 "label"    => "Contato Cel(2)",
                 "pesquisa" => false,
                 "tamanho"  => 3,
             ),
-            "Cliente_Celular2" => array(
+            "Cli_Cel2" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control maskcel' ,
-                "banco"    => "Cliente_Celular2",
-                "id"       => "Cliente_Celular2",
+                "banco"    => "Cli_Cel2",
+                "id"       => "Cli_Cel2",
                 "label"    => "Celular(2)",
                 "pesquisa" => false,
                 "tamanho"  => 3,
             ),
-            "Cliente_Responsavel" => array(
+            "Cli_Resp" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Responsavel",
-                "id"       => "Cliente_Responsavel",
+                "banco"    => "Cli_Resp",
+                "id"       => "Cli_Resp",
                 "label"    => "Responsável",
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
-            "Cliente_Email" => array(
+            "Cli_Email" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Email",
-                "id"       => "Cliente_Email",
+                "banco"    => "Cli_Email",
+                "id"       => "Cli_Email",
                 "label"    => "E-mail",
                 "pesquisa" => true,
                 "tamanho"  => 6,
             ),
             
-            "Cliente_Convenio" => array(
+            "Cli_Convenio" => array(
                 "tagname"      => "select",
                 "class"        => 'form-control ',
                 "type"         => "db",
-                "banco"        => "Cliente_Convenio",
-                "id"           => "Cliente_Convenio",
+                "banco"        => "Cli_Convenio",
+                "id"           => "Cli_Convenio",
                 "label"        => "Convênio",
-                "custonSelect" => "tab_convenios.Convenio_Desc",
-                "custonFrom"   => "LEFT OUTER JOIN tab_convenios ON (tab_convenios.Convenio_Cod = tab_clientes.Cliente_Convenio)",
-                "SQL"          => "SELECT Convenio_Cod, Convenio_Desc from tab_convenios",
-                "SELECT_VALUE" => 'Convenio_Cod' ,
-                "SELECT_NAME"  => 'Convenio_Desc',
+                "custonSelect" => "tab_convenios.Conv_Nome",
+                "custonFrom"   => "LEFT OUTER JOIN tab_convenios ON (tab_convenios.Conv_Cod = tab_clientes.Cli_Convenio)",
+                "SQL"          => "SELECT Conv_Cod, Conv_Nome from tab_convenios",
+                "SELECT_VALUE" => 'Conv_Cod' ,
+                "SELECT_NAME"  => 'Conv_Nome',
                 "pesquisa"     => false,
                 "tamanho"      => 6,
             ),
             
-            "Cliente_Observacao" => array(
+            "Cli_Obs" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Cliente_Observacao",
-                "id"       => "Cliente_Observacao",
+                "banco"    => "Cli_Obs",
+                "id"       => "Cli_Obs",
                 "label"    => "Observação",
                 "pesquisa" => true,
                 "tamanho"  => 6,
@@ -325,7 +325,7 @@ class cliente extends gn_tabela
                 function(){
                     //?? MASCARAS AQUI 
                     
-                    $('#Cliente_Data_Nasc').change();
+                    $('#Cli_Data_Nasc').change();
                 }
             );
             
