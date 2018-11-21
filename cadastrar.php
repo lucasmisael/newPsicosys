@@ -13,6 +13,3 @@ $classeTabela = new $tabela ();
 
 // chama o metodo que monta a consulta da classe 
 echo $classeTabela->cadastrar();
-
-
-
