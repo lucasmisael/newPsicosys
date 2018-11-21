@@ -120,7 +120,7 @@
                         url: url,
                         data: dados,
                         success: function(data){
-                            alert(url);
+                            // alert(url);
                             if(data == "1"){
                                 // alert("Alterado com sucesso! ");
                                 //atualiza a página!
@@ -169,11 +169,10 @@
 
            }); 
 
-            $('.cliente').flexdatalist({
+            // $('.cliente').flexdatalist({
       
-                searchIn: 'id',
 
-            });
+            // });
 
             $(document).ready(function() {
                 $('.js-example-basic-single').select2();
@@ -220,7 +219,7 @@
                     <form id="novo_evento" action="" method="post">
                         <div id="modalBody" class="modal-body">        
                           
-                            Cliente: 
+                            <label for="cliente">Cliente:</label> <br>
                             <select id="cliente" class="js-example-basic-single form-control" name="cliente">
                             <?php 
                                 $a = new buscar();
@@ -243,9 +242,9 @@
                             ?>
                              
                             </select><br>
-                          
-                            Profissional:
-                            <select id="colaborador" class="js-example-basic-single form-control" name="colaborador">    
+                            
+                            <label for="colaborador">Profissional::</label> <br>
+                            <select id="colaborador" class="js-example-basic-single form-control " name="colaborador">    
                             <?php 
 
                                 

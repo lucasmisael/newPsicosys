@@ -15,7 +15,7 @@
             $servername  =  "localhost" ; // Server em que esta o banco
             $username    =  "root"      ; // usuario do banco
             $password    =  ""          ; // senha do banco
-            $database    =  "psicosys"  ; // banco de dados 
+            $database    =  "Newpsicosys"  ; // banco de dados 
             
             // Cria a conexao com o banco
             $conn = new mysqli($servername, $username, $password, $database);

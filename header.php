@@ -42,7 +42,11 @@
  -->
            <!-- combobox -->
             <link href="lib/externos/flexdatalist/jquery.flexdatalist.min.css" rel="stylesheet">
-            <script src="lib/externos/flexdatalist/jquery.flexdatalist.min.js"></script>           
+            <script src="lib/externos/flexdatalist/jquery.flexdatalist.min.js"></script>   
+
+            <!--FONT- AWESOME  -->
+            <script src="lib/externos/fontawesome/js/all.js"></script>   
+            <link href="lib/externos/fontawesome/css/all.css" rel="stylesheet">
 
 
 

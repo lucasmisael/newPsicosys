@@ -34,6 +34,24 @@ class usuario extends gn_tabela
                 "required" => true,
                 "tamanho"  => 6
             ),
+            "usu_Status" => array(
+                "tagname"    => "input",
+                "class"      => 'form-control checkbox' ,
+                "banco"      => "usu_Status",
+                "id"         => "usu_Status",
+                // "callback"   => "lista_callback_check",
+                "label"      => "Ativo",
+                "type"       => "checkbox",
+                // "checked"    => true, // ?? para sempre vir checado
+                "required"   => false,
+                "pesquisa"   => true,
+                "tamanho"    => 1,
+                 "data-toggle"=>"toggle",
+                "data-onstyle" =>"success",
+                "data-offstyle"=>"danger",
+                "data-on"=>"Ativo",
+                "data-off"=>"Inativo"
+            ),
             "usu_senha" => array(
                 "tagname"  => "input",
                 "type"     => "password",

@@ -37,7 +37,7 @@ class profissional extends gn_tabela
                 "label"    => "Status ",
                 "callback" => "lista_callback_check",
                 "type"     => "checkbox",
-                "checked"  => true, // ?? para sempre vir checado
+                // "checked"  => true, // ?? para sempre vir checado
                 "pesquisa" => true,
                 "tamanho"  => 1,
                 "data-toggle"=>"toggle",

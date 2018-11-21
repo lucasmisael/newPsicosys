@@ -30,7 +30,7 @@ class convenio extends gn_tabela
             ),
             "Conv_Status" => array(
                 "tagname"    => "input",
-                "class"      => 'form-control ' ,
+                "class"      => 'form-control checkbox' ,
                 "banco"      => "Conv_Status",
                 "id"         => "Conv_Status",
                 "callback"   => "lista_callback_check",
@@ -38,8 +38,13 @@ class convenio extends gn_tabela
                 "type"       => "checkbox",
                 "checked"    => true, // ?? para sempre vir checado
                 "required"   => false,
-                "pesquisa"   => true,
+                "pesquisa"   => false,
                 "tamanho"    => 1,
+                 "data-toggle"=>"toggle",
+                "data-onstyle" =>"success",
+                "data-offstyle"=>"danger",
+                "data-on"=>"Ativo",
+                "data-off"=>"Inativo"
             ),
             "Conv_Cnpj" => array(
                 "tagname"  => "input",

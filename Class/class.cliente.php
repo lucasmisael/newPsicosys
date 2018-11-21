@@ -34,15 +34,20 @@ class cliente extends gn_tabela
             
             "Cli_Status" => array(
                 "tagname"    => "input",
-                "class"      => 'form-control ' ,
+                "class"      => 'form-control checkbox ' ,
                 "banco"      => "Cli_Status",
                 "id"         => "Cli_Status",
                 "callback"   => "lista_callback_check",
                 "label"      => "Ativo",
                 "type"       => "checkbox",
-                "checked"    => true, // ?? para sempre vir ticado
+                // "checked"    => true, // ?? para sempre vir ticado
                 "pesquisa"   => true,
                 "tamanho"    => 1,
+                 "data-toggle"=>"toggle",
+                "data-onstyle" =>"success",
+                "data-offstyle"=>"danger",
+                "data-on"=>"Ativo",
+                "data-off"=>"Inativo"
             ),
             "Cli_Nome" => array(
                 "tagname"  => "input",
@@ -288,13 +293,14 @@ class cliente extends gn_tabela
     function lista_callback_check($vl){
         //?? COMENTADO PARA EN.... O CLIENTE
         
-        //if ($vl == '1'){
-            $color = 'green'    ;
-            $char  = "&#9745;"  ;
-        //} else {
-        //    $color = 'red'      ;
-        //    $char  = "&#9744;"  ;
-        //}
+        if ($vl == 'on'){
+            $color = '#369939'    ;
+            // $char  = "&#9745;"  ;
+            $char = '<i class="fas fa-check-circle"></i>';
+        } else {
+           $color = '#b22222'      ;
+           $char = '<i class="fas fa-times-circle"></i>';
+        }
         
         return "
             <span 

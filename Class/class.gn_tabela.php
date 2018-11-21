@@ -171,17 +171,45 @@ class gn_tabela
     {
             
         $SQL_COLUNAS = array();
-        
+       
+       
         foreach ($this->campos as $campo){
-            
             $coluna = $campo['banco'];
             // verifica se o nome do campo no banco esta vindo no request
             if (array_key_exists($coluna, $_REQUEST)){
                 $SQL_COLUNAS[] = " $coluna = '{$_REQUEST[$coluna]}' " ;
+                
+                //Cliente
+                if($this->tabela == 'tab_clientes'){
+                    if(!isset($_REQUEST['Cli_Status']))
+                        $SQL_COLUNAS[] = "Cli_Status = 'off'";
+                    elseif(isset($_REQUEST['Cli_Status']))
+                        $SQL_COLUNAS[] = "Cli_Status = 'on'";
+                }
+                //Profissional
+                if($this->tabela == 'tab_profissionais'){
+                    if(!isset($_REQUEST['Prof_Status']))
+                        $SQL_COLUNAS[] = "Prof_Status = 'off'";
+                    elseif(isset($_REQUEST['Prof_Status']))
+                        $SQL_COLUNAS[] = "Prof_Status = 'on'";
+                }
+                if($this->tabela == 'tab_convenios'){
+                    if(!isset($_REQUEST['Conv_Status']))
+                        $SQL_COLUNAS[] = "Conv_Status = 'off'";
+                    elseif(isset($_REQUEST['Conv_Status']))
+                        $SQL_COLUNAS[] = "Conv_Status = 'on'";
+                }
+                if($this->tabela == 'tab_usuarios'){
+                    if(!isset($_REQUEST['usu_Status']))
+                        $SQL_COLUNAS[] = "usu_Status = 'off'";
+                    elseif(isset($_REQUEST['usu_Status']))
+                        $SQL_COLUNAS[] = "usu_Status = 'on'";
+                }
             }
         }
         
         $SQL_COLUNAS = implode(', ', $SQL_COLUNAS);
+       
         
         $SQL = "UPDATE $this->tabela SET $SQL_COLUNAS WHERE $this->chave = {$_REQUEST[$this->chave]};";
         
@@ -394,7 +422,8 @@ class gn_tabela
                         style = 'font-size:30px'
                         title = 'Editar'
                     >
-                        <img src='img/icons/editar-2.png'   />
+                        <i class='fas fa-user-edit'></i>
+
                     </a>
 
 
@@ -403,7 +432,7 @@ class gn_tabela
                         style = 'font-size:30px; color: red'
                         title = 'Excluir' 
                     >
-                         <img src='img/icons/excluir-3.png'   />
+                       <i class='fas fa-trash-alt'></i>
                     </a>
 
 

@@ -17,12 +17,12 @@
         $id       = $_GET['id'];
 
 
-        $sql = "SELECT Cliente_Desc FROM tab_Clientes WHERE Cliente_Cod = $cli limit 1";
+        $sql = "SELECT Cli_nome FROM tab_Clientes WHERE Cli_Cod = $cli limit 1";
         $nmcli = $e->executarNoBanco($sql);
         
         //nome cliente para salvar no banco        
         foreach ($nmcli as $key => $value) {
-            $nm = $value['Cliente_Desc'];
+            $nm = $value['Cli_nome'];
         }
 
 
