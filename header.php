@@ -36,14 +36,7 @@
             <script type="text/javascript" charset="utf8" src="lib/externos/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
             <link rel="stylesheet" type="text/css" href="lib/externos/bootstrap-toggle/css/bootstrap-toggle.min.css"/ >
 
-            <!-- Select --><!-- 
-            <link href="lib/externos/multiple/fSelect.css" rel="stylesheet">
-            <script src="lib/externos/multiple/fSelect.js"></script>
- -->
-           <!-- combobox -->
-            <link href="lib/externos/flexdatalist/jquery.flexdatalist.min.css" rel="stylesheet">
-            <script src="lib/externos/flexdatalist/jquery.flexdatalist.min.js"></script>   
-
+            
             <!--FONT- AWESOME  -->
             <script src="lib/externos/fontawesome/js/all.js"></script>   
             <link href="lib/externos/fontawesome/css/all.css" rel="stylesheet">
@@ -102,6 +95,7 @@
                                     "Profissional" ,
                                     "Convenio"    ,
                                     "Usuario"     ,
+                                   
                                 );
                                 
                                 foreach ($operacaoes as $operacao) {
@@ -115,12 +109,46 @@
                                             echo "</ul>
                                             </li> ";
                                 }
+
+                                 $operacaoes2 = array(
+                                   
+                                    "Consultas"
+                                );
+                                
+                                $tabelas2 = array(
+                                   
+                                    "Consulta"
+                                );
+                                
+                                foreach ($operacaoes2 as $operacao2) {
+                                    echo "
+                                        <li class='dropdown'>
+                                            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>$operacao2 <span class='caret'></span></a>
+                                            <ul class='dropdown-menu'>
+
+
+                                            <li >
+                                                <a href='./home_calendar.php' >Calendário</a>
+                                            </li>
+
+                                            ";
+                                                foreach ($tabelas2 as $tabela2) {
+                                                    echo "<li><a href='$operacao.php?tabela=$tabela2'>Consultas agendadas</a></li>";
+                                                }
+                                            echo "
+                                                    <li >
+                                                         <a href='./docs/DECLARAÇÃO.pdf' >Imprimir atestados</a>
+                                                     </li>
+                                                </ul>
+                                            </li> ";
+                                }
+                                
                                 
                                 
                             ?>
-                                <li class="dropdown">
-                                    <a href="./home_calendar.php"  role="button" aria-haspopup="true" aria-expanded="false">Agendar <span class="caret"></span></a>
-                                </li> 
+                               <!--  <li class="dropdown">
+                                    <a href="./home_calendar.php"  role="button" aria-haspopup="true" aria-expanded="false">Consultas <span class="caret"></span></a>
+                                </li>  -->
                             </ul>
                             <ul class="navbar-right" style='margin-top:10px; margin-bottom:0px'>
                                 <form action="index.php">
@@ -132,6 +160,8 @@
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
                 </nav>
+            
+
             
 
         <?php

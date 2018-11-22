@@ -12,14 +12,18 @@
         <title> Eventos Psicosys </title>
         
         <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
-        <script src='fullcalendar/lib/jquery.min.js'></script>
+        <!-- <script src='fullcalendar/lib/jquery.min.js'></script> -->
+        <!-- <script src="./lib/externos/jquery.min.js"></script> -->
         <script src='fullcalendar/lib/moment.min.js'></script>
         <script src='fullcalendar/fullcalendar.js'></script>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- <script src="../lib/bootstrap/js/jquery-3.3.1.min.js"></script> -->
+            <!-- <script src="lib/externos/bootstrap.min.js"></script> -->
+
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
       
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
         <!-- datepicker -->
         <link rel="stylesheet" type="text/css" href="lib/externos/datetimepicker/build/jquery.datetimepicker.min.css"/ >
@@ -27,7 +31,7 @@
         <script src="lib/externos/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>    
         <!-- script de tradução -->
         <script src='fullcalendar/locale/pt-br.js'></script>
-        <script src='fullcalendar/fullCalendaredited.js'></script>
+       
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
@@ -169,13 +173,10 @@
 
            }); 
 
-            // $('.cliente').flexdatalist({
-      
-
-            // });
+           
 
             $(document).ready(function() {
-                $('.js-example-basic-single').select2();
+                $('.js-example-basic-single').select2({ width: '100%' });
             });
 
            // $('#data').datetimepicker({
@@ -189,6 +190,13 @@
            //  $('.data').focus(function() {
            //      datepicker.open(); 
            //  });
+
+            function consultas(){
+
+                url = "./Pesquisar.php?tabela=CONSULTA";
+                $( location ).attr("href", url);
+           
+            }
         </script>
         
         <style>
@@ -203,6 +211,7 @@
     <body>    
         <div class="container" >
             <button type="button" class="btn btn-primary btn-lg" id="myBtn" >Incluir novo evento</button>
+            <button type="button" onclick="consultas()" class="btn btn-default btn-lg" id="myBtn" >Visualizar eventos</button>
         </div>
         <br>
         <div id='calendario'></div>
@@ -241,7 +250,7 @@
 
                             ?>
                              
-                            </select><br>
+                            </select><br><br>
                             
                             <label for="colaborador">Profissional::</label> <br>
                             <select id="colaborador" class="js-example-basic-single form-control " name="colaborador">    
@@ -260,10 +269,10 @@
 
                             ?>
 
-                            </select><br>
+                            </select><br><br>
 
                             <!-- CALENDARIO -->
-                            Data inicial do Evento: <input id="data" type="text" name="data" class="form-control date" required/> <br><br>
+                            Data inicial do Evento: <input id="data" type="text" name="data" class="form-control date" required/> <br>
                             Data final do Evento: <input id="datafim" type="text" name="datafim" class="form-control date" required/>
                                                      
                         </div>

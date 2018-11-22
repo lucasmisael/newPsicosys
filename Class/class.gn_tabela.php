@@ -450,10 +450,20 @@ class gn_tabela
 
 
 
-                </td>
+                
             ";
+
+            //Botão para efetuar atendimento de consultas
+            if($this->tabela == 'tab_eventos')
+                $dadosTabela .= " <a 
+                        href  = 'editar.php?tabela=$this->classe&chave=$valorChave' 
+                        style = 'font-size:30px; color: #7cc77a'
+                        title = 'Atender consulta' 
+                    >
+                      <i class='fas fa-sign-in-alt'></i>
+                    </a>";
   
-            $dadosTabela .= "</tr>";
+            $dadosTabela .= " </td> </tr>";
         }
         
         
