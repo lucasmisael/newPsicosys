@@ -254,6 +254,8 @@ class gn_tabela
         foreach ($banco as $linha){
             foreach ($linha as $chave => $valor){
                 $dados[$chave] = $valor;
+                
+                
             }
         }
         
@@ -292,7 +294,18 @@ class gn_tabela
             
             // cria um input para cada campo da tabela
             // $cache .= $this->elms->campoFormulario($campo);
-            $cache .= $this->elms->{$campo['tagname']}($campo);
+            
+            if($campo['id'] == 'Cli_Status' || $campo['id'] == 'Conv_Status' || $campo['id'] == 'Prof_Status' || $campo['id'] == 'Usu_Status'){
+                #Status ON ou OFF
+                if(isset($campo['value']) && $campo['value'] == 'on')
+                    $campo['checked'] =  'true';
+                
+
+            }
+            // else
+
+                $cache .= $this->elms->{$campo['tagname']}($campo);
+
 
         }
         $cache .="</div>";
@@ -377,14 +390,14 @@ class gn_tabela
         
         $tabela = "";
         
-        $tabela .= "<table  id='consultar' border=1 class='table-striped table-bordered' >";
+        // $tabela .= "<table  id='consultar'  border=1 class='table-striped table-bordered' >";
         
         
         $thead = array();
         
         foreach ($this->campos as $dadosCampo){
             if ($dadosCampo['pesquisa']){
-                $thead[] = "<th scope='col' nowrap>$dadosCampo[label]</th>";
+                $thead[] = "<th scope='col'  nowrap>$dadosCampo[label]</th>";
             }
         }
         
@@ -429,7 +442,7 @@ class gn_tabela
 
                     <a 
                         href  = 'excluir.php?tabela=$this->classe&chave=$valorChave' 
-                        style = 'font-size:30px; color: red'
+                        style = 'font-size:30px; color: #b22222'
                         title = 'Excluir' 
                     >
                        <i class='fas fa-trash-alt'></i>
@@ -448,8 +461,10 @@ class gn_tabela
         
         $cache.="
             <div class='col-lg-12 table-responsive'>
-                <table class='table table-striped table-bordered' id='consultar'>
-                    <thead >
+                <table class='table table-striped table-bordered' style='border-radius: 10px;' id='consultar'>
+                    <thead style='font-size: 13px; background: #005C97;  /* fallback for old browsers */
+                        background: -webkit-linear-gradient(to right, #363795, #005C97);  /* Chrome 10-25, Safari 5.1-6 */
+                        background: linear-gradient(to right, #363795, #005C97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;color:white;' >
                         <tr class='row'>
                             $thead
                         </tr>

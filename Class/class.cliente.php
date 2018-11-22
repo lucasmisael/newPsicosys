@@ -5,7 +5,9 @@
 require_once('Class/class.gn_tabela.php');
 
 class cliente extends gn_tabela 
-{
+{   
+    // var $status = false;
+
     function __construct(){
         
         parent::__construct();
@@ -15,6 +17,8 @@ class cliente extends gn_tabela
         $this->tabela = "tab_clientes";
         
         $this->chave = "Cli_Cod";
+
+
         
         $this->campos = array(
             "Cli_Data_Cadastro" => array(
@@ -33,21 +37,21 @@ class cliente extends gn_tabela
             ),
             
             "Cli_Status" => array(
-                "tagname"    => "input",
-                "class"      => 'form-control checkbox ' ,
-                "banco"      => "Cli_Status",
-                "id"         => "Cli_Status",
-                "callback"   => "lista_callback_check",
-                "label"      => "Ativo",
-                "type"       => "checkbox",
-                // "checked"    => true, // ?? para sempre vir ticado
-                "pesquisa"   => true,
-                "tamanho"    => 1,
-                 "data-toggle"=>"toggle",
-                "data-onstyle" =>"success",
-                "data-offstyle"=>"danger",
-                "data-on"=>"Ativo",
-                "data-off"=>"Inativo"
+                "tagname"       => "input",
+                "class"         => 'form-control checkbox ' ,
+                "banco"         => "Cli_Status",
+                "id"            => "Cli_Status",
+                "callback"      => "lista_callback_check",
+                "label"         => "Status",
+                "type"          => "checkbox",
+                // ($this->status == true ? '"checked" => $this->status :' ''), // ?? para sempre vir ticado
+                "pesquisa"      => true,
+                "tamanho"       => 1,
+                "data-toggle"   =>"toggle",
+                "data-onstyle"  =>"success",
+                "data-offstyle" =>"danger",
+                "data-on"       =>"Ativo",
+                "data-off"      =>"Inativo"
             ),
             "Cli_Nome" => array(
                 "tagname"  => "input",
@@ -67,6 +71,7 @@ class cliente extends gn_tabela
                 "id"       => "Cli_Cpf",
                 "label"    => "CPF",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 6,
                 "maxlength" => 10,
                 // "onkeyup" => "maskcpf()",
@@ -80,6 +85,7 @@ class cliente extends gn_tabela
                 "callback" => "lista_callback_data",
                 "type"     => "date",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 3,
                 "onchange" => "calcYearOld(this, \"Cli_Idade\");",
             ),
@@ -110,6 +116,7 @@ class cliente extends gn_tabela
                 "id"       => "Cli_Tipo",
                 "label"    => "Classificação",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 3,
                 'options'=> array(
                     'Crianca'    => "Criança"     ,       
@@ -176,6 +183,7 @@ class cliente extends gn_tabela
                 "id"       => "Cli_Contato_Fone1",
                 "label"    => "Contato ",
                 "pesquisa" => true,
+                // "required" => true,
                 "tamanho"  => 3,
             ),
             "Cli_Fone1" => array(
@@ -186,6 +194,7 @@ class cliente extends gn_tabela
                 "id"       => "Cli_Fone1",
                 "label"    => "Fone(1)",
                 "pesquisa" => true,
+                // "required" => true,
                 "tamanho"  => 3,
             ),
             
@@ -214,6 +223,7 @@ class cliente extends gn_tabela
                 "id"       => "Cli_Contato_Cel1",
                 "label"    => "Contato ",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 3,
             ),
             "Cli_Cel1" => array(
@@ -223,6 +233,7 @@ class cliente extends gn_tabela
                 "id"       => "Cli_Cel1",
                 "label"    => "Celular(1)",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 3,
             ),
             "Cli_Contato_Cel2" => array(
@@ -288,19 +299,29 @@ class cliente extends gn_tabela
                 "tamanho"  => 6,
             ),
         );
+
+
     }
     
     function lista_callback_check($vl){
         //?? COMENTADO PARA EN.... O CLIENTE
         
+
+
         if ($vl == 'on'){
             $color = '#369939'    ;
             // $char  = "&#9745;"  ;
             $char = '<i class="fas fa-check-circle"></i>';
+            $this->status = true;
+
+            
         } else {
            $color = '#b22222'      ;
            $char = '<i class="fas fa-times-circle"></i>';
+           $this->status = false;
+           
         }
+        
         
         return "
             <span 
@@ -331,7 +352,9 @@ class cliente extends gn_tabela
                 function(){
                     //?? MASCARAS AQUI 
                     
+                    
                     $('#Cli_Data_Nasc').change();
+
                 }
             );
             
@@ -344,6 +367,9 @@ class cliente extends gn_tabela
                 diffDays = diffDays > 1 ? diffDays -1 : diffDays;
                 document.getElementById(target).value=(diffDays);
             };
+
+
+            
         ";
     }
 

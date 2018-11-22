@@ -34,11 +34,11 @@ class convenio extends gn_tabela
                 "banco"      => "Conv_Status",
                 "id"         => "Conv_Status",
                 "callback"   => "lista_callback_check",
-                "label"      => "Ativo",
+                "label"      => "Status",
                 "type"       => "checkbox",
-                "checked"    => true, // ?? para sempre vir checado
-                "required"   => false,
-                "pesquisa"   => false,
+                // "checked"    => true, // ?? para sempre vir checado
+                // "required"   => false,
+                "pesquisa"   => true,
                 "tamanho"    => 1,
                  "data-toggle"=>"toggle",
                 "data-onstyle" =>"success",
@@ -53,6 +53,7 @@ class convenio extends gn_tabela
                 "id"       => "Conv_Cnpj",
                 "label"    => "CNPJ",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 6,
             ),
             "Conv_Email" => array(
@@ -62,6 +63,7 @@ class convenio extends gn_tabela
                 "id"       => "Conv_Email",
                 "label"    => "E-mail",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 6,
             ),
             "Conv_Endereco" => array(
@@ -98,6 +100,7 @@ class convenio extends gn_tabela
                 "id"       => "Conv_Fone",
                 "label"    => "Fone",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 3,
             ),
             "Conv_Contato_Cel" => array(
@@ -138,17 +141,25 @@ class convenio extends gn_tabela
             ),
         );
     }
-
-    function lista_callback_check($vl){
+ function lista_callback_check($vl){
         //?? COMENTADO PARA EN.... O CLIENTE
         
-        //if ($vl == '1'){
-            $color = 'green'    ;
-            $char  = "&#9745;"  ;
-        //} else {
-        //    $color = 'red'      ;
-        //    $char  = "&#9744;"  ;
-        //}
+
+
+        if ($vl == 'on'){
+            $color = '#369939'    ;
+            // $char  = "&#9745;"  ;
+            $char = '<i class="fas fa-check-circle"></i>';
+            $this->status = true;
+
+            
+        } else {
+           $color = '#b22222'      ;
+           $char = '<i class="fas fa-times-circle"></i>';
+           $this->status = false;
+           
+        }
+        
         
         return "
             <span 
@@ -160,5 +171,7 @@ class convenio extends gn_tabela
             </span>
         ";
     }
+    
+    
     
 }

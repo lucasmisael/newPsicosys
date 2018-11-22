@@ -39,7 +39,7 @@ class usuario extends gn_tabela
                 "class"      => 'form-control checkbox' ,
                 "banco"      => "usu_Status",
                 "id"         => "usu_Status",
-                // "callback"   => "lista_callback_check",
+                "callback"   => "lista_callback_check",
                 "label"      => "Ativo",
                 "type"       => "checkbox",
                 // "checked"    => true, // ?? para sempre vir checado
@@ -75,4 +75,37 @@ class usuario extends gn_tabela
         );
         
     }
+
+     function lista_callback_check($vl){
+        //?? COMENTADO PARA EN.... O CLIENTE
+        
+
+
+        if ($vl == 'on'){
+            $color = '#369939'    ;
+            // $char  = "&#9745;"  ;
+            $char = '<i class="fas fa-check-circle"></i>';
+            $this->status = true;
+
+            
+        } else {
+           $color = '#b22222'      ;
+           $char = '<i class="fas fa-times-circle"></i>';
+           $this->status = false;
+           
+        }
+        
+        
+        return "
+            <span 
+                style='
+                    font-size : 30px;
+                    color     : $color;
+                '>
+                $char
+            </span>
+        ";
+    }
+    
+    
 }

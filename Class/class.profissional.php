@@ -57,6 +57,7 @@ class profissional extends gn_tabela
                 "label"    => "Especialidade",
                 "type"     => "text",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 6,
             ),
             "Prof_Cnpj_Cpf" => array(
@@ -66,6 +67,7 @@ class profissional extends gn_tabela
                 "id"       => "Prof_Cnpj_Cpf",
                 "label"    => "CNPJ/CPF",
                 "type"     => "text",
+                "required" => true,
                 "pesquisa" => false,
                 "tamanho"  => 6,
             ),
@@ -142,6 +144,7 @@ class profissional extends gn_tabela
                 "callback" => "lista_callback_data",
                 "type"     => "date",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 3,
                 "onchange" => "calcYearOld(this, \"Prof_Idade\");",
             ),
@@ -172,6 +175,7 @@ class profissional extends gn_tabela
                 "label"    => "Endereço",
                 "type"     => "text",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 3,
             ),
             "Prof_Cep" => array(
@@ -212,6 +216,7 @@ class profissional extends gn_tabela
                 "label"    => "Celular(1)",
                 "type"     => "text",
                 "pesquisa" => true,
+                "required" => true,
                 "tamanho"  => 3,
             ),
             "Prof_Cel2" => array(
@@ -247,6 +252,7 @@ class profissional extends gn_tabela
                 "label"    => "Conselho",
                 "type"     => "text",
                 "pesquisa" => false,
+                "required" => true,
                 "tamanho"  => 3,
             ),
             "Prof_Email" => array(
@@ -277,13 +283,22 @@ class profissional extends gn_tabela
     function lista_callback_check($vl){
         //?? COMENTADO PARA EN.... O CLIENTE
         
-        //if ($vl == '1'){
-            $color = 'green'    ;
-            $char  = "&#9745;"  ;
-        //} else {
-        //    $color = 'red'      ;
-        //    $char  = "&#9744;"  ;
-        //}
+
+
+        if ($vl == 'on'){
+            $color = '#369939'    ;
+            // $char  = "&#9745;"  ;
+            $char = '<i class="fas fa-check-circle"></i>';
+            $this->status = true;
+
+            
+        } else {
+           $color = '#b22222'      ;
+           $char = '<i class="fas fa-times-circle"></i>';
+           $this->status = false;
+           
+        }
+        
         
         return "
             <span 
