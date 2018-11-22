@@ -98,7 +98,12 @@
                                 // alert("Cadastrado com sucesso! ");
                                 //atualiza a página!
                                 location.reload();
-                            }else{
+                            }
+                            else if(data == "2"){
+                                 alert("O colaborador informado não poderá atender no horário informado!")   
+                            }
+
+                            else{
                                 alert("Houve algum problema.. ");
                             }
                         }

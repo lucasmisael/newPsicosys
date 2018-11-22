@@ -17,19 +17,30 @@
         }
 
 
+        //Verificar se existe evento cadastrado para Profissional no horario informado
+        $ev = "SELECT id FROM tab_eventos WHERE start = '$data' AND prof_id = '$idprof'";
+		$ex = $e->executarNoBanco($ev);
 
-        $query = "INSERT INTO tab_eventos (title,prof_id,cli_id ,start, end) VALUES ('$nm',$cli,$idprof, '$data','$datafim')";
+		if(!$ex)
+	    	$query = "INSERT INTO tab_eventos (title,prof_id,cli_id ,start, end) VALUES ('$nm',$cli,$idprof, '$data','$datafim')";
+
+
+
            
         
 
         $exec = $e->executarNoBanco($query);                         
         
-        if($exec){            
+        //Gravado com sucesso
+        if($exec)            
             echo "1";     
-        }
-        else{
+        //Já existe evento no horario informado para o colaborador informado
+        elseif($ev)
+        	echo"2";
+        //Erro 
+        else
             echo "0";
-        }
-       
+        
+       	
         
 ?>

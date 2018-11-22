@@ -43,7 +43,7 @@ class usuario extends gn_tabela
                 "label"      => "Ativo",
                 "type"       => "checkbox",
                 // "checked"    => true, // ?? para sempre vir checado
-                "required"   => false,
+                // "required"   => false,
                 "pesquisa"   => true,
                 "tamanho"    => 1,
                  "data-toggle"=>"toggle",
