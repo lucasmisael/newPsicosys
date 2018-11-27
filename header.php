@@ -40,6 +40,8 @@
             <!--FONT- AWESOME  -->
             <script src="lib/externos/fontawesome/js/all.js"></script>   
             <link href="lib/externos/fontawesome/css/all.css" rel="stylesheet">
+             <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"></script>
+
 
 
 
@@ -95,6 +97,7 @@
                                     "Profissional" ,
                                     "Convenio"    ,
                                     "Usuario"     ,
+                                    "tpConsulta"
                                    
                                 );
                                 

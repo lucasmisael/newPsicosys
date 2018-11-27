@@ -295,7 +295,7 @@ class gn_tabela
             // cria um input para cada campo da tabela
             // $cache .= $this->elms->campoFormulario($campo);
             
-            if($campo['id'] == 'Cli_Status' || $campo['id'] == 'Conv_Status' || $campo['id'] == 'Prof_Status' || $campo['id'] == 'Usu_Status'){
+            if($campo['id'] == 'Cli_Status' || $campo['id'] == 'Conv_Status' || $campo['id'] == 'Prof_Status' || $campo['id'] == 'usu_Status'){
                 #Status ON ou OFF
                 if(isset($campo['value']) && $campo['value'] == 'on')
                     $campo['checked'] =  'true';
@@ -510,8 +510,27 @@ class gn_tabela
      */
     function excluir()
     {
-        $SQL = "DELETE FROM {$this->tabela} WHERE $this->chave = $_REQUEST[chave] ; " ; 
-        $this->executarNoBanco($SQL);
+
+        if($this->tabela == 'tab_clientes'){
+            if(isset($_REQUEST['chave']))
+                $SQL = "SELECT cli_id FROM tab_eventos WHERE cli_id =".$_REQUEST['chave'];    
+            $cli = $this->executarNoBanco($SQL);
+            if($cli->num_rows > 0)
+                echo "<script>alert('Cliente não pode ser excluido após agendamento de consulta. ')</script>";
+        }
+        elseif($this->tabela == 'tab_profissionais'){
+            if(isset($_REQUEST['chave']))
+                $SQL = "SELECT prof_id FROM tab_eventos WHERE prof_id =".$_REQUEST['chave'];    
+            $prof = $this->executarNoBanco($SQL);
+            if($prof->num_rows > 0)
+                echo "<script>alert('Profissional não pode ser excluido após agendamento de consulta. ')</script>";
+        }
+        else{
+            $SQL = "DELETE FROM {$this->tabela} WHERE $this->chave = $_REQUEST[chave] ; " ; 
+            $this->executarNoBanco($SQL);
+            
+        }
+        
         return $this->pesquisar();
         // return $SQL;
         //return "<script>history.go(-1);</script>" ; 
