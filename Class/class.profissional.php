@@ -274,10 +274,49 @@ class profissional extends gn_tabela
                 "type"     => "textarea",
                 "pesquisa" => true,
                 "tamanho"  => 3,
-            )
+            ),
+            "criado_em" => array(
+                "tagname"  => "input",
+                "class"    => 'form-control ' ,
+                "banco"    => "criado_em",
+                "id"       => "criado_em",
+                "label"    => "Criado Em",
+                "pesquisa" => true,
+                "readonly" => true,
+                "tamanho"  => 6,
+            ),
+            "usuario_cri" => array(
+                "tagname"  => "input",
+                "class"    => 'form-control ' ,
+                "banco"    => "usuario_cri",
+                "id"       => "usuario_cri",
+                "label"    => "Usuario Criação",
+                "pesquisa" => true,
+                "readonly" => true,
+                "tamanho"  => 6,
+            ),
+            "alterado_em" => array(
+                "tagname"  => "input",
+                "class"    => 'form-control ' ,
+                "banco"    => "alterado_em",
+                "id"       => "alterado_em",
+                "label"    => "Alterado Em",
+                "pesquisa" => true,
+                "readonly" => true,
+                "tamanho"  => 6,
+            ),
+            "usuario_alt" => array(
+                "tagname"  => "input",
+                "class"    => 'form-control ' ,
+                "banco"    => "usuario_alt",
+                "id"       => "usuario_alt",
+                "label"    => "Usuario Alteração",
+                "pesquisa" => true,
+                "readonly" => true,
+                "tamanho"  => 6,
+            ),
         );
 
-      
     }
 
     function lista_callback_check($vl){

@@ -66,79 +66,32 @@ class gn_tabela
     function fazerCadastro(){
         $INSERT = array();
         $VALUES = array();
-            
-        
+        //$this->ver($_POST);
         foreach ($_POST as $chave => $valor)
         {
-            if (!isset($this->campos[$chave]["gravar"]) || $this->campos[$chave]["gravar"]===true){
+            if (!isset($this->campos[$chave]["gravar"]) || $this->campos[$chave]["gravar"]===true)
+            {
         
                 $INSERT[] =  "$chave"  ; 
-                $VALUES[] = "'$valor'" ; 
+
+                if ($chave == 'criado_em') {
+                    $VALUES[] = "now()" ; 
+                }
+                else 
+                    if ($chave == 'usuario_cri') {
+                        $VALUES[] = "'".$_SESSION['login']."'";
+                    } 
+                    else {
+                        $VALUES[] = "'$valor'" ; 
+                    }
             }
         }
+        
         $INSERT = implode(",",$INSERT);
         $VALUES = implode(",",$VALUES);
         
-        //----------------Pesquisar melhor forma de fazer------------------------//
-        
-                    
-       /*
-        //Pesquisar Se ja existe
-        $s = "";
-        if($this->tabela == "tab_clientes")
-            $s = "Cliente_Desc";
-        if($this->tabela == "tab_profissionais")
-            $s = "Prof_Nome";
-        if($this->tabela == "tab_convenios")
-            $s = "Convenio_Desc";
-        if($this->tabela == "tab_usuarios")
-            $s = "usuario_nome";    
-        
-         
-
-        $search = "SELECT $s FROM $this->tabela WHERE $s =  '$_POST[$s]' ";
-       
-
-
-        $servername  =  "localhost" ; // Server em que esta o banco
-        $username    =  "root"      ; // usuario do banco
-        $password    =  ""          ; // senha do banco
-        $database    =  "psicosys"  ; // banco de dados 
-        
-        // Cria a conexao com o banco
-        $conn = new mysqli($servername, $username, $password, $database);
-    
-        $resultado = mysqli_query($conn,$search );
-        $rows = mysqli_num_rows($resultado);
-        //  var_dump($search);
-        */
-        /*
-        if($rows == 1){
-            echo"<script>alert('Usuário já cadastrado')</script>";
-        }
-        else{
-
-            
-            // if(isset($_POST['Colaborador_TipoCrianca'])){
-            //     $INSERT .= ',Colaborador_TipoCrianca'; 
-            //     $VALUES .= ',1';
-            // }   
-
-            $SQL = "INSERT INTO `$this->tabela`($INSERT)  VALUES ( $VALUES);";
-
-            
-            //Verificar comando de insert no banco
-            // $this->ver($SQL);
-
-            $this->executarNoBanco($SQL);
-            echo"<script>alert('Usuário cadastrado com sucesso!')</script>";
-
-        }
-        
-        */
-        
         $SQL = "INSERT INTO `$this->tabela`($INSERT)  VALUES ( $VALUES);";
-        // $this->ver($SQL);
+        $this->ver($SQL);
         $this->executarNoBanco($SQL);
         echo"<script>alert('Cadastrado com sucesso!')</script>";
         
@@ -171,8 +124,8 @@ class gn_tabela
     {
             
         $SQL_COLUNAS = array();
-       
-       
+
+        
         foreach ($this->campos as $campo){
             $coluna = $campo['banco'];
             // verifica se o nome do campo no banco esta vindo no request
@@ -205,16 +158,18 @@ class gn_tabela
                     elseif(isset($_REQUEST['usu_Status']))
                         $SQL_COLUNAS[] = "usu_Status = 'on'";
                 }
+                 if(isset($_REQUEST['alterado_em'])) {
+                     $SQL_COLUNAS[] = "alterado_em = now()";
+                } 
+                if(isset($_REQUEST ['usuario_alt'])) {
+                     $SQL_COLUNAS[] = "usuario_alt ='". $_SESSION['login']."'";
+                }            
             }
         }
-        
         $SQL_COLUNAS = implode(', ', $SQL_COLUNAS);
-       
-        
         $SQL = "UPDATE $this->tabela SET $SQL_COLUNAS WHERE $this->chave = {$_REQUEST[$this->chave]};";
-        
         $this->executarNoBanco($SQL);
-        
+        //var_dump($_SESSION['login']);
         return $this->pesquisar();
     }
     
@@ -295,7 +250,7 @@ class gn_tabela
             // cria um input para cada campo da tabela
             // $cache .= $this->elms->campoFormulario($campo);
             
-            if($campo['id'] == 'Cli_Status' || $campo['id'] == 'Conv_Status' || $campo['id'] == 'Prof_Status' || $campo['id'] == 'Usu_Status'){
+            if($campo['id'] == 'Cli_Status' || $campo['id'] == 'Conv_Status' || $campo['id'] == 'Prof_Status' || $campo['id'] == 'ucadasu_Status'){
                 #Status ON ou OFF
                 if(isset($campo['value']) && $campo['value'] == 'on')
                     $campo['checked'] =  'true';
