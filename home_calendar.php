@@ -73,14 +73,15 @@
                         funcoes(event);
 
                     },
-            
+                    
                 }); 
                 
                 //CADASTRA NOVO EVENTO
                 $('#novo_evento').submit(function(){
                     //serialize() junta todos os dados do form e deixa pronto pra ser enviado pelo ajax
                     var dados = jQuery(this).serialize();
-                    
+                    $('#submit_btn').show();
+                    $('#update_btn').hide();
 
                     
                     var url = "fullcalendar/model/cadastrar_evento.php?cli="+$('#cliente').val()+"&prof="+$('#colaborador').val()+"&dataini="+$('#data').val()+"&datafim="+$('#datafim').val(); 
@@ -92,7 +93,8 @@
                         data: dados,
                         success: function(data)
                         {   
-                            console.log(url);
+                            alert(url);
+                            
                             
                             if(data == "1"){
                                 // alert("Cadastrado com sucesso! ");
@@ -100,14 +102,16 @@
                                 location.reload();
                             }
                             else if(data == "2"){
-                                 alert("O colaborador informado não poderá atender no horário informado!")   
+                                 alert("O colaborador informado não poderá atender no horário informado!    ")   
                             }
 
                             else{
                                 alert("Houve algum problema.. ");
                             }
                         }
+
                     });                
+                       
                     return false;
                 }); 
                 
@@ -174,7 +178,7 @@
         
             //DATE TIME PARA CALENDARIO
             $('#data').datetimepicker();        
-            $('#datafim').datetimepicker();        
+            // $('#datafim').datetimepicker();        
 
            }); 
 
@@ -184,17 +188,7 @@
                 $('.js-example-basic-single').select2({ width: '100%' });
             });
 
-           // $('#data').datetimepicker({
-           //      dateFormat: 'yy-mm-dd',
-           //      changeMonth: true,
-           //      changeYear: true
-           //  });
-
-        
-           //  //abre calendario ao clicar no campo
-           //  $('.data').focus(function() {
-           //      datepicker.open(); 
-           //  });
+           
 
             function consultas(){
 
@@ -262,7 +256,7 @@
                             <?php 
 
                                 
-                                $col = $a->getProfissionais();
+                               $col = $a->getProfissionais();
 
                                foreach ($col as $key => $value) {
                                 
@@ -278,7 +272,25 @@
 
                             <!-- CALENDARIO -->
                             Data inicial do Evento: <input id="data" type="text" name="data" class="form-control date" required/> <br>
-                            Data final do Evento: <input id="datafim" type="text" name="datafim" class="form-control date" required/>
+                            Tipo de Consulta: <select id="datafim" name="datafim" class="form-control">
+                            <?php 
+
+                                
+                                $con = $a->getConsultas();
+
+
+                               foreach ($con as $key => $value) {
+                                var_dump( $value);
+                                
+                                    echo '<option value="'.$value['CONS_TEMPO'].'">'.$value['CONS_DESC'].'</option>';
+                                
+                               }
+                                
+                                
+
+                            ?> 
+
+                            </select>
                                                      
                         </div>
                          <div id="modal-footer" class="modal-footer">

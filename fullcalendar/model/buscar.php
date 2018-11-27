@@ -35,6 +35,17 @@
             
             
         }
+
+        public function getConsultas(){
+            $SQL = "SELECT id, CONS_DESC, CONS_VALOR, CONS_TEMPO  FROM tab_tpConsulta order by CONS_VALOR" ; 
+            $exec = $this->executarNoBanco($SQL);
+
+        
+            return $exec;
+            //Conectando ao banco de dados
+            
+            
+        }
                         
     }   
         
