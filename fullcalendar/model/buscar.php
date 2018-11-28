@@ -37,7 +37,6 @@
         }
 
         public function getConsultas(){
-            $SQL = "SELECT id, CONS_DESC, CONS_VALOR, CONS_TEMPO  FROM tab_tpConsulta order by CONS_VALOR" ; 
             $SQL = "SELECT CONS_COD, CONS_DESC, CONS_VALOR, CONS_TEMPO  FROM tab_tpConsulta order by CONS_VALOR" ; 
             $exec = $this->executarNoBanco($SQL);
 

@@ -5,7 +5,6 @@
         $cli      = $_GET["cli"];
         $idprof   = $_GET["prof"];
         $data     = $_GET["dataini"];
-        $datafim  = $_GET["datafim"];
         $idTpDta  = $_GET["datafim"];
 
         $sql1 = "SELECT CONS_TEMPO FROM Tab_tpConsulta WHERE CONS_COD = $idTpDta limit 1";
@@ -38,7 +37,6 @@
         // var_dump($data);
 
         // var_dump($dtfim_soma); 
-        $query = "INSERT INTO tab_eventos (title,prof_id,cli_id ,start, end) VALUES ('$nm',$cli,$idprof, '$data','$dtfim_soma')";
         $query = "INSERT INTO tab_eventos (status,title,prof_id,cli_id ,start, end, id_tpconsulta) VALUES ('A','$nm',$cli,$idprof, '$data','$dtfim_soma',$idTpDta)";
 
 

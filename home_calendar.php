@@ -58,13 +58,11 @@
                     editable:true,
                     eventClick:  function(event, jsEvent, view) {
                         
-
                         console.log(event);
                         $("#cliente").val(event.cli_id);
                         $("#colaborador").val(event.prof_id);
                         
                         $("#data").val(event.start._i);
-                        $("#datafim").val(event.end._i);
                         $("#datafim").val(event.id_tpconsulta);
                         $("#myModal").modal();
 
@@ -85,8 +83,6 @@
                     //serialize() junta todos os dados do form e deixa pronto pra ser enviado pelo ajax
                    
                     var dados = jQuery(this).serialize();
-                    $('#submit_btn').show();
-                    $('#update_btn').hide();
 
                     
                     var url = "fullcalendar/model/cadastrar_evento.php?cli="+$('#cliente').val()+"&prof="+$('#colaborador').val()+"&dataini="+$('#data').val()+"&datafim="+$('#datafim').val(); 
@@ -146,6 +142,8 @@
                             }else{
                                 alert("Houve algum problema.. ");
                             }
+
+
                         }
                     });     
                 });
@@ -173,6 +171,8 @@
                         }
                     });     
                 });
+
+                
              }   
 
 
@@ -234,7 +234,6 @@
                     </div> 
                     <form id="novo_evento" action="" method="post">
                         <div id="modalBody" class="modal-body">        
-                          
                             <div id="div_status"style="display: none" >
                                 <label for="status">Status:</label> <br>
                                 <select class="form-control">
@@ -269,7 +268,6 @@
                             ?>
                              
                             </select><br><br>
-                            
                             <!-- COMBOBOX PROFISSIONAIS -->
                             <label for="colaborador">Profissional::</label> <br>
                             <select id="colaborador" class="js-example-basic-single form-control " name="colaborador">    
@@ -291,8 +289,6 @@
                             </select><br><br>
 
                             <!-- CALENDARIO -->
-                            Data inicial do Evento: <input id="data" type="text" name="data" class="form-control date" required/> <br>
-                            Tipo de Consulta: <select id="datafim" name="datafim" class="form-control">
                            <label for="data"> Data inicial do Evento:</label> <input id="data" type="text" name="data" class="form-control date" required/> <br>
                             <!-- COMBOBOX TIPO CONSULTAS -->
                             <label for="datafim"> Tipo de Consulta:</label> <select id="datafim" name="datafim" class="form-control">
@@ -305,7 +301,6 @@
                                foreach ($con as $key => $value) {
                                 var_dump( $value);
                                 
-                                    echo '<option value="'.$value['CONS_TEMPO'].'">'.$value['CONS_DESC'].'</option>';
                                     echo '<option value="'.$value['CONS_COD'].'">'.$value['CONS_DESC'].'</option>';
                                 
                                }
@@ -319,7 +314,6 @@
                         </div>
                          <div id="modal-footer" class="modal-footer">
                             <button type="submit" id="submit_btn" class="btn btn-primary btn-lg"> Cadastrar </button>
-                            <button type="button" id="update_btn" class="btn btn-info btn-lg" style="display: none;">Alterar</button>
                             <button type="button" id="update_btn" class="btn btn-default btn-lg" style="display: none;">Alterar</button>
                             <button type="button" id="delete_btn" class="btn btn-danger btn-lg" style="display: none;">Excluir</button>
                             <button type="button" id="atender_btn" class="btn btn-success btn-lg" style="display: none;">Atender</button>
