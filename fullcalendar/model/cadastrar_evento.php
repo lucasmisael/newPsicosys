@@ -24,7 +24,6 @@
             $nm = $value['Cli_Nome'];
         }
 
-
        /* //Verificar se existe evento cadastrado para Profissional no horario informado
         $ev = "SELECT id FROM tab_eventos WHERE start = '$data' AND prof_id = '$idprof'";
         $ex = $e->executarNoBanco($ev);
@@ -38,11 +37,6 @@
 
         // var_dump($dtfim_soma); 
         $query = "INSERT INTO tab_eventos (status,title,prof_id,cli_id ,start, end, id_tpconsulta) VALUES ('A','$nm',$cli,$idprof, '$data','$dtfim_soma',$idTpDta)";
-
-
-
-           
-        
 
         $exec = $e->executarNoBanco($query);                         
         

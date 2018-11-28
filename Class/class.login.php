@@ -1,17 +1,18 @@
 <?php
+session_start();
 
-    // a classe de usuario nao sabe o que ela pode fazer, por isso chama a gn tabela
-     require_once('class.gn_tabela.php');
+// a classe de usuario nao sabe o que ela pode fazer, por isso chama a gn tabela
+require_once('class.gn_tabela.php');
 
-        //parametros informados na tela de login
-        $usuario = $_POST['login'];
-        $senha = $_POST['senha'];
+//parametros informados na tela de login
+$usuario = $_POST['login'];
+$senha = $_POST['senha'];
 
-        //chama metodo TryLogin
-        tryLogin($usuario, $senha);
+//chama metodo TryLogin
+tryLogin($usuario, $senha);
 
-        //verificar se usuario e senha informados estao no banco
-        function tryLogin($usuario , $senha){
+//verificar se usuario e senha informados estao no banco
+function tryLogin($usuario , $senha){
             $servername  =  "localhost" ; // Server em que esta o banco
             $username    =  "root"      ; // usuario do banco
             $password    =  ""          ; // senha do banco
@@ -25,9 +26,10 @@
             
             
             if($rows == 1){
-                $_SESSION['login'] = $login;
-                $_SESSION['senha'] = $password; 
-                    header("Location: ../menuPrincipal.php");
+                $_SESSION['login'] = $usuario;
+                // $_SESSION['senha'] = $password; 
+                // $_SESSION['usr_login'] = $usuario;
+                header("Location: ../menuPrincipal.php");
             }
             else{ 
                 header("Location: ../index.php");
