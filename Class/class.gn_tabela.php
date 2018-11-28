@@ -91,7 +91,7 @@ class gn_tabela
         $VALUES = implode(",",$VALUES);
         
         $SQL = "INSERT INTO `$this->tabela`($INSERT)  VALUES ( $VALUES);";
-        $this->ver($SQL);
+        // $this->ver($SQL);
         $this->executarNoBanco($SQL);
         echo"<script>alert('Cadastrado com sucesso!')</script>";
         
@@ -408,7 +408,7 @@ class gn_tabela
             ";
 
             //Botão para efetuar atendimento de consultas
-            if($this->tabela == 'tab_eventos')
+            /*if($this->tabela == 'tab_eventos')
                 $dadosTabela .= " <a 
                         href  = 'editar.php?tabela=$this->classe&chave=$valorChave' 
                         style = 'font-size:30px; color: #7cc77a'
@@ -417,7 +417,7 @@ class gn_tabela
                       <i class='fas fa-sign-in-alt'></i>
                     </a>";
   
-            $dadosTabela .= " </td> </tr>";
+            $dadosTabela .= " </td> </tr>";*/
         }
         
         
@@ -468,17 +468,33 @@ class gn_tabela
         if($this->tabela == 'tab_clientes'){
             if(isset($_REQUEST['chave']))
                 $SQL = "SELECT cli_id FROM tab_eventos WHERE cli_id =".$_REQUEST['chave'];    
-            $cli = $this->executarNoBanco($SQL);
+           /* $cli = $this->executarNoBanco($SQL);
             if($cli->num_rows > 0)
-                echo "<script>alert('Cliente não pode ser excluido após agendamento de consulta. ')</script>";
+                echo "<script>alert('Cliente não pode ser excluido após agendamento de consulta. ')</script>";*/
         }
-        elseif($this->tabela == 'tab_profissionais'){
+        if($this->tabela == 'tab_profissionais'){
             if(isset($_REQUEST['chave']))
                 $SQL = "SELECT prof_id FROM tab_eventos WHERE prof_id =".$_REQUEST['chave'];    
+           /* var_dump($SQL);
             $prof = $this->executarNoBanco($SQL);
             if($prof->num_rows > 0)
-                echo "<script>alert('Profissional não pode ser excluido após agendamento de consulta. ')</script>";
+                echo "<script>alert('Profissional não pode ser excluido após agendamento de consulta. ')</script>";*/
         }
+        //Verifica se o Status é diferente de Concluido
+        elseif($this->tabela == 'tab_eventos'){
+             if(isset($_REQUEST['chave']))
+                $SQL = "SELECT STATUS FROM tab_eventos WHERE id =".$_REQUEST['chave']." AND STATUS = 'C'";    
+           /* $ev = $this->executarNoBanco($SQL);
+            if($ev->num_rows > 0)
+                echo "<script>alert('Consultas efetuadas não podem ser excluidas. ')</script>";*/
+
+        }
+        $aux = $this->executarNoBanco($SQL);
+
+        if($aux->num_rows > 0)
+            echo "<script>alert('Impossivel excluir. ')</script>";
+
+
         else{
             $SQL = "DELETE FROM {$this->tabela} WHERE $this->chave = $_REQUEST[chave] ; " ; 
             $this->executarNoBanco($SQL);

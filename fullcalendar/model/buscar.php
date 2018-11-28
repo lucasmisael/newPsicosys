@@ -10,7 +10,7 @@
         }
 
         public function getClientes(){
-            $SQL = "SELECT Cli_Cod,Cli_Nome  FROM tab_clientes order by Cli_Nome " ; 
+            $SQL = "SELECT Cli_Cod,Cli_Nome  FROM tab_clientes WHERE CLI_STATUS='on' order by Cli_Nome " ; 
             $exec = $this->executarNoBanco($SQL);
 
             foreach ($exec as $key => $value) {
@@ -26,7 +26,7 @@
         }
 
         public function getProfissionais(){
-            $SQL = "SELECT Prof_Nome, Prof_Cod  FROM tab_Profissionais order by Prof_Nome" ; 
+            $SQL = "SELECT Prof_Nome, Prof_Cod  FROM tab_Profissionais WHERE PROF_STATUS='on' order by Prof_Nome" ; 
             $exec = $this->executarNoBanco($SQL);
 
         

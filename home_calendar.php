@@ -58,18 +58,20 @@
                     editable:true,
                     eventClick:  function(event, jsEvent, view) {
                         
-                        console.log(event);
-                        $("#cliente").val(event.cli_id);
-                        $("#colaborador").val(event.prof_id);
-                        
+                        // console.log(event.CLI_ID);
+                        let e =  event; 
+                        console.log(e);
+                        $("#cliente").val(e.CLI_ID);
+                        $("#colaborador").val(event.PROF_ID);
+                        $('#status').val(event.STATUS);
                         $("#data").val(event.start._i);
-                        $("#datafim").val(event.id_tpconsulta);
+                        $("#datafim").val(event.ID_TPCONSULTA);
                         $("#myModal").modal();
 
                         $('#submit_btn').hide();
                         $('#update_btn').show();
-                        $('#delete_btn').show();
-                        $('#atender_btn').show();
+                        // $('#delete_btn').show();
+                        // $('#atender_btn').show();
                         $('#div_status').show();
                         
                         funcoes(event);
@@ -94,7 +96,7 @@
                         data: dados,
                         success: function(data)
                         {   
-                            alert(url);
+                            // alert(url);
                             
                             
                             if(data == "1"){
@@ -103,7 +105,7 @@
                                 location.reload();
                             }
                             else if(data == "2"){
-                                 alert("O colaborador informado não poderá atender no horário informado!    ")   
+                                 alert("O profissional já possui consulta no horário informado!")   
                             }
 
                             else{
@@ -119,6 +121,7 @@
                 //funcoes Evento
              function funcoes(event){
                 var e = event;
+
                 
                 $(document).on('click', '#update_btn', function(){
                     
@@ -126,20 +129,24 @@
                     // var url = "fullcalendar/model/alterar_evento.php?id="+event.id+"&nome='"+$('#nome').val()+"'&data='"+$('#data').val()+"'";     
                     /*var url = "fullcalendar/model/alterar_evento.php?cli='"+$('#cliente').val()+"'&idcli='"+$('#idcli').val()+"'&prof='"+$('#colaborador').val()+"'&idcol='"+$('#idcol').val()+"'&dataini='"+$('#data').val()+"'&datafim="+$('#datafim').val()+"&id="+event.id; */
 
-                    var url = "fullcalendar/model/alterar_evento.php?cli="+$('#cliente').val()+"&prof="+$('#colaborador').val()+"&dataini="+$('#data').val()+"&datafim="+$('#datafim').val()+'&id='+event.id; 
+                    var url = "fullcalendar/model/alterar_evento.php?cli="+$('#cliente').val()+"&prof="+$('#colaborador').val()+"&dataini="+$('#data').val()+"&datafim="+$('#datafim').val()+'&id='+e.ID+'&status='+$('#status').val(); 
 
-                    console.log(url);
+                    // alert(url);
                     $.ajax({
                         type: 'GET',
                         url: url,
                         data: dados,
                         success: function(data){
-                            // alert(url);
+                            // alert(data);
                             if(data == "1"){
                                 // alert("Alterado com sucesso! ");
                                 //atualiza a página!
                                 location.reload();
-                            }else{
+                            }else if(data == "3"){
+                                alert('Data da consulta futura!');  
+                            }
+
+                            else{
                                 alert("Houve algum problema.. ");
                             }
 
@@ -154,7 +161,7 @@
                     var dados = jQuery(this).serialize();
                     var url = "fullcalendar/model/deletar_evento.php?id="+event.id;     
 
-                    alert(url);
+                    // alert(url);
                     $.ajax({
                         type: 'GET',
                         url: url,
@@ -236,7 +243,7 @@
                         <div id="modalBody" class="modal-body">        
                             <div id="div_status"style="display: none" >
                                 <label for="status">Status:</label> <br>
-                                <select class="form-control">
+                                <select id="status" class="form-control">
                                     <option value="A">Aberto</option>    
                                     <option value="C">Consulta Efetuada</option>    
                                     <option value="F">Falta</option>    

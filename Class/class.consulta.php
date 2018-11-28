@@ -24,6 +24,16 @@ class consulta extends gn_tabela
         
         // campos da tabela
         $this->campos = array(
+            "STATUS" => array(
+                "tagname"  => "input",
+                "class"    => 'form-control ' ,
+                "banco"    => "STATUS",
+                "id"       => "STATUS",
+                "label"    => "Profissional",
+                "pesquisa" => true,
+                "required" => false,
+                "tamanho"  => 6
+            ),
             "title" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
@@ -34,6 +44,21 @@ class consulta extends gn_tabela
                 "required" => true,
                 "tamanho"  => 6
             ),
+            /* "prof_id" => array(
+                "tagname"      => "select",
+                "class"        => 'form-control ' ,
+                "type"         => "db",
+                "banco"        => "prof_id",
+                "id"           => "prof_id",
+                "label"        => "Profissional",
+                // "custonSelect" => "tab_convenios.Conv_Nome",
+                // "custonFrom"   => "LEFT OUTER JOIN tab_convenios ON (tab_convenios.Conv_Cod = tab_Profissionais.prof_id)",
+                "SQL"          => "SELECT PROF_NOME from tab_Profissionais WHERE id= 1",
+                // "SELECT_VALUE" => 'Conv_Cod' ,
+                // "SELECT_NAME"  => 'Conv_Nome',
+                "pesquisa"     => true,
+                "tamanho"      => 3,
+            ),*/
 
             "start" => array(
                 "tagname"  => "input",
@@ -50,8 +75,8 @@ class consulta extends gn_tabela
                 "class"    => 'form-control ' ,
                 "banco"    => "end",
                 "id"       => "end",
-                "label"    => "Data Fim consulta",
-                "pesquisa" => false,
+                "label"    => "Fim consulta",
+                "pesquisa" => true,
                 "required" => true,
                 "tamanho"  => 6
             ),
@@ -65,6 +90,7 @@ class consulta extends gn_tabela
                 "required" => true,
                 "tamanho"  => 6
             ),
+
         );
         
     }
