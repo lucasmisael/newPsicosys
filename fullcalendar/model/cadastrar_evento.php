@@ -6,8 +6,16 @@
         $idprof   = $_GET["prof"];
         $data     = $_GET["dataini"];
         $datafim  = $_GET["datafim"];
+        $idTpDta  = $_GET["datafim"];
+
+        $sql1 = "SELECT CONS_TEMPO FROM Tab_tpConsulta WHERE CONS_COD = $idTpDta limit 1";
+        $aux = $e->executarNoBanco($sql1);
+        foreach ($aux as $key => $value) {
+            $datafim = $value ["CONS_TEMPO"];
+        }
         
         $dtfim_soma = date( "Y-m-d H:i:s", strtotime($data)+(60*($datafim)) );
+
 
         $sql = "SELECT Cli_Nome FROM tab_Clientes WHERE Cli_Cod = $cli limit 1";
         $nmcli = $e->executarNoBanco($sql);
@@ -31,6 +39,7 @@
 
         // var_dump($dtfim_soma); 
         $query = "INSERT INTO tab_eventos (title,prof_id,cli_id ,start, end) VALUES ('$nm',$cli,$idprof, '$data','$dtfim_soma')";
+        $query = "INSERT INTO tab_eventos (status,title,prof_id,cli_id ,start, end, id_tpconsulta) VALUES ('A','$nm',$cli,$idprof, '$data','$dtfim_soma',$idTpDta)";
 
 
 

@@ -59,16 +59,20 @@
                     eventClick:  function(event, jsEvent, view) {
                         
 
+                        console.log(event);
                         $("#cliente").val(event.cli_id);
                         $("#colaborador").val(event.prof_id);
                         
                         $("#data").val(event.start._i);
                         $("#datafim").val(event.end._i);
+                        $("#datafim").val(event.id_tpconsulta);
                         $("#myModal").modal();
 
                         $('#submit_btn').hide();
                         $('#update_btn').show();
                         $('#delete_btn').show();
+                        $('#atender_btn').show();
+                        $('#div_status').show();
                         
                         funcoes(event);
 
@@ -79,6 +83,7 @@
                 //CADASTRA NOVO EVENTO
                 $('#novo_evento').submit(function(){
                     //serialize() junta todos os dados do form e deixa pronto pra ser enviado pelo ajax
+                   
                     var dados = jQuery(this).serialize();
                     $('#submit_btn').show();
                     $('#update_btn').hide();
@@ -174,6 +179,9 @@
 
             $("#myBtn").click(function(){
                 $("#myModal").modal();
+                $('#submit_btn').show();
+                $('#update_btn').hide();
+                $('#delete_btn').hide();
             });
         
             //DATE TIME PARA CALENDARIO
@@ -227,6 +235,17 @@
                     <form id="novo_evento" action="" method="post">
                         <div id="modalBody" class="modal-body">        
                           
+                            <div id="div_status"style="display: none" >
+                                <label for="status">Status:</label> <br>
+                                <select class="form-control">
+                                    <option value="A">Aberto</option>    
+                                    <option value="C">Consulta Efetuada</option>    
+                                    <option value="F">Falta</option>    
+                                    <option value="D">Desistência</option>    
+                                </select>
+                            </div>
+                            <br>
+                            <!-- COMBOBOX CLIENTES -->
                             <label for="cliente">Cliente:</label> <br>
                             <select id="cliente" class="js-example-basic-single form-control" name="cliente">
                             <?php 
@@ -251,6 +270,7 @@
                              
                             </select><br><br>
                             
+                            <!-- COMBOBOX PROFISSIONAIS -->
                             <label for="colaborador">Profissional::</label> <br>
                             <select id="colaborador" class="js-example-basic-single form-control " name="colaborador">    
                             <?php 
@@ -273,6 +293,9 @@
                             <!-- CALENDARIO -->
                             Data inicial do Evento: <input id="data" type="text" name="data" class="form-control date" required/> <br>
                             Tipo de Consulta: <select id="datafim" name="datafim" class="form-control">
+                           <label for="data"> Data inicial do Evento:</label> <input id="data" type="text" name="data" class="form-control date" required/> <br>
+                            <!-- COMBOBOX TIPO CONSULTAS -->
+                            <label for="datafim"> Tipo de Consulta:</label> <select id="datafim" name="datafim" class="form-control">
                             <?php 
 
                                 
@@ -283,6 +306,7 @@
                                 var_dump( $value);
                                 
                                     echo '<option value="'.$value['CONS_TEMPO'].'">'.$value['CONS_DESC'].'</option>';
+                                    echo '<option value="'.$value['CONS_COD'].'">'.$value['CONS_DESC'].'</option>';
                                 
                                }
                                 
@@ -296,7 +320,9 @@
                          <div id="modal-footer" class="modal-footer">
                             <button type="submit" id="submit_btn" class="btn btn-primary btn-lg"> Cadastrar </button>
                             <button type="button" id="update_btn" class="btn btn-info btn-lg" style="display: none;">Alterar</button>
+                            <button type="button" id="update_btn" class="btn btn-default btn-lg" style="display: none;">Alterar</button>
                             <button type="button" id="delete_btn" class="btn btn-danger btn-lg" style="display: none;">Excluir</button>
+                            <button type="button" id="atender_btn" class="btn btn-success btn-lg" style="display: none;">Atender</button>
                         </div>        
                     </form>
                 </div>
