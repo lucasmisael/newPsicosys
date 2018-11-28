@@ -20,7 +20,7 @@ class tpConsulta extends gn_tabela
         $this->tabela = "tab_tpConsulta";
         
         // chave da tabela
-        $this->chave = "id";
+        $this->chave = "CONS_COD";
         
         // campos da tabela
         $this->campos = array(

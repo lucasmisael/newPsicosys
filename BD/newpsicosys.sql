@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Nov-2018 às 00:37
+-- Generation Time: 28-Nov-2018 às 01:04
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -114,11 +114,11 @@ INSERT INTO `tab_convenios` (`CONV_COD`, `CONV_STATUS`, `CONV_NOME`, `CONV_CNPJ`
 
 CREATE TABLE `tab_eventos` (
   `ID` int(11) NOT NULL,
-  `TITLE` text,
-  `START` datetime NOT NULL,
-  `END` datetime NOT NULL,
-  `PROF_ID` varchar(50) NOT NULL,
-  `CLI_ID` varchar(50) NOT NULL,
+  `TITLE` varchar(100) DEFAULT NULL,
+  `START` datetime DEFAULT NULL,
+  `END` datetime DEFAULT NULL,
+  `PROF_ID` int(11) NOT NULL,
+  `CLI_ID` int(11) NOT NULL,
   `CRIADO_EM` datetime DEFAULT NULL,
   `USUARIO_CRI` varchar(50) DEFAULT NULL,
   `ALTERADO_EM` datetime DEFAULT NULL,
@@ -130,10 +130,15 @@ CREATE TABLE `tab_eventos` (
 --
 
 INSERT INTO `tab_eventos` (`ID`, `TITLE`, `START`, `END`, `PROF_ID`, `CLI_ID`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
-(73, 'Maria Helena Nogueira Ferreira Oliveira', '2018-11-20 22:00:00', '2018-11-20 23:00:00', '1', '1', NULL, NULL, NULL, NULL),
-(75, 'Maria Helena Nogueira Ferreira Oliveira', '2018-11-20 20:00:00', '2018-11-20 20:30:00', '2', '1', NULL, NULL, NULL, NULL),
-(76, 'Lucas Misael Barbosa do Nascimento', '2018-11-20 22:00:00', '2018-11-20 22:00:00', '2', '1', NULL, NULL, NULL, NULL),
-(78, 'Cleonice Pereira Barbosa do Nascimento', '2018-11-22 23:00:00', '2018-11-22 18:00:00', '3', '2', NULL, NULL, NULL, NULL);
+(2, 'Maria Helena Nogueira Ferreira Oliveira', '2018-11-26 21:00:00', '2018-11-26 22:00:00', 1, 1, NULL, NULL, NULL, NULL),
+(3, 'Lucas Misael Barbosa do Nascimento', '2018-11-27 19:00:00', '2018-11-27 19:00:00', 2, 1, NULL, NULL, NULL, NULL),
+(4, 'Lucas Misael Barbosa do Nascimento', '2018-11-27 20:00:00', '2018-11-27 20:00:10', 2, 1, NULL, NULL, NULL, NULL),
+(5, 'Maria Helena Nogueira Ferreira Oliveira', '2018-11-27 20:00:00', '2018-11-27 21:00:00', 1, 1, NULL, NULL, NULL, NULL),
+(6, 'Lucas Misael Barbosa do Nascimento', '2018-11-27 21:00:00', '0000-00-00 00:00:00', 2, 2, NULL, NULL, NULL, NULL),
+(7, 'Lucas Misael Barbosa do Nascimento', '2018-11-27 21:00:00', '0000-00-00 00:00:00', 2, 2, NULL, NULL, NULL, NULL),
+(8, 'Lucas Misael Barbosa do Nascimento', '2018-11-27 21:00:00', '0000-00-00 00:00:00', 2, 2, NULL, NULL, NULL, NULL),
+(9, 'Lucas Misael Barbosa do Nascimento', '2018-11-27 21:00:00', '0000-00-00 00:00:00', 2, 2, NULL, NULL, NULL, NULL),
+(10, 'Lucas Misael Barbosa do Nascimento', '2018-11-27 21:00:00', '0000-00-00 00:00:00', 2, 2, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -175,6 +180,31 @@ CREATE TABLE `tab_profissionais` (
 INSERT INTO `tab_profissionais` (`PROF_COD`, `PROF_NOME`, `PROF_STATUS`, `PROF_ESPECIALIDADE`, `PROF_TIPO_CRIANCA`, `PROF_TIPO_ADOLESCENTE`, `PROF_TIPO_ADULTO`, `PROF_TIPO_IDOSO`, `PROF_CNPJ_CPF`, `PROF_CONSELHO`, `PROF_DATA_NASC`, `PROF_ENDERECO`, `PROF_CEP`, `PROF_FONE1`, `PROF_CEL1`, `PROF_EMAIL`, `PROF_CONVENIO`, `PROF_OBS`, `PROF_FONE2`, `PROF_CEL2`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
 (1, 'Tiago Dantas de Oliveira', 'on', 'Ginecologista', 'A', NULL, NULL, NULL, '030.471.279-56', 'COREN', '1980-09-26', 'Rua Pedro Gusso, 12 ', '81.050-200', '(41) 3276-6457', '(41) 98805-5870', 'tiago@softdib.com.br', 1, 'Ã© tudo nossoo', '(41) 3079-5449', '(41) 98864-0013', NULL, NULL, NULL, ''),
 (2, 'Lucas Misael Barbosa do Nascimento', 'off', '', 'A', NULL, NULL, NULL, '', '', '1997-07-02', 'Joana roncaglio bertoldi', '81.490-468', '', '', 'lucas.ms.elo84@gmail.com', 1, '', '', '', NULL, NULL, NULL, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tab_tpconsulta`
+--
+
+CREATE TABLE `tab_tpconsulta` (
+  `CONS_COD` int(11) NOT NULL,
+  `CONS_DESC` varchar(50) NOT NULL,
+  `CONS_VALOR` decimal(10,2) NOT NULL,
+  `CONS_TEMPO` float DEFAULT NULL,
+  `CRIADO_EM` datetime DEFAULT NULL,
+  `USUARIO_CRI` varchar(50) DEFAULT NULL,
+  `ALTERADO_EM` datetime DEFAULT NULL,
+  `USUARIO_ALT` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tab_tpconsulta`
+--
+
+INSERT INTO `tab_tpconsulta` (`CONS_COD`, `CONS_DESC`, `CONS_VALOR`, `CONS_TEMPO`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
+(4, '30 min.', '50.00', 30, NULL, NULL, NULL, NULL),
+(5, '1 hora', '90.00', 60, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -228,13 +258,20 @@ ALTER TABLE `tab_convenios`
 -- Indexes for table `tab_eventos`
 --
 ALTER TABLE `tab_eventos`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `fk_cli` (`CLI_ID`);
 
 --
 -- Indexes for table `tab_profissionais`
 --
 ALTER TABLE `tab_profissionais`
   ADD PRIMARY KEY (`PROF_COD`);
+
+--
+-- Indexes for table `tab_tpconsulta`
+--
+ALTER TABLE `tab_tpconsulta`
+  ADD PRIMARY KEY (`CONS_COD`);
 
 --
 -- Indexes for table `tab_usuarios`
@@ -260,12 +297,17 @@ ALTER TABLE `tab_convenios`
 -- AUTO_INCREMENT for table `tab_eventos`
 --
 ALTER TABLE `tab_eventos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tab_profissionais`
 --
 ALTER TABLE `tab_profissionais`
   MODIFY `PROF_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tab_tpconsulta`
+--
+ALTER TABLE `tab_tpconsulta`
+  MODIFY `CONS_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tab_usuarios`
 --
