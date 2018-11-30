@@ -30,6 +30,7 @@ class consulta extends gn_tabela
                 "banco"    => "STATUS",
                 "id"       => "STATUS",
                 "label"    => "Profissional",
+               "callback"      => "lista_callback_check",
                 "pesquisa" => true,
                 "required" => false,
                 "tamanho"  => 6
@@ -95,30 +96,29 @@ class consulta extends gn_tabela
         
     }
 
-     function lista_callback_check($vl){
+      function lista_callback_check($vl){
         //?? COMENTADO PARA EN.... O CLIENTE
+        // var_dump($vl);
+        $char =  "<i class='fas fa-circle'></i>";
         
-
-
-        if ($vl == 'on'){
-            $color = '#369939'    ;
-            // $char  = "&#9745;"  ;
-            $char = '<i class="fas fa-check-circle"></i>';
-            $this->status = true;
-
-            
-        } else {
-           $color = '#b22222'      ;
-           $char = '<i class="fas fa-times-circle"></i>';
-           $this->status = false;
-           
+        if ($vl == 'A'){
+            $color = '#4c6ca0'    ;    
+        } 
+        elseif($vl = 'D') {
+           $color = '#ff4945'      ;
+        }
+        elseif($vl = 'F') {
+           $color = '#8b2e0f';
+        }
+        else{
+           $color = '#369939' ;
         }
         
         
         return "
-            <span 
+            <span  
                 style='
-                    font-size : 30px;
+                    font-size : 20px;
                     color     : $color;
                 '>
                 $char

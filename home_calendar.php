@@ -41,26 +41,27 @@
 
 
            $(document).ready(function() {   
-                
+                var color = '';
                 //CARREGA CALENDÁRIO E EVENTOS DO BANCO
                 $('#calendario').fullCalendar({
+                   
                     header: {
                         left: 'prev,next today',
                         center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
+                        right: 'month,agendaWeek,agendaDay',
+                        
                     },
                      
                     editable: true,
                     eventLimit: true, 
                     events: 'fullcalendar/model/eventos.php',           
-                    eventColor: '#a6bbf2',
-
+                    
                     editable:true,
                     eventClick:  function(event, jsEvent, view) {
                         
                         // console.log(event.CLI_ID);
                         let e =  event; 
-                        console.log(e);
+                        // console.log(e);
                         $("#cliente").val(e.CLI_ID);
                         $("#colaborador").val(event.PROF_ID);
                         $('#status').val(event.STATUS);
@@ -77,7 +78,17 @@
                         funcoes(event);
 
                     },
-                    
+                    eventAfterRender: function (event, element, view) {
+                        if(event.STATUS == 'A')
+                            element.css('background-color', '#4c6ca0');
+                        else if(event.STATUS == 'D')
+                            element.css('background-color', '#ff4945');
+                        else if(event.STATUS == 'F')
+                            element.css('background-color', '#8b2e0f');
+                        else
+                            element.css('background-color', '#369939');
+                    },
+                    eventColor:color,
                 }); 
                 
                 //CADASTRA NOVO EVENTO
@@ -89,7 +100,7 @@
                     
                     var url = "fullcalendar/model/cadastrar_evento.php?cli="+$('#cliente').val()+"&prof="+$('#colaborador').val()+"&dataini="+$('#data').val()+"&datafim="+$('#datafim').val(); 
                     // var url = 'fullCalendar/model/cadastrar_evento.php?id=1'
-                    
+                    alert(url);
                     $.ajax({
                         type: "GET",
                         url: url,
@@ -106,6 +117,9 @@
                             }
                             else if(data == "2"){
                                  alert("O profissional já possui consulta no horário informado!")   
+                            }
+                            else if(data == '3'){
+                                alert('Impossível cadastra evento com data retroativa!');
                             }
 
                             else{
@@ -190,7 +204,10 @@
                 $('#update_btn').hide();
                 $('#delete_btn').hide();
             });
-        
+            
+             $("#myBtn3").click(function(){
+                $("#ModalLegenda").modal();
+            });
             //DATE TIME PARA CALENDARIO
             $('#data').datetimepicker();        
             // $('#datafim').datetimepicker();        
@@ -223,9 +240,10 @@
         
     </head>
     <body>    
-        <div class="container" >
-            <button type="button" class="btn btn-primary btn-lg" id="myBtn" >Incluir novo evento</button>
-            <button type="button" onclick="consultas()" class="btn btn-default btn-lg" id="myBtn" >Visualizar eventos</button>
+        <div class="container" style="margin-left: 14%;">
+            <button type="button" class="btn btn-primary btn-md" id="myBtn" >Incluir novo evento</button>
+            <button type="button" onclick="consultas()" class="btn btn-default btn-md" id="myBtn2" >Visualizar eventos</button>
+            <button type="button"  class="btn btn-default btn-md" id="myBtn3" >Legenda</button>
         </div>
         <br>
         <div id='calendario'></div>
@@ -330,6 +348,44 @@
             </div>
         </div>
 
+
+
+         <div id="ModalLegenda" class="modal fade">
+            <div class="modal-dialog">        
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                        <h4 id="modalTitle" class="modal-title"></h4>
+                    </div> 
+                    <div class="container">
+                        <i class="fas fa-circle" style="color:#4c6ca0"></i>
+                        <label>Consultas agendadas</label><br>
+
+                        <i class="fas fa-circle" style="color:#369939"></i>
+                        <label>Consultas Atendidas</label><br>
+
+                        <i class="fas fa-circle" style="color:#ff4945"></i>
+                        <label>Desistentes</label><br>
+
+                        <i class="fas fa-circle" style="color:#8b2e0f"></i>
+                        <label>Faltas</label>
+
+
+
+                         <!-- if(event.STATUS == 'A')
+                            element.css('background-color', '#4c6ca0');
+                        else if(event.STATUS == 'D')
+                            element.css('background-color', '#ff4945');
+                        else if(event.STATUS == 'F')
+                            element.css('background-color', '#8b2e0f');
+                        else
+                            element.css('background-color', '#3eab2d'); -->
+                    </div>      
+                    <div id="modal-footer" class="modal-footer"></div>    
+                    </form>
+                </div>
+            </div>
+        </div>
 
     </body>
 

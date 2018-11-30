@@ -3,7 +3,7 @@
 	//Conectando ao banco de dados
     include "conexao.php";
     $e = new conexao();
-    $consulta = $e->executarNoBanco("SELECT * FROM tab_eventos WHERE STATUS = 'A'"); 
+    $consulta = $e->executarNoBanco("SELECT * FROM tab_eventos"); 
 
     foreach ($consulta as $key => $value) {
             $vetor[] = $value;

@@ -66,7 +66,7 @@ class cliente extends gn_tabela
             ),
             "Cli_Cpf" => array(
                 "tagname"  => "input",
-                "class"    => 'form-control maskcpf ',
+                "class"    => 'form-control   validate',
                 "banco"    => "Cli_Cpf",
                 "id"       => "Cli_Cpf",
                 "label"    => "CPF",
@@ -347,26 +347,24 @@ class cliente extends gn_tabela
         //?? COMENTADO PARA EN.... O CLIENTE
         
 
+        $char =  "<i class='fas fa-circle'></i>";
 
         if ($vl == 'on'){
             $color = '#369939'    ;
-            // $char  = "&#9745;"  ;
-            $char = '<i class="fas fa-check-circle"></i>';
             $this->status = true;
 
             
         } else {
            $color = '#b22222'      ;
-           $char = '<i class="fas fa-times-circle"></i>';
            $this->status = false;
            
         }
         
         
         return "
-            <span 
+            <span  
                 style='
-                    font-size : 30px;
+                    font-size : 20px;
                     color     : $color;
                 '>
                 $char

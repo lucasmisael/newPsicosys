@@ -42,7 +42,8 @@
             <link href="lib/externos/fontawesome/css/all.css" rel="stylesheet">
              <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"></script>
 
-
+             <!-- CPF VALIDATOR -->
+              <script src="lib/externos/CPFValidator/jquery.cpfcnpj.js"></script>   
 
 
 
