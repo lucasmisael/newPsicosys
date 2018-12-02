@@ -65,7 +65,7 @@ class profissional extends gn_tabela
                 "class"    => 'form-control maskcpf' ,
                 "banco"    => "Prof_Cnpj_Cpf",
                 "id"       => "Prof_Cnpj_Cpf",
-                "label"    => "CNPJ/CPF",
+                "label"    => "CPF",
                 "type"     => "text",
                 "required" => true,
                 "pesquisa" => false,

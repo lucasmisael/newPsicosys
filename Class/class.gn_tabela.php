@@ -66,7 +66,9 @@ class gn_tabela
     function fazerCadastro(){
         $INSERT = array();
         $VALUES = array();
+        $cpf = true;
         //$this->ver($_POST);
+
         foreach ($_POST as $chave => $valor)
         {
             if (!isset($this->campos[$chave]["gravar"]) || $this->campos[$chave]["gravar"]===true)
@@ -85,8 +87,18 @@ class gn_tabela
                         $VALUES[] = "'$valor'" ; 
                     }
             }
+            if ($chave == "Cli_Cpf" || $chave == "Prof_Cnpj_Cpf")
+                $cpf = $this->validaCPF($valor);
+                
+                // var_dump();
         }
+
+        // var_dump($cpf);
+        if( $cpf  != 'false')
+            echo"<script>alert('CPF INVALIDO!')</script>";
         
+        else{
+  
         $INSERT = implode(",",$INSERT);
         $VALUES = implode(",",$VALUES);
         
@@ -94,11 +106,11 @@ class gn_tabela
         // $this->ver($SQL);
         $this->executarNoBanco($SQL);
         echo"<script>alert('Cadastrado com sucesso!')</script>";
-        
+            
         $cache = $this->montarCadastro();
             
         return $cache;        
-        
+        } 
     }
     
     
@@ -124,14 +136,14 @@ class gn_tabela
     {
             
         $SQL_COLUNAS = array();
-
+        $cpf = true;
         
         foreach ($this->campos as $campo){
             $coluna = $campo['banco'];
             // verifica se o nome do campo no banco esta vindo no request
             if (array_key_exists($coluna, $_REQUEST)){
                 $SQL_COLUNAS[] = " $coluna = '{$_REQUEST[$coluna]}' " ;
-                
+
                 //Cliente
                 if($this->tabela == 'tab_clientes'){
                     if(!isset($_REQUEST['Cli_Status']))
@@ -146,26 +158,39 @@ class gn_tabela
                     elseif(isset($_REQUEST['Prof_Status']))
                         $SQL_COLUNAS[] = "Prof_Status = 'on'";
                 }
+                //Convenio
                 if($this->tabela == 'tab_convenios'){
                     if(!isset($_REQUEST['Conv_Status']))
                         $SQL_COLUNAS[] = "Conv_Status = 'off'";
                     elseif(isset($_REQUEST['Conv_Status']))
                         $SQL_COLUNAS[] = "Conv_Status = 'on'";
                 }
+                //Usuario
                 if($this->tabela == 'tab_usuarios'){
                     if(!isset($_REQUEST['usu_Status']))
                         $SQL_COLUNAS[] = "usu_Status = 'off'";
                     elseif(isset($_REQUEST['usu_Status']))
                         $SQL_COLUNAS[] = "usu_Status = 'on'";
                 }
-                 if(isset($_REQUEST['alterado_em'])) {
+                if(isset($_REQUEST['alterado_em'])) {
                      $SQL_COLUNAS[] = "alterado_em = now()";
                 } 
                 if(isset($_REQUEST ['usuario_alt'])) {
                      $SQL_COLUNAS[] = "usuario_alt ='". $_SESSION['login']."'";
-                }            
+                }  
+                if($coluna == 'Cli_Cpf' || $coluna == 'Prof_Cnpj_Cpf'){
+                    $resquest = (isset($_REQUEST['Cli_Cpf']) ? $_REQUEST['Cli_Cpf'] : $_REQUEST['Prof_Cnpj_Cpf']  );
+                    $validaCpf = $this->validaCPF($resquest);
+
+                }    
             }
+
+            
         }
+        if( isset($validaCpf) && $validaCpf  != 'false')
+           echo"<script>alert('CPF INVALIDO!')</script>";
+        
+        // var_dump($SQL_COLUNAS);
         $SQL_COLUNAS = implode(', ', $SQL_COLUNAS);
         $SQL = "UPDATE $this->tabela SET $SQL_COLUNAS WHERE $this->chave = {$_REQUEST[$this->chave]};";
         $this->executarNoBanco($SQL);
@@ -581,4 +606,56 @@ class gn_tabela
     public function relato(){
 
     }
+
+/*
+    Valida CPF
+*/
+function validaCPF($CpfCnpj = null) {
+
+	// Verifica se um número foi informado
+	if(empty($CpfCnpj)) {
+		return false;
+	}
+
+	// Elimina possivel mascara
+	$CpfCnpj = preg_replace("/[^0-9]/", "", $CpfCnpj);
+	$CpfCnpj = str_pad($CpfCnpj, 11, '0', STR_PAD_LEFT);
+	
+	// Verifica se o numero de digitos informados é igual a 11 
+	if (strlen($CpfCnpj) != 11) {
+		return false;
+	}
+	// Verifica se nenhuma das sequências invalidas abaixo 
+	// foi digitada. Caso afirmativo, retorna falso
+	else if ($CpfCnpj == '00000000000' || 
+		$CpfCnpj == '11111111111' || 
+		$CpfCnpj == '22222222222' || 
+		$CpfCnpj == '33333333333' || 
+		$CpfCnpj == '44444444444' || 
+		$CpfCnpj == '55555555555' || 
+		$CpfCnpj == '66666666666' || 
+		$CpfCnpj == '77777777777' || 
+		$CpfCnpj == '88888888888' || 
+		$CpfCnpj == '99999999999') {
+		return false;
+	 // Calcula os digitos verificadores para verificar se o
+	 // CPF é válido
+	 } else {   
+		
+		for ($t = 9; $t < 11; $t++) {
+			
+			for ($d = 0, $c = 0; $c < $t; $c++) {
+				$d += $CpfCnpj{$c} * (($t + 1) - $c);
+			}
+			$d = ((10 * $d) % 11) % 10;
+			if ($CpfCnpj{$c} != $d) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+}
+
+
 }

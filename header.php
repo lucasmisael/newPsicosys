@@ -151,7 +151,7 @@
 
 
                                             <li >
-                                                <a href='./home_calendar.php' >Calendário</a>
+                                                <a href='./home_calendar.php' >Calendario</a>
                                             </li>
 
                                             ";
@@ -209,6 +209,50 @@
 */                                         
                                 }
                                 
+                                
+                                 $operacaoes4 = array(
+                                   
+                                    "Gerar",
+                                    
+                                );
+                                
+                                $tabelas4 = array(
+                                   
+                                    "Relatorios",
+                                    "Graficos"
+                                );
+                                
+                                foreach ($operacaoes4 as $operacao4) {
+                                    echo "
+                                        <li class='dropdown'>
+                                            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Financeiro<span class='caret'></span></a>
+                                            <ul class='dropdown-menu'>";
+                                                foreach ($tabelas4 as $tabela4) {
+                                                    echo "<li><a href='$operacao4.php?tabela=$tabela4'>$tabela4</a></li>";
+                                                }
+                                            echo "</ul>
+                                            </li> ";
+                                
+/*
+                                    echo "
+                                        <li class='dropdown'>
+                                            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>$operacao3 <span class='caret'></span></a>
+                                            <ul class='dropdown-menu'>
+
+
+                                            <li >
+                                                <a href='./home_prontuario.php' >Prontuário</a>
+                                            </li>
+
+                                            ";
+                                    echo "
+                                        <li >
+                                            <a href='./docs/DECLARAÇÃO.pdf' >Atestado</a>
+                                        </li>
+                                    </ul>
+                                         </li> ";
+*/                                         
+                                }
                                 
                             ?>
                                <!--  <li class="dropdown">
