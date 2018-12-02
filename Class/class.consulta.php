@@ -29,7 +29,7 @@ class consulta extends gn_tabela
                 "class"    => 'form-control ' ,
                 "banco"    => "STATUS",
                 "id"       => "STATUS",
-                "label"    => "Profissional",
+                "label"    => "Status",
                "callback"      => "lista_callback_check",
                 "pesquisa" => true,
                 "required" => false,
@@ -136,6 +136,7 @@ class consulta extends gn_tabela
         
         return date( 'd/m/Y H:i', strtotime( $valor ) ) ; 
     }
+    
     
     
 }
