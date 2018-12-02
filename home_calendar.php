@@ -295,7 +295,7 @@
                              
                             </select><br><br>
                             <!-- COMBOBOX PROFISSIONAIS -->
-                            <label for="colaborador">Profissional::</label> <br>
+                            <label for="colaborador">Profissional:</label> <br>
                             <select id="colaborador" class="js-example-basic-single form-control " name="colaborador">    
                             <?php 
 
@@ -315,7 +315,7 @@
                             </select><br><br>
 
                             <!-- CALENDARIO -->
-                           <label for="data"> Data inicial do Evento:</label> <input id="data" type="text" name="data" class="form-control date" required/> <br>
+                           <label for="data"> Data Consulta:</label> <input id="data" type="text" name="data" class="form-control date" required/> <br>
                             <!-- COMBOBOX TIPO CONSULTAS -->
                             <label for="datafim"> Tipo de Consulta:</label> <select id="datafim" name="datafim" class="form-control">
                             <?php 
