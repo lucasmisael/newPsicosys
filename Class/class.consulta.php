@@ -67,6 +67,7 @@ class consulta extends gn_tabela
                 "banco"    => "start",
                 "id"       => "start",
                 "label"    => "Data Consulta",
+                "callback" => "lista_callback_data",
                 "pesquisa" => true,
                 "required" => true,
                 "tamanho"  => 6
@@ -77,6 +78,7 @@ class consulta extends gn_tabela
                 "banco"    => "end",
                 "id"       => "end",
                 "label"    => "Fim consulta",
+                "callback" => "lista_callback_data",
                 "pesquisa" => true,
                 "required" => true,
                 "tamanho"  => 6
@@ -124,6 +126,15 @@ class consulta extends gn_tabela
                 $char
             </span>
         ";
+    }
+
+    function lista_callback_data($valor)
+    {
+        if ($valor == "0000-00-00" || $valor == "0000-00-00 00:00:00" || empty($valor)  ){
+            return "";
+        }
+        
+        return date( 'd/m/Y H:i', strtotime( $valor ) ) ; 
     }
     
     

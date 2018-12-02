@@ -66,13 +66,14 @@ class cliente extends gn_tabela
             ),
             "Cli_Cpf" => array(
                 "tagname"  => "input",
-                "class"    => 'form-control   validate',
+                "class"    => 'form-control maskcpf validate',
                 "banco"    => "Cli_Cpf",
                 "id"       => "Cli_Cpf",
                 "label"    => "CPF",
                 "pesquisa" => true,
                 "required" => true,
                 "tamanho"  => 6,
+                "onchange" => 'validarCPF()',
                 "maxlength" => 10,
                 // "onkeyup" => "maskcpf()",
             ),
@@ -304,6 +305,7 @@ class cliente extends gn_tabela
                 "banco"    => "criado_em",
                 "id"       => "criado_em",
                 "label"    => "Criado Em",
+                "callback" => "lista_callback_data",
                 "pesquisa" => true,
                 "readonly" => true,
                 "tamanho"  => 6,
@@ -326,6 +328,7 @@ class cliente extends gn_tabela
                 "label"    => "Alterado Em",
                 "pesquisa" => true,
                 "readonly" => true,
+                "callback" => "lista_callback_data",
                 "tamanho"  => 6,
             ),
             "usuario_alt" => array(
@@ -373,9 +376,9 @@ class cliente extends gn_tabela
     }
     
     
-    function lista_callback_data($valor)
+   function lista_callback_data($valor)
     {
-        if ($valor == "0000-00-00"){
+        if ($valor == "0000-00-00" || $valor == "0000-00-00 00:00:00" || empty($valor)  ){
             return "";
         }
         
@@ -392,6 +395,7 @@ class cliente extends gn_tabela
                     
                     
                     $('#Cli_Data_Nasc').change();
+                    $('.validate').change();
 
                 }
             );
@@ -406,7 +410,46 @@ class cliente extends gn_tabela
                 document.getElementById(target).value=(diffDays);
             };
 
+            function validarCPF(cpf) {  
+    cpf = cpf.replace(/[^\d]+/g,'');    
+    if(cpf == '') return false; 
+    // Elimina CPFs invalidos conhecidos    
+    if (cpf.length != 11 || 
+        cpf == '00000000000' || 
+        cpf == '11111111111' || 
+        cpf == '22222222222' || 
+        cpf == '33333333333' || 
+        cpf == '44444444444' || 
+        cpf == '55555555555' || 
+        cpf == '66666666666' || 
+        cpf == '77777777777' || 
+        cpf == '88888888888' || 
+        cpf == '99999999999')
+            return false;       
+    // Valida 1o digito 
+    add = 0;    
+    for (i=0; i < 9; i ++)      
+        add += parseInt(cpf.charAt(i)) * (10 - i);  
+        rev = 11 - (add % 11);  
+        if (rev == 10 || rev == 11)     
+            rev = 0;    
+        if (rev != parseInt(cpf.charAt(9)))     
+            return false;       
+    // Valida 2o digito 
+    add = 0;    
+    for (i = 0; i < 10; i ++)       
+        add += parseInt(cpf.charAt(i)) * (11 - i);  
+    rev = 11 - (add % 11);  
+    if (rev == 10 || rev == 11) 
+        rev = 0;    
+    if (rev != parseInt(cpf.charAt(10)))
+        return false;       
+    return true;   
+}
 
+    function validarCpf(){
+        alert('validando...');
+    }
             
         ";
     }

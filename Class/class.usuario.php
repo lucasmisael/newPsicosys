@@ -95,6 +95,7 @@ class usuario extends gn_tabela
                 "id"       => "criado_em",
                 "label"    => "Criado Em",
                 "pesquisa" => true,
+                "callback" => "lista_callback_data",
                 "readonly" => true,
                 "tamanho"  => 6,
             ),
@@ -117,6 +118,7 @@ class usuario extends gn_tabela
                 "id"       => "alterado_em",
                 "label"    => "Alterado Em",
                 "pesquisa" => true,
+                "callback" => "lista_callback_data",
                 "readonly" => true,
                 "tamanho"  => 6,
             ),
@@ -164,5 +166,13 @@ class usuario extends gn_tabela
         ";
     }
     
+     function lista_callback_data($valor)
+    {
+        if ($valor == "0000-00-00" || $valor == "0000-00-00 00:00:00"  || empty($valor) ){
+            return "";
+        }
+        
+        return date( 'd/m/Y', strtotime( $valor ) ) ; 
+    }
     
 }

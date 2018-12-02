@@ -4,7 +4,7 @@
     function makeHeather(){
         
         ?>
-            
+        <head>    
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <title>Pagina Inicial</title>
@@ -29,9 +29,26 @@
             <link rel="stylesheet" type="text/css" href="lib/externos/datepicker/jquery-ui.min.css"/ >
 
             <!-- DataTables -->
-            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+            <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> -->
+            <link href="lib/externos/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
             
+            <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script> -->
+            <script type="text/javascript" charset="utf8" src="lib/externos/datatables/js/jquery.dataTables.min.js"></script>
+            
+            <!-- <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> -->
+
+
+           <!--  
+            
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script> -->
+            <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css">
+            <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/dataTables.buttons.min.js"></script>
+            <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.flash.min.js"></script>
+            <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.html5.min.js"></script>
+            <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.print.min.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
             <!-- Checkbox -->
             <script type="text/javascript" charset="utf8" src="lib/externos/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
             <link rel="stylesheet" type="text/css" href="lib/externos/bootstrap-toggle/css/bootstrap-toggle.min.css"/ >
@@ -46,7 +63,7 @@
               <script src="lib/externos/CPFValidator/jquery.cpfcnpj.js"></script>   
 
 
-
+            
             
            <!--  <link rel="stylesheet" href="lib/externos/fastsearch-master/dist/fastselect.min.css">
             <script src="lib/externos/fastsearch-master/dist/fastselect.standalone.js"></script> -->
@@ -69,6 +86,8 @@
 
 
             
+        </head>
+        <body>  
 
 
             <!--********************************Inicio Menu ********************** -->
@@ -209,8 +228,10 @@
             
 
             
+    </body>
 
         <?php
         
     }
+
     

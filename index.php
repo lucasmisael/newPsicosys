@@ -43,7 +43,7 @@ body{
 			    		    <input class="form-control" placeholder="Login" name="login" type="text">
 			    		</div>
 			    		<div class="form-group">
-			    			<input class="form-control" placeholder="Senha" name="senha" type="password" value="">
+			    			<input class="form-control" placeholder="Senha" name="senha" id="senha" type="password" value="">
 			    		</div>
 			    		<div class="checkbox">
 			    	    	<label>
