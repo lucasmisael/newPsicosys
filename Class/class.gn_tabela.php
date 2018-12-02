@@ -79,7 +79,7 @@ class gn_tabela
                 }
                 else 
                     if ($chave == 'usuario_cri') {
-                        $VALUES[] = "'".$_SESSION['login']."'";
+                        $VALUES[] = (isset($_SESSION['login']) ? "'".$_SESSION['login']."'" : '');
                     } 
                     else {
                         $VALUES[] = "'$valor'" ; 
