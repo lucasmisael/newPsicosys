@@ -63,6 +63,22 @@ class usuario extends gn_tabela
                 "requerid" => true,
                 "tamanho"  => 6
             ),
+            "usu_Tipo" => array( 
+                "tagname"  => "select",
+                "class"    => 'form-control ' ,
+                "banco"    => "Usu_Tipo",
+                "id"       => "Usu_Tipo",
+                "label"    => "Tipo",
+                "pesquisa" => true,
+                "required" => true,
+                "tamanho"  => 6,
+                'options'=> array(
+                    'Administrativo' => "Adminstrativo",       
+                    'Psicologo'      => "Psicólogo",           
+                    'Psiquiatra'     => "Psiquiatra",       
+                ),
+            ),
+
             "usu_email" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
@@ -70,7 +86,7 @@ class usuario extends gn_tabela
                 "id"       => "usu_email",
                 "label"    => "E-mail",
                 "pesquisa" => true,
-                "tamanho"  => 6
+                "tamanho"  => 12
             ),
             "criado_em" => array(
                 "tagname"  => "input",
