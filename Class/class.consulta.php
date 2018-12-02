@@ -106,10 +106,10 @@ class consulta extends gn_tabela
         if ($vl == 'A'){
             $color = '#4c6ca0'    ;    
         } 
-        elseif($vl = 'D') {
+        elseif($vl == 'D') {
            $color = '#ff4945'      ;
         }
-        elseif($vl = 'F') {
+        elseif($vl == 'F') {
            $color = '#8b2e0f';
         }
         else{
