@@ -109,7 +109,7 @@
                             <?php
                                 $operacaoes = array(
                                     "Cadastrar",
-                                    "Pesquisar"
+                                    "Pesquisar",
                                 );
                                 
                                 $tabelas = array(
@@ -117,7 +117,7 @@
                                     "Profissional" ,
                                     "Convenio"    ,
                                     "Usuario"     ,
-                                    "tpConsulta"
+                                    "tpConsulta",
                                    
                                 );
                                 
@@ -135,7 +135,7 @@
 
                                  $operacaoes2 = array(
                                    
-                                    "Consultas"
+                                    "Agendar"
                                 );
                                 
                                 $tabelas2 = array(
@@ -156,16 +156,58 @@
 
                                             ";
                                                 foreach ($tabelas2 as $tabela2) {
-                                                    echo "<li><a href='$operacao.php?tabela=$tabela2'>Consultas agendadas</a></li>";
+                                                    echo "<li><a href='$operacao.php?tabela=$tabela2'>Consultas Agendadas</a></li>";
                                                 }
                                             echo "
-                                                    <li >
-                                                         <a href='./docs/DECLARAÇÃO.pdf' >Imprimir atestados</a>
-                                                     </li>
                                                 </ul>
                                             </li> ";
                                 }
                                 
+                                
+                                 $operacaoes3 = array(
+                                   
+                                    "Cadastrar",
+                                    
+                                );
+                                
+                                $tabelas3 = array(
+                                   
+                                    "Prontuario",
+                                    "Consulta Protuario",
+                                    "Atestado"
+                                );
+                                
+                                foreach ($operacaoes3 as $operacao3) {
+                                    echo "
+                                        <li class='dropdown'>
+                                            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Serviços<span class='caret'></span></a>
+                                            <ul class='dropdown-menu'>";
+                                                foreach ($tabelas3 as $tabela3) {
+                                                    echo "<li><a href='$operacao3.php?tabela=$tabela3'>$tabela3</a></li>";
+                                                }
+                                            echo "</ul>
+                                            </li> ";
+                                
+/*
+                                    echo "
+                                        <li class='dropdown'>
+                                            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>$operacao3 <span class='caret'></span></a>
+                                            <ul class='dropdown-menu'>
+
+
+                                            <li >
+                                                <a href='./home_prontuario.php' >Prontuário</a>
+                                            </li>
+
+                                            ";
+                                    echo "
+                                        <li >
+                                            <a href='./docs/DECLARAÇÃO.pdf' >Atestado</a>
+                                        </li>
+                                    </ul>
+                                         </li> ";
+*/                                         
+                                }
                                 
                                 
                             ?>
