@@ -133,82 +133,44 @@
                                             </li> ";
                                 }
 
-                                 $operacaoes2 = array(
-                                   
-                                    "Agendar"
-                                );
-                                
-                                $tabelas2 = array(
-                                   
-                                    "Consulta"
-                                );
-                                
-                                foreach ($operacaoes2 as $operacao2) {
-                                    echo "
-                                        <li class='dropdown'>
-                                            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>$operacao2 <span class='caret'></span></a>
+                                // Agenda
+                                echo "
+                                    <li class='dropdown'>
+                                        <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Agendar<span class='caret'></span></a>
                                             <ul class='dropdown-menu'>
 
 
-                                            <li >
-                                                <a href='./home_calendar.php' >Calendario</a>
-                                            </li>
+                                                <li >
+                                                    <a href='./home_calendar.php' >Calendário</a>
+                                                </li>
+                                                <li>
+                                                    <a href='Pesquisar.php?tabela=Consulta'>Consulta Agenda</a>
+                                                </li>
 
-                                            ";
-                                                foreach ($tabelas2 as $tabela2) {
-                                                    echo "<li><a href='$operacao.php?tabela=$tabela2'>Consultas Agendadas</a></li>";
-                                                }
-                                            echo "
-                                                </ul>
-                                            </li> ";
-                                }
+                                            </ul>
+                                    </li> ";
                                 
                                 
-                                 $operacaoes3 = array(
-                                   
-                                    "Cadastrar",
-                                    
-                                );
                                 
-                                $tabelas3 = array(
-                                   
-                                    "Prontuario",
-                                    "Consulta Protuario",
-                                    "Atestado"
-                                );
                                 
-                                foreach ($operacaoes3 as $operacao3) {
+                                // Serviços
                                     echo "
                                         <li class='dropdown'>
                                             <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Serviços<span class='caret'></span></a>
-                                            <ul class='dropdown-menu'>";
-                                                foreach ($tabelas3 as $tabela3) {
-                                                    echo "<li><a href='$operacao3.php?tabela=$tabela3'>$tabela3</a></li>";
-                                                }
-                                            echo "</ul>
-                                            </li> ";
-                                
-/*
-                                    echo "
-                                        <li class='dropdown'>
-                                            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>$operacao3 <span class='caret'></span></a>
                                             <ul class='dropdown-menu'>
+                                                <li >
+                                                    <a href='./modal_atestado.php' >Atestado</a>
+                                                </li>
+                                                <li >
+                                                    <a href='Cadastrar.php?tabela=Prontuario' >Prontuário</a>
+                                                </li>
+                                                <li >
+                                                    <a href='Pesquisar.php?tabela=Prontuario' >Consulta Prontuário</a>
+                                                </li>
 
-
-                                            <li >
-                                                <a href='./home_prontuario.php' >Prontuário</a>
-                                            </li>
-
-                                            ";
-                                    echo "
-                                        <li >
-                                            <a href='./docs/DECLARAÇÃO.pdf' >Atestado</a>
-                                        </li>
-                                    </ul>
-                                         </li> ";
-*/                                         
-                                }
-                                
+                                            </ul>
+                                        </li> ";
+ 
                                 
                                  $operacaoes4 = array(
                                    
@@ -255,13 +217,10 @@
                                 }
                                 
                             ?>
-                               <!--  <li class="dropdown">
-                                    <a href="./home_calendar.php"  role="button" aria-haspopup="true" aria-expanded="false">Consultas <span class="caret"></span></a>
-                                </li>  -->
                             </ul>
                             <ul class="navbar-right" style='margin-top:10px; margin-bottom:0px'>
                                 <form action="index.php">
-                                    <button class="btn btn-danger" action="index.php" onclick="destroySession">
+                                    <button class="btn btn-danger" action="index.php" onclick="destroySession()">
                                         Sair
                                     </a>
                                 </form>
@@ -272,7 +231,7 @@
             
 
             
-    </body>
+        </body>
 
         <?php
         

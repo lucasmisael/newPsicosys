@@ -603,7 +603,18 @@ class gn_tabela
         return $this->pesquisar();
     }
 
-    public function relato(){
+    public function atestado(){
+        header( 'Location: ./view/modal_atestado' );
+    }
+
+    public function transforma($obj){
+        
+
+        return   mysqli_fetch_assoc($obj);
+        
+        // var_dump($a);
+
+        
 
     }
 
