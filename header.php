@@ -118,6 +118,7 @@
                                     "Convenio"    ,
                                     "Usuario"     ,
                                     "tpConsulta",
+                                    "Sala",
                                    
                                 );
                                 
