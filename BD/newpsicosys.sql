@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 30-Nov-2018 às 22:42
--- Versão do servidor: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: 02-Dez-2018 às 03:48
+-- Versão do servidor: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -202,6 +202,20 @@ INSERT INTO `tab_profissionais` (`PROF_COD`, `PROF_NOME`, `PROF_STATUS`, `PROF_E
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tab_prontuarios`
+--
+
+CREATE TABLE `tab_prontuarios` (
+  `PRON_ID` int(11) NOT NULL,
+  `PRON_PROFISSIONAL` int(11) NOT NULL,
+  `PRON_CLIENTE` int(11) NOT NULL,
+  `PRON_DESC` varchar(5000) DEFAULT NULL,
+  `PRON_DATAHORA` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tab_tpconsulta`
 --
 
@@ -288,6 +302,12 @@ ALTER TABLE `tab_profissionais`
   ADD PRIMARY KEY (`PROF_COD`);
 
 --
+-- Indexes for table `tab_prontuarios`
+--
+ALTER TABLE `tab_prontuarios`
+  ADD PRIMARY KEY (`PRON_ID`);
+
+--
 -- Indexes for table `tab_tpconsulta`
 --
 ALTER TABLE `tab_tpconsulta`
@@ -308,37 +328,36 @@ ALTER TABLE `tab_usuarios`
 --
 ALTER TABLE `tab_clientes`
   MODIFY `CLI_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `tab_convenios`
 --
 ALTER TABLE `tab_convenios`
   MODIFY `CONV_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tab_eventos`
 --
 ALTER TABLE `tab_eventos`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
 --
 -- AUTO_INCREMENT for table `tab_profissionais`
 --
 ALTER TABLE `tab_profissionais`
   MODIFY `PROF_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
+--
+-- AUTO_INCREMENT for table `tab_prontuarios`
+--
+ALTER TABLE `tab_prontuarios`
+  MODIFY `PRON_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tab_tpconsulta`
 --
 ALTER TABLE `tab_tpconsulta`
   MODIFY `CONS_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tab_usuarios`
 --
 ALTER TABLE `tab_usuarios`
-  MODIFY `USU_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-COMMIT;
+  MODIFY `USU_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
