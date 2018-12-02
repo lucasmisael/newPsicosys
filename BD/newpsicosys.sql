@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Dez-2018 às 18:24
+-- Generation Time: 02-Dez-2018 às 19:15
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -238,8 +238,21 @@ CREATE TABLE `tab_prontuarios` (
 
 CREATE TABLE `tab_salas` (
   `SALA_COD` int(11) NOT NULL,
-  `SALA_DESC` varchar(50) DEFAULT NULL
+  `SALA_DESC` varchar(50) DEFAULT NULL,
+  `CRIADO_EM` datetime DEFAULT NULL,
+  `USUARIO_CRI` varchar(50) DEFAULT NULL,
+  `ALTERADO_EM` datetime DEFAULT NULL,
+  `USUARIO_ALT` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tab_salas`
+--
+
+INSERT INTO `tab_salas` (`SALA_COD`, `SALA_DESC`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
+(1, 'Sala 13', '2018-12-02 16:01:22', 'Tiago', '0000-00-00 00:00:00', ''),
+(2, 'Sala 17', '2018-12-02 16:01:34', 'Tiago', '0000-00-00 00:00:00', ''),
+(3, 'Sala 51', '2018-12-02 16:01:46', 'Tiago', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -390,7 +403,7 @@ ALTER TABLE `tab_prontuarios`
 -- AUTO_INCREMENT for table `tab_salas`
 --
 ALTER TABLE `tab_salas`
-  MODIFY `SALA_COD` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SALA_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tab_tpconsulta`
 --
