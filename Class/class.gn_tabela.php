@@ -224,6 +224,7 @@ class gn_tabela
         $cache = ''; 
         
         // Cria um formulario
+
         $cache .= $this->elms->formBegin($action, $this->classe, $nome);
         $cache .="<div>";
         //Cabeçalho da pagina 
@@ -424,8 +425,9 @@ class gn_tabela
         
         
         $cache.="
+            
             <div class='col-lg-12 table-responsive'>
-                <table class='table table-striped table-bordered' style='border-radius: 10px;' id='consultar'>
+                <table class='table table-striped table-bordered consultar table-hover' style='border-radius: 10px;' '>
                     <thead style='font-size: 13px; background: #005C97;  /* fallback for old browsers */
                         background: -webkit-linear-gradient(to right, #363795, #005C97);  /* Chrome 10-25, Safari 5.1-6 */
                         background: linear-gradient(to right, #363795, #005C97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;color:white;' >
@@ -489,10 +491,14 @@ class gn_tabela
                 echo "<script>alert('Consultas efetuadas não podem ser excluidas. ')</script>";*/
 
         }
-        $aux = $this->executarNoBanco($SQL);
 
-        if($aux->num_rows > 0)
-            echo "<script>alert('Impossivel excluir. ')</script>";
+        if(isset($SQL)){
+            $aux = $this->executarNoBanco($SQL);
+
+            if($aux->num_rows > 0)
+                echo "<script>alert('Impossivel excluir. ')</script>";
+            
+        }
 
 
         else{
@@ -570,5 +576,9 @@ class gn_tabela
         $SQL = "SELECT *  FROM tab_clientes " ; 
         $this->executarNoBanco($SQL);
         return $this->pesquisar();
+    }
+
+    public function relato(){
+
     }
 }

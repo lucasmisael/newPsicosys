@@ -234,6 +234,7 @@
             #calendario{
                 position: relative;
                 width: 70%;
+                
                 margin: 0px auto;
             }        
         </style>
@@ -241,9 +242,9 @@
     </head>
     <body>    
         <div class="container" style="margin-left: 14%;">
-            <button type="button" class="btn btn-primary btn-md" id="myBtn" >Incluir novo evento</button>
-            <button type="button" onclick="consultas()" class="btn btn-default btn-md" id="myBtn2" >Visualizar eventos</button>
-            <button type="button"  class="btn btn-default btn-md" id="myBtn3" >Legenda</button>
+            <button type="button" class="btn btn-primary btn-md" id="myBtn" ><i class="fas fa-plus"></i> Incluir novo evento</button>
+            <button type="button" onclick="consultas()" class="btn btn-default btn-md" id="myBtn2" ><i class="fas fa-list-ul"></i> Visualizar eventos</button>
+            <button type="button"  class="btn btn-default btn-md" id="myBtn3" ><i class="fas fa-ellipsis-v"></i> Legenda</button>
         </div>
         <br>
         <div id='calendario'></div>
@@ -359,13 +360,13 @@
                     </div> 
                     <div class="container">
                         <i class="fas fa-circle" style="color:#4c6ca0"></i>
-                        <label>Consultas agendadas</label><br>
+                        <label>Consultas Agendadas</label><br>
 
                         <i class="fas fa-circle" style="color:#369939"></i>
                         <label>Consultas Atendidas</label><br>
 
                         <i class="fas fa-circle" style="color:#ff4945"></i>
-                        <label>Desistentes</label><br>
+                        <label>Desistencias</label><br>
 
                         <i class="fas fa-circle" style="color:#8b2e0f"></i>
                         <label>Faltas</label>

@@ -282,6 +282,7 @@ class profissional extends gn_tabela
                 "id"       => "criado_em",
                 "label"    => "Criado Em",
                 "pesquisa" => true,
+                "callback" => "lista_callback_data",
                 "readonly" => true,
                 "tamanho"  => 6,
             ),
@@ -303,6 +304,7 @@ class profissional extends gn_tabela
                 "label"    => "Alterado Em",
                 "pesquisa" => true,
                 "readonly" => true,
+                "callback" => "lista_callback_data",
                 "tamanho"  => 6,
             ),
             "usuario_alt" => array(
@@ -351,7 +353,7 @@ class profissional extends gn_tabela
     
     function lista_callback_data($valor)
     {
-        if ($valor == "0000-00-00"){
+        if ($valor == "0000-00-00" || $valor == "0000-00-00 00:00:00"  || empty($valor) ){
             return "";
         }
         

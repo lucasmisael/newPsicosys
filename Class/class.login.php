@@ -21,19 +21,19 @@ function tryLogin($usuario , $senha){
             // Cria a conexao com o banco
             $conn = new mysqli($servername, $username, $password, $database);
         
-            $resultado = mysqli_query($conn,"select * from tab_usuarios where usu_nome ='" . $usuario . "' and usu_senha = '" . $senha."'");
+            $resultado = mysqli_query($conn,"select * from tab_usuarios where usu_nome ='" . $usuario . "' or usu_email = '".$usuario."'and usu_senha = '" . $senha."'");
             $rows = mysqli_num_rows($resultado );
             
             
-            if($rows == 1){
+            if($rows > 0){
                 $_SESSION['login'] = $usuario;
                 // $_SESSION['senha'] = $password; 
                 // $_SESSION['usr_login'] = $usuario;
                 header("Location: ../menuPrincipal.php");
             }
             else{ 
-                header("Location: ../index.php");
                 echo"<script> alert('Usuario ou senha Incorretos!') </script>";
+                header("Location: ../index.php");
             }
         }
         
