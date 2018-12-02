@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Dez-2018 às 03:48
+-- Generation Time: 02-Dez-2018 às 18:24
 -- Versão do servidor: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -71,7 +71,21 @@ INSERT INTO `tab_clientes` (`CLI_COD`, `CLI_NOME`, `CLI_STATUS`, `CLI_CPF`, `CLI
 (6, 'Terezinha GuimarÃ£es', 'on', '295.664.168-90', '2018-11-27', 'Rua Pedro Gusso', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-11-27 21:08:12', 'Tiago', '2018-11-28 20:31:58', 'admin'),
 (8, 'Luana Priscila Fernandes', NULL, '123.454.545-45', '1997-07-02', 'Rua Joana Roncaglio Bertoldi', '81.490-468', '', '', 'Pai', '(41) 99959-5565', '', '', '', '', 'lucas.ms.elo84@gmail.com', '1215', '45545454', 1, '', 'Adulto', '', '0000-00-00', 'Manha', '2018-11-28 20:33:33', 'admin', '0000-00-00 00:00:00', ''),
 (9, 'Simone Karla Costa da Silva', 'on', '123.454.545-45', '2008-11-11', 'Rua Joana Roncaglio Bertoldi', '81.490-468', 'Cleonice', '(41) 3232-3232', 'MÃ£e', '(41) 99959-5565', '', '', '', '', 'lucas.ms.elo84@gmail.com', '1215', '45545454', 1, '', 'Crianca', 'Margarida', '0000-00-00', 'Manha', '2018-11-28 20:36:07', 'admin', '2018-11-28 20:36:44', 'admin'),
-(10, 'Alexandre Bento', 'on', '9090909090', '1990-08-10', 'Rua Joana Roncaglio Bertoldi', '81490-468', '', '', 'Alexandre', '418998989', '', '', '', '', 'lucas.ms.elo84@gmail.com', '1215', '45545454', 1, '', 'Adulto', '', '0000-00-00', 'Tarde', '2018-11-28 21:30:37', 'admin', '0000-00-00 00:00:00', '');
+(10, 'Alexandre Bento', 'on', '295.664.168-90', '1990-08-10', 'Rua Joana Roncaglio Bertoldi', '81.490-468', '', '', 'Alexandre', '(41) 89989-89', '', '', '', '', 'lucas.ms.elo84@gmail.com', '1215', '45545454', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-11-28 21:30:37', 'admin', '2018-12-02 15:04:10', 'Tiago'),
+(11, 'Astolfo', 'on', '030.471.279-56', '2018-12-02', '', '', '', '', 'llllllll', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 02:47:40', 'Tiago', '2018-12-02 14:21:46', 'Tiago'),
+(12, 'Tuvia', NULL, '555.454.547-88', '2018-12-02', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 02:58:51', 'tiago', '0000-00-00 00:00:00', ''),
+(13, 'Lucas', NULL, '419.808.181-19', '2018-12-02', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:17:22', 'tiago', '0000-00-00 00:00:00', ''),
+(14, 'Lucas', NULL, '419.808.181-19', '2018-12-02', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:19:50', 'tiago', '0000-00-00 00:00:00', ''),
+(15, 'Lucas', NULL, '419.808.181-19', '2018-12-02', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:19:55', 'tiago', '0000-00-00 00:00:00', ''),
+(16, 'tatataknanga', 'on', '616.161.616-16', '2018-12-03', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:21:05', 'tiago', '0000-00-00 00:00:00', ''),
+(17, 'tatataknanga', 'on', '616.161.616-16', '2018-12-03', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:21:33', 'tiago', '0000-00-00 00:00:00', ''),
+(18, 'tatataknanga', 'on', '616.161.616-16', '2018-12-03', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:21:57', 'tiago', '0000-00-00 00:00:00', ''),
+(19, 'tatataknanga', 'on', '616.161.616-16', '2018-12-03', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:22:44', 'tiago', '0000-00-00 00:00:00', ''),
+(20, 'fksfkdsfjsd', NULL, '123.456.554-54', '2018-12-02', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:41:39', 'tiago', '0000-00-00 00:00:00', ''),
+(21, 'fksfkdsfjsd', NULL, '123.456.554-54', '2018-12-02', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:43:06', 'tiago', '0000-00-00 00:00:00', ''),
+(22, 'fksfkdsfjsd', NULL, '123.456.554-54', '2018-12-02', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:44:26', 'tiago', '0000-00-00 00:00:00', ''),
+(23, 'fksfkdsfjsd', NULL, '123.456.554-54', '2018-12-02', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:45:39', 'tiago', '0000-00-00 00:00:00', ''),
+(24, 'fksfkdsfjsd', NULL, '123.456.554-54', '2018-12-02', '', '', '', '', 'Miguel', '(41) 98864-0013', '', '', '', '', '', '', '', 1, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-02 03:46:19', 'tiago', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -188,16 +202,19 @@ CREATE TABLE `tab_profissionais` (
 --
 
 INSERT INTO `tab_profissionais` (`PROF_COD`, `PROF_NOME`, `PROF_STATUS`, `PROF_ESPECIALIDADE`, `PROF_TIPO_CRIANCA`, `PROF_TIPO_ADOLESCENTE`, `PROF_TIPO_ADULTO`, `PROF_TIPO_IDOSO`, `PROF_CNPJ_CPF`, `PROF_CONSELHO`, `PROF_DATA_NASC`, `PROF_ENDERECO`, `PROF_CEP`, `PROF_FONE1`, `PROF_CEL1`, `PROF_EMAIL`, `PROF_CONVENIO`, `PROF_OBS`, `PROF_FONE2`, `PROF_CEL2`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
-(1, 'Tiago Dantas de Oliveira', 'on', 'Ginecologista', 'A', NULL, NULL, NULL, '030.471.279-56', 'COREN', '1980-09-26', 'Rua Pedro Gusso, 12 ', '81.050-200', '(41) 3276-6457', '(41) 98805-5870', 'tiago@softdib.com.br', 5, 'Ã© tudo nossoo', '(41) 3079-5449', '(41) 98864-0013', '0000-00-00 00:00:00', '', '2018-11-28 20:59:16', 'admin'),
-(2, 'Lucas Gabriel da Silva', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '345.678.765-43', 'CREA', '1997-07-02', 'Joana roncaglio bertoldi', '81.490-468', '', '(41) 99987-6456', 'lucas.ms.elo84@gmail.com', 1, '', '', '', '0000-00-00 00:00:00', '', '2018-11-28 20:21:46', 'admin'),
+(1, 'Tiago Dantas de Oliveira', 'on', 'Ginecologista', 'A', NULL, NULL, NULL, '000.001.111-11', 'COREN', '1980-09-26', 'Rua Pedro Gusso, 12 ', '81.050-200', '(41) 3276-6457', '(41) 98805-5870', 'tiago@softdib.com.br', 1, 'Ã© tudo nossoo', '(41) 3079-5449', '(41) 98864-0013', '0000-00-00 00:00:00', '', '2018-12-02 14:31:04', 'Tiago'),
+(2, 'Lucas Gabriel da Silva', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '111.111.111-11', 'CREA', '1997-07-02', 'Joana roncaglio bertoldi', '81.490-468', '', '(41) 99987-6456', 'lucas.ms.elo84@gmail.com', 1, '', '', '', '0000-00-00 00:00:00', '', '2018-12-02 15:02:05', 'Tiago'),
 (4, 'Amarildo da Silva', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '249.395.834-95', '1234354465', '1990-11-22', 'Joao bettega 1123', '', '', '(41) 99999-8876', 'amarildo@psicosys.com', 2, '', '', '', '2018-11-28 20:10:42', 'admin', '0000-00-00 00:00:00', ''),
-(6, 'Amanda da Silva ', '', 'Psicologo', NULL, NULL, NULL, NULL, '895.489.759-78', 'CRM', '1985-09-15', 'Joao bettega 8989', '40.985-743', '', '(42) 98898-9898', 'amanda@psicosys.com', 1, '', '', '', '2018-11-28 20:24:59', 'admin', '0000-00-00 00:00:00', ''),
+(6, 'Amanda da Silva ', 'off', 'Psicologo', NULL, NULL, NULL, NULL, '098.137.959-13', 'CRM', '1985-09-15', 'Joao bettega 8989', '40.985-743', '', '(42) 98898-9898', 'amanda@psicosys.com', 1, '', '', '', '2018-11-28 20:24:59', 'admin', '2018-12-02 15:03:22', 'Tiago'),
 (7, 'Debora Kaynara Patricio da Silva', 'on', 'Psiquiatria', 'C', NULL, NULL, NULL, '534.589.385-40', 'CRM', '1990-06-04', 'lucas barros 1234', '40.859-384', '', '(41) 98989-8988', 'debora@psicosys.com', 3, '', '', '', '2018-11-28 20:28:12', 'admin', '0000-00-00 00:00:00', ''),
 (8, 'Arthur Felipe R. Costa', '', 'Psicologo', 'A', NULL, NULL, NULL, '249.395.834-95', 'CRM', '1995-11-14', 'Alferes Poli 1345', '45.469-809', '', '(41) 87653-4335', 'arthur@psicosys.com', 1, '', '', '', '2018-11-28 20:29:28', 'admin', '0000-00-00 00:00:00', ''),
 (9, 'Paulo Holanda Ribeiro Netto', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '234.567.865-43', 'CRM', '1970-12-09', 'Rua Joana Roncaglio Bertoldi', '81.490-468', '', '(41) 87653-4335', 'paulo@psicosys.com', 1, '', '', '', '2018-11-28 20:30:25', 'admin', '0000-00-00 00:00:00', ''),
 (10, 'Gustavo Gosmatti', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '249.395.834-95', 'CRM', '1998-06-23', 'Rua Alferes Poli 123', '98989898', '', '(41) 87653-4335', '', 1, '', '', '', '2018-11-28 21:31:59', 'admin', '0000-00-00 00:00:00', ''),
 (11, 'Gustavo Gosmatti', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '249.395.834-95', 'CRM', '1998-06-23', 'Rua Alferes Poli 123', '98989898', '', '(41) 87653-4335', '', 1, '', '', '', '2018-11-28 21:32:00', 'admin', '0000-00-00 00:00:00', ''),
-(12, 'Gustavo Gosmatti', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '249.395.834-95', 'CRM', '1998-06-23', 'Rua Alferes Poli 123', '98989898', '', '(41) 87653-4335', '', 1, '', '', '', '2018-11-28 21:32:00', 'admin', '0000-00-00 00:00:00', '');
+(12, 'Gustavo Gosmatti', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '249.395.834-95', 'CRM', '1998-06-23', 'Rua Alferes Poli 123', '98989898', '', '(41) 87653-4335', '', 1, '', '', '', '2018-11-28 21:32:00', 'admin', '0000-00-00 00:00:00', ''),
+(13, 'profissa', '', 'Psiquiatra', NULL, NULL, NULL, NULL, '123.456.789-01', 'COREN', '2018-12-03', 'Rua Pedro Gusso, 12 ', '', '', '(41) 98805-5870', '', 1, '', '', '', '2018-12-02 14:37:28', 'Tiago', '0000-00-00 00:00:00', ''),
+(14, 'Cavalo', '', 'Ginecologista', NULL, NULL, NULL, NULL, '030.471.279-56', 'COREN', '2018-12-12', 'Rua Pedro Gusso, 12 ', '', '', '(41) 99860-3019', '', 1, '', '', '', '2018-12-02 14:38:42', 'Tiago', '0000-00-00 00:00:00', ''),
+(15, 'Cavalo', '', 'Ginecologista', NULL, NULL, NULL, NULL, '030.471.279-56', 'COREN', '2018-12-12', 'Rua Pedro Gusso, 12 ', '', '', '(41) 99860-3019', '', 1, '', '', '', '2018-12-02 14:52:46', 'Tiago', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -211,6 +228,17 @@ CREATE TABLE `tab_prontuarios` (
   `PRON_CLIENTE` int(11) NOT NULL,
   `PRON_DESC` varchar(5000) DEFAULT NULL,
   `PRON_DATAHORA` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tab_salas`
+--
+
+CREATE TABLE `tab_salas` (
+  `SALA_COD` int(11) NOT NULL,
+  `SALA_DESC` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -250,6 +278,7 @@ CREATE TABLE `tab_usuarios` (
   `USU_EMAIL` varchar(100) NOT NULL,
   `USU_SENHA` varchar(100) NOT NULL,
   `USU_STATUS` varchar(3) DEFAULT NULL,
+  `USU_TIPO` varchar(20) DEFAULT NULL,
   `CRIADO_EM` datetime DEFAULT NULL,
   `USUARIO_CRI` varchar(50) DEFAULT NULL,
   `ALTERADO_EM` datetime DEFAULT NULL,
@@ -260,15 +289,18 @@ CREATE TABLE `tab_usuarios` (
 -- Extraindo dados da tabela `tab_usuarios`
 --
 
-INSERT INTO `tab_usuarios` (`USU_COD`, `USU_NOME`, `USU_EMAIL`, `USU_SENHA`, `USU_STATUS`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
-(3, 'Admin', 'administrador@psicosys.com.br', '1234', 'on', '2018-11-22 21:35:11', '', '2018-11-26 21:26:13', 'administrador'),
-(4, 'Tiago ', 'tiago@softdib.com.br', 'tiago', 'on', '2018-11-22 21:35:25', '', '2018-11-26 21:34:18', 'Tiago'),
-(7, 'Juca bala', 'jucabala@psicosys.com.br', '123', 'on', '2018-11-26 21:51:35', 'Tiago', '0000-00-00 00:00:00', ''),
-(8, 'Juca bala', 'jucabala@psicosys.com.br', '234', 'on', '0000-00-00 00:00:00', 'Tiago', '0000-00-00 00:00:00', ''),
-(9, 'Juca bala', 'jucabala@psicosys.com.br', '234', 'on', '2018-11-26 22:03:37', '', '0000-00-00 00:00:00', ''),
-(10, 'Juca bala', 'jucabala@psicosys.com.br', '234', 'on', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
-(11, 'Juca bala', 'jucabala@psicosys.com.br', '234', 'on', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
-(12, 'Luiz ', 'luis@softdib,com.br', 'luiz', 'off', '2018-11-27 13:11:56', 'Tiago', '2018-11-27 13:15:51', 'Tiago');
+INSERT INTO `tab_usuarios` (`USU_COD`, `USU_NOME`, `USU_EMAIL`, `USU_SENHA`, `USU_STATUS`, `USU_TIPO`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
+(3, 'Admin', 'administrador@psicosys.com.br', '1234', 'on', NULL, '2018-11-22 21:35:11', '', '2018-11-26 21:26:13', 'administrador'),
+(4, 'Tiago ', 'tiago@softdib.com.br', 'tiago', 'on', NULL, '2018-11-22 21:35:25', '', '2018-11-26 21:34:18', 'Tiago'),
+(7, 'Juca bala', 'jucabala@psicosys.com.br', '123', 'on', NULL, '2018-11-26 21:51:35', 'Tiago', '0000-00-00 00:00:00', ''),
+(8, 'Juca bala', 'jucabala@psicosys.com.br', '234', 'on', NULL, '0000-00-00 00:00:00', 'Tiago', '0000-00-00 00:00:00', ''),
+(9, 'Juca bala', 'jucabala@psicosys.com.br', '234', 'on', NULL, '2018-11-26 22:03:37', '', '0000-00-00 00:00:00', ''),
+(10, 'Juca bala', 'jucabala@psicosys.com.br', '234', 'on', NULL, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
+(11, 'Juca bala', 'jucabala@psicosys.com.br', '234', 'on', NULL, '0000-00-00 00:00:00', '', '0000-00-00 00:00:00', ''),
+(12, 'Luiz ', 'luis@softdib,com.br', 'luiz', 'off', NULL, '2018-11-27 13:11:56', 'Tiago', '2018-11-27 13:15:51', 'Tiago'),
+(13, 'Marco AurÃ©lio', 'marcoaurelio@pop.com.br', 'marco', 'on', 'Administrativo', '2018-12-02 01:08:33', '', '2018-12-02 01:10:09', 'Tiago'),
+(14, 'Tatu', 'tatu@hotmail.com', 'tatu', NULL, 'Psiquiatra', '2018-12-02 01:14:49', 'Tiago', '0000-00-00 00:00:00', ''),
+(15, 'JoÃ£o das Coves', 'joaodascoves@orkut.com', 'coves', 'on', 'Administrativo', '2018-12-02 01:16:33', 'Tiago', '0000-00-00 00:00:00', '');
 
 --
 -- Indexes for dumped tables
@@ -308,6 +340,12 @@ ALTER TABLE `tab_prontuarios`
   ADD PRIMARY KEY (`PRON_ID`);
 
 --
+-- Indexes for table `tab_salas`
+--
+ALTER TABLE `tab_salas`
+  ADD PRIMARY KEY (`SALA_COD`);
+
+--
 -- Indexes for table `tab_tpconsulta`
 --
 ALTER TABLE `tab_tpconsulta`
@@ -327,7 +365,7 @@ ALTER TABLE `tab_usuarios`
 -- AUTO_INCREMENT for table `tab_clientes`
 --
 ALTER TABLE `tab_clientes`
-  MODIFY `CLI_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `CLI_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `tab_convenios`
 --
@@ -342,12 +380,17 @@ ALTER TABLE `tab_eventos`
 -- AUTO_INCREMENT for table `tab_profissionais`
 --
 ALTER TABLE `tab_profissionais`
-  MODIFY `PROF_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `PROF_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `tab_prontuarios`
 --
 ALTER TABLE `tab_prontuarios`
   MODIFY `PRON_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tab_salas`
+--
+ALTER TABLE `tab_salas`
+  MODIFY `SALA_COD` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tab_tpconsulta`
 --
@@ -357,7 +400,7 @@ ALTER TABLE `tab_tpconsulta`
 -- AUTO_INCREMENT for table `tab_usuarios`
 --
 ALTER TABLE `tab_usuarios`
-  MODIFY `USU_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;COMMIT;
+  MODIFY `USU_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
