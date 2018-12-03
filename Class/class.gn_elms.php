@@ -1,6 +1,7 @@
 <?php
+
     session_start();
-    
+    date_default_timezone_set('America/Sao_Paulo');
     class gn_elms{
         
         function __construct(){
