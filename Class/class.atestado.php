@@ -23,12 +23,12 @@
 			$pdf = new FPDF();
 			$pdf->AddPage();
 			$pdf->Cell(35,12,'',0,0,'C');
-			$pdf->Image('./img/logo_Psicosys.png',15,10,30);
+			$pdf->Image('./img/logo_Psicosys.png',15,10,25);
 			$pdf->SetFont('Arial','B',16);
 			$pdf->setXY(70,10);
-			$pdf->Cell(100,12,'ATESTADO MÉDICO',0,1,'C');
+			$pdf->Cell(90,12,'ATESTADO MÉDICO',0,1,'C');
 			
-			$pdf->setXY(10,40);
+			$pdf->setXY(10,35);
 			$pdf->Cell(190,0,'',1,1,'C');
 			
 			$pdf->setY(70);

@@ -46,6 +46,17 @@
             
             
         }
+
+        public function getSalas(){
+            $SQL = "SELECT SALA_DESC,SALA_COD FROM tab_salas " ; 
+            $exec = $this->executarNoBanco($SQL);
+
+        
+            return $exec;
+            //Conectando ao banco de dados
+            
+            
+        }
                         
     }   
         

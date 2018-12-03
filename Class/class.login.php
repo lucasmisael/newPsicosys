@@ -25,8 +25,15 @@ function tryLogin($usuario , $senha){
             $rows = mysqli_num_rows($resultado );
             
             
+                // var_dump($rows);
             if($rows > 0){
-                $_SESSION['login'] = $usuario;
+                foreach ($resultado as $key => $value) {
+                    $_SESSION['login'] = $value['USU_NOME'];
+                    $_SESSION['email'] = $value['USU_EMAIL'];
+                    $_SESSION['tipo']  = $value['USU_TIPO'];
+                    $_SESSION['id']    = $value['USU_COD'];
+                    
+                }
                 // $_SESSION['senha'] = $password; 
                 // $_SESSION['usr_login'] = $usuario;
                 header("Location: ../menuPrincipal.php");
