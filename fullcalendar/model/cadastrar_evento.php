@@ -6,6 +6,7 @@
         $idprof   = $_GET["prof"];
         $data     = $_GET["dataini"];
         $idTpDta  = $_GET["datafim"];
+        $sala     = $_GET["sala"];
 
         //traz quantidade em minutos para somar
         $sql1 = "SELECT CONS_TEMPO FROM Tab_tpConsulta WHERE CONS_COD = $idTpDta limit 1";
@@ -30,7 +31,8 @@
         $ev = "SELECT id FROM tab_eventos 
                 WHERE start <= '$data' 
                 AND  end >= '$data' 
-                AND prof_id = '$idprof'
+                AND PROF_ID = '$idprof'
+                AND SALA_ID = $sala
                 AND STATUS = 'A'
                ";
         $ex = $e->executarNoBanco($ev);
@@ -42,7 +44,7 @@
         elseif($data < date('Y/m/d').' '.date('H:i'))
             echo "3";
         else{   
-            $query = "INSERT INTO tab_eventos (status,title,prof_id,cli_id ,start, end, id_tpconsulta) VALUES ('A','$nm',$cli,$idprof, '$data','$dtfim_soma',$idTpDta)";
+            $query = "INSERT INTO tab_eventos (status,title,prof_id,cli_id ,start, end, id_tpconsulta , sala_id) VALUES ('A','$nm',$cli,$idprof, '$data','$dtfim_soma',$idTpDta, $sala)";
 
             $exec = $e->executarNoBanco($query);                         
         

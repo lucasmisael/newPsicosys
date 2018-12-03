@@ -1,14 +1,6 @@
 <?php 
         include "conexao.php";
-        // $this->ver($_POST);
        
-        // $nomecli  = $_GET["cli"];
-        // $idprof   = $_GET["idcol"];
-        // $idcli    = $_GET["idcli"];
-        // $data     = $_GET["dataini"];
-        // $datafim  = $_GET["datafim"];
-
-        // var_dump($_GET);    
         $e = new conexao();
 
         $cli      = $_GET["cli"];
@@ -18,6 +10,7 @@
         $id       = $_GET['id'];
         $idTpDta  = $_GET["datafim"];
         $status   = $_GET['status']; 
+        $sala     = $_GET["sala"];
         $valida = true; 
 
         $sql1 = "SELECT CONS_TEMPO FROM Tab_tpConsulta WHERE CONS_COD = $idTpDta limit 1";
@@ -48,7 +41,7 @@
         if($valida == false)
             echo "3";   
         else{
-            $query = "UPDATE tab_eventos SET title='$nm',prof_id=$idprof, cli_id=$cli,start='$data',end='$dtfim_soma', id_tpconsulta=$idTpDta, STATUS= '$status'  WHERE id = $id";
+            $query = "UPDATE tab_eventos SET title='$nm',prof_id=$idprof, cli_id=$cli,start='$data',end='$dtfim_soma', id_tpconsulta=$idTpDta, STATUS= '$status', sala_id = $sala  WHERE id = $id";
             
             $exec = $e->executarNoBanco($query);                         
             if($exec){            

@@ -11,9 +11,9 @@
         <meta charset="utf-8">
         <meta lang="pt-BR">
         <title> Atestados </title>
-        <script src="lib/externos/jquery.min.js"></script>
-        <script src="lib/bootstrap/js/jquery-3.3.1.min.js"></script>
-        <script src="lib/externos/bootstrap.min.js"></script>
+        <!-- <script src="lib/externos/jquery.min.js"></script> -->
+        <!-- <script src="lib/bootstrap/js/jquery-3.3.1.min.js"></script> -->
+        <!-- <script src="lib/externos/bootstrap.min.js"></script> -->
         <script src="view/js/modal_atestado.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>

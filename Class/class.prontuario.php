@@ -23,11 +23,24 @@ class prontuario extends gn_tabela
                 "banco"     => "Pron_Profissional",
                 "id"        => "Pron_Profissional",
                 "label"     => "Profissional",
-                "orderBy"   => true, //?? Pendente
+                // "orderBy"   => true, //?? Pendente
                 "required"  => true,
                 "pesquisa"  => true,
                 "readonly"  => true,
-                "tamanho"   => 6,
+                "tamanho"   => 5,
+                "value"     => $_SESSION['login']
+            ),
+            "Pron_IdProf" => array(
+                "tagname"  => "input",
+                "class"    => 'form-control ' ,
+                "banco"    => "Pron_IdProf",
+                "id"       => "Pron_IdProf",
+                "label"    => "Id Prof.",
+                "pesquisa" => false,
+                "readonly"  => true,
+                "tamanho"  => 1,
+                'style'    => 'visible:false',
+                'value'    => $_SESSION['id'] 
             ),
             "Pron_Cliente" => array(
                 "tagname"      => "select",
@@ -52,7 +65,19 @@ class prontuario extends gn_tabela
                 "label"    => "Data e Hora",
                 "pesquisa" => true,
                 "readonly" => true,
+                "callback" => "lista_callback_data",
                 "tamanho"  => 6,
+                "value"    => date('Y-m-d H:i')
+            ),
+             "Pron_Cli" => array(
+                "tagname"  => "input",
+                "class"    => 'form-control ' ,
+                "banco"    => "Pron_Cliente",
+                "id"       => "Pron_CliDesc",
+                "label"    => "Cli",
+                "pesquisa" => true,
+                "tamanho"  => 6,
+                "callback" => "callback_nomeCli"
             ),
             "Pron_Desc" => array(
                 "tagname"  => "input",
@@ -63,6 +88,7 @@ class prontuario extends gn_tabela
                 "pesquisa" => true,
                 "tamanho"  => 12,
             ),
+            
         );
     }
  function lista_callback_check($vl){
@@ -95,6 +121,16 @@ class prontuario extends gn_tabela
         ";
     }
     
-    
+     function lista_callback_data($valor)
+    {
+
+        if ($valor == "0000-00-00" || $valor == "0000-00-00 00:00:00" || empty($valor)  ){
+            return "";
+        }
+        
+        return date( 'd/m/Y', strtotime( $valor ) ) ; 
+    }
+
+   
     
 }

@@ -59,7 +59,7 @@
                     editable:true,
                     eventClick:  function(event, jsEvent, view) {
                         
-                        // console.log(event.CLI_ID);
+                        console.log(event);
                         let e =  event; 
                         // console.log(e);
                         $("#cliente").val(e.CLI_ID);
@@ -67,6 +67,7 @@
                         $('#status').val(event.STATUS);
                         $("#data").val(event.start._i);
                         $("#datafim").val(event.ID_TPCONSULTA);
+                        $("#sala").val(event.SALA_ID);
                         $("#myModal").modal();
 
                         $('#submit_btn').hide();
@@ -98,9 +99,9 @@
                     var dados = jQuery(this).serialize();
 
                     
-                    var url = "fullcalendar/model/cadastrar_evento.php?cli="+$('#cliente').val()+"&prof="+$('#colaborador').val()+"&dataini="+$('#data').val()+"&datafim="+$('#datafim').val(); 
+                    var url = "fullcalendar/model/cadastrar_evento.php?cli="+$('#cliente').val()+"&prof="+$('#colaborador').val()+"&dataini="+$('#data').val()+"&datafim="+$('#datafim').val()+"&sala="+$('#sala').val(); 
                     // var url = 'fullCalendar/model/cadastrar_evento.php?id=1'
-                    alert(url);
+                    // alert(url);
                     $.ajax({
                         type: "GET",
                         url: url,
@@ -143,7 +144,7 @@
                     // var url = "fullcalendar/model/alterar_evento.php?id="+event.id+"&nome='"+$('#nome').val()+"'&data='"+$('#data').val()+"'";     
                     /*var url = "fullcalendar/model/alterar_evento.php?cli='"+$('#cliente').val()+"'&idcli='"+$('#idcli').val()+"'&prof='"+$('#colaborador').val()+"'&idcol='"+$('#idcol').val()+"'&dataini='"+$('#data').val()+"'&datafim="+$('#datafim').val()+"&id="+event.id; */
 
-                    var url = "fullcalendar/model/alterar_evento.php?cli="+$('#cliente').val()+"&prof="+$('#colaborador').val()+"&dataini="+$('#data').val()+"&datafim="+$('#datafim').val()+'&id='+e.ID+'&status='+$('#status').val(); 
+                    var url = "fullcalendar/model/alterar_evento.php?cli="+$('#cliente').val()+"&prof="+$('#colaborador').val()+"&dataini="+$('#data').val()+"&datafim="+$('#datafim').val()+'&id='+e.ID+'&status='+$('#status').val()+"&sala="+$('#sala').val(); 
 
                     // alert(url);
                     $.ajax({
@@ -151,7 +152,7 @@
                         url: url,
                         data: dados,
                         success: function(data){
-                            // alert(data);
+                            alert(url);
                             if(data == "1"){
                                 // alert("Alterado com sucesso! ");
                                 //atualiza a página!
@@ -316,6 +317,28 @@
 
                             <!-- CALENDARIO -->
                            <label for="data"> Data Consulta:</label> <input id="data" type="text" name="data" class="form-control date" required/> <br>
+                            <label for="sala"> Sala:</label> <select id="sala" name="sala" class="form-control">
+                            <?php 
+
+                                
+                                $con = $a->getSalas();
+
+
+                               foreach ($con as $key => $value) {
+                                var_dump( $value);
+                                
+                                    echo '<option value="'.$value['SALA_COD'].'">'.$value['SALA_DESC'].'</option>';
+                                
+                               }
+                                
+                                
+
+                            ?> 
+
+                            </select><br>
+
+
+
                             <!-- COMBOBOX TIPO CONSULTAS -->
                             <label for="datafim"> Tipo de Consulta:</label> <select id="datafim" name="datafim" class="form-control">
                             <?php 
