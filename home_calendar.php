@@ -62,7 +62,11 @@
                         console.log(event);
                         let e =  event; 
                         // console.log(e);
-                        $("#cliente").val(e.CLI_ID);
+                        let form = $('#novo_evento').find('input[id=colaborador]');
+                       /*$("#cliente").find('#select2-cliente-container').attr({
+
+                                                                                'title' : e.CLI_ID}) ;*/
+                        $("#cliente").val( event.CLI_ID);
                         $("#colaborador").val(event.PROF_ID);
                         $('#status').val(event.STATUS);
                         $("#data").val(event.start._i);
@@ -215,12 +219,22 @@
 
            }); 
 
-           
+            /* $("#data").datepicker({
+                numberOfMonths: 1,
+            dateFormat: "dd/mm/yy",
+                onSelect: function(selected) {
+                    $("#endDate")
+              .datepicker("option","minDate", selected)
+                }
+            }).datepicker("setDate", "-7", new Date());
+*/
 
-            $(document).ready(function() {
+               
+
+           /* $(document).ready(function() {
                 $('.js-example-basic-single').select2({ width: '100%' });
             });
-
+*/
            
 
             function consultas(){

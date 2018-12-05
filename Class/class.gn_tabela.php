@@ -87,29 +87,56 @@ class gn_tabela
                         $VALUES[] = "'$valor'" ; 
                     }
             }
-            if ($chave == "Cli_Cpf" || $chave == "Prof_Cnpj_Cpf")
+            if ($chave == "Cli_Cpf" || $chave == "Prof_Cnpj_Cpf"   ){
                 $cpf = $this->validaCPF($valor);
+                $procura = $valor;
+
+            }
+            elseif($chave == "Conv_Cnpj"){
+                $cpf = $this->validaCNPJ($valor);
+                $procura = $valor;                
+            }
+            elseif($chave == 'usu_nome' || $chave == 'usu_email')
+                $procura = $valor;                
+            // var_dump($chave);
                 
                 // var_dump();
         }
 
         // var_dump($cpf);
         if( $cpf  != 'false')
-            echo"<script>alert('CPF INVALIDO!')</script>";
+           echo($this->tabela == 'tab_convenios' ? "<script>alert('CNPJ INVALIDO!')</script>" :  "<script>alert('CPF INVALIDO!')</script>");
         
         else{
   
         $INSERT = implode(",",$INSERT);
         $VALUES = implode(",",$VALUES);
         
-        $SQL = "INSERT INTO `$this->tabela`($INSERT)  VALUES ( $VALUES);";
-        // $this->ver($SQL);
-        $this->executarNoBanco($SQL);
-        echo"<script>alert('Cadastrado com sucesso!')</script>";
-            
-        $cache = $this->montarCadastro();
-            
-        return $cache;        
+
+        //Valida se Ja existe CPF CADASTRADO
+        if($this->tabela == 'tab_clientes')
+            $val = "SELECT CLI_CPF FROM tab_clientes WHERE CLI_CPF = '".$procura."'";
+        elseif($this->tabela == 'tab_profissionais')
+            $val = "SELECT PROF_CNPJ_CPF FROM tab_profissionais WHERE PROF_CNPJ_CPF = '".$procura."'";
+        elseif($this->tabela == 'tab_convenios')
+            $val = "SELECT CONV_CNPJ FROM tab_convenios WHERE CONV_CNPJ = '".$procura."'";
+        elseif($this->tabela == 'tab_usuarios')
+            $val = "SELECT usu_nome FROM tab_usuarios WHERE usu_nome = '".strtoupper($procura)."' OR usu_email = '".strtoupper($procura)."'";
+
+        $a = $this->getone($val);
+
+        if(!empty($a))
+            echo("<script>alert('Impossível cadastrar registro duplicado !')</script>" );
+        else{
+            $SQL = "INSERT INTO `$this->tabela`($INSERT)  VALUES ( ".strtoupper($VALUES).");";
+            // $this->ver($SQL);
+            $this->executarNoBanco($SQL);
+            echo"<script>alert('Cadastrado com sucesso!')</script>";
+                
+            $cache = $this->montarCadastro();
+                
+            return $cache;
+            }        
         } 
     }
     
@@ -182,20 +209,28 @@ class gn_tabela
                     $resquest = (isset($_REQUEST['Cli_Cpf']) ? $_REQUEST['Cli_Cpf'] : $_REQUEST['Prof_Cnpj_Cpf']  );
                     $validaCpf = $this->validaCPF($resquest);
 
-                }    
+                }   
+                elseif($coluna == 'Conv_Cnpj' ){
+                    $resquest = (isset($_REQUEST['Conv_Cnpj']) ? $_REQUEST['Conv_Cnpj'] : ''  );
+                    $validaCpf = $this->validaCNPJ($resquest);
+
+                }     
             }
 
             
         }
-        if( isset($validaCpf) && $validaCpf  != 'false')
-           echo"<script>alert('CPF INVALIDO!')</script>";
-        
-        // var_dump($SQL_COLUNAS);
-        $SQL_COLUNAS = implode(', ', $SQL_COLUNAS);
-        $SQL = "UPDATE $this->tabela SET $SQL_COLUNAS WHERE $this->chave = {$_REQUEST[$this->chave]};";
-        $this->executarNoBanco($SQL);
-        //var_dump($_SESSION['login']);
-        return $this->pesquisar();
+        if( isset($validaCpf) && $validaCpf  != 'false'){
+           
+           echo($this->tabela == 'tab_convenios' ? "<script>alert('CNPJ INVALIDO!')</script>" :  "<script>alert('CPF INVALIDO!')</script>");
+        }
+        else{
+            // var_dump($SQL_COLUNAS);
+            $SQL_COLUNAS = implode(', ', $SQL_COLUNAS);
+            $SQL = "UPDATE $this->tabela SET $SQL_COLUNAS WHERE $this->chave = {$_REQUEST[$this->chave]};";
+            $this->executarNoBanco($SQL);
+            //var_dump($_SESSION['login']);
+            return $this->pesquisar();
+        }
     }
     
     
@@ -452,7 +487,7 @@ class gn_tabela
         $cache.="
             
             <div class='col-lg-12 table-responsive'>
-                <table class='table table-striped table-bordered consultar table-hover' style='border-radius: 10px;' '>
+                <table class='table table-striped table-bordered consultare table-hover' style='border-radius: 10px;' id='consultar'>
                     <thead style='font-size: 13px; background: #005C97;  /* fallback for old browsers */
                         background: -webkit-linear-gradient(to right, #363795, #005C97);  /* Chrome 10-25, Safari 5.1-6 */
                         background: linear-gradient(to right, #363795, #005C97); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;color:white;' >
@@ -597,6 +632,67 @@ class gn_tabela
         return $resultado;
     }
 
+    public static function getAll($SQL){
+
+        $servername  =  "localhost"    ; // Server em que esta o banco
+        $username    =  "root"         ; // usuario do banco
+        $password    =  ""             ; // senha do banco
+        $database    =  "newpsicosys"  ; // banco de dados
+
+      
+        $mysqli = new mysqli($servername,$username, $password,$database);
+
+        /* check connection */
+        if (mysqli_connect_errno()) {
+            printf("Connect failed: %s\n", mysqli_connect_error());
+            exit();
+        }
+        
+        $result = $mysqli->query($SQL);
+        // $result=mysqli_query($mysqli,$SQL);    
+        // Fetch all
+        $arr = array();
+        while($row = $result->fetch_assoc()){
+            $arr[] = $row;
+
+        }
+
+        $mysqli->close();
+        return $arr;
+
+    }
+
+     public static function getOne($SQL){
+
+        $servername  =  "localhost"    ; // Server em que esta o banco
+        $username    =  "root"         ; // usuario do banco
+        $password    =  ""             ; // senha do banco
+        $database    =  "newpsicosys"  ; // banco de dados
+
+      
+        $mysqli = new mysqli($servername,$username, $password,$database);
+
+        /* check connection */
+        if (mysqli_connect_errno()) {
+            printf("Connect failed: %s\n", mysqli_connect_error());
+            exit();
+        }
+        
+        $result = $mysqli->query($SQL);
+        // $result=mysqli_query($mysqli,$SQL);    
+        // Fetch all
+        // var_dump($SQL);
+        $arr = array();
+        while($row = $result->fetch_assoc()){
+            $arr = $row;
+
+        }
+
+        $mysqli->close();
+        return $arr;
+
+    }
+
     public function getClientes(){
         $SQL = "SELECT *  FROM tab_clientes " ; 
         $this->executarNoBanco($SQL);
@@ -607,6 +703,14 @@ class gn_tabela
         header( 'Location: ./view/modal_atestado' );
     }
 
+    public function relatorio(){
+        // header( 'Location: ./view/modal_relatorio' );
+    }
+
+    public function valida(){
+        // $this->validaCPF($_GET['cpf']);
+
+    }
     public function transforma($obj){
         
 
@@ -621,33 +725,33 @@ class gn_tabela
 /*
     Valida CPF
 */
-function validaCPF($CpfCnpj = null) {
+function validaCPF($Cpf = null) {
 
 	// Verifica se um número foi informado
-	if(empty($CpfCnpj)) {
+	if(empty($Cpf)) {
 		return false;
 	}
 
 	// Elimina possivel mascara
-	$CpfCnpj = preg_replace("/[^0-9]/", "", $CpfCnpj);
-	$CpfCnpj = str_pad($CpfCnpj, 11, '0', STR_PAD_LEFT);
+	$Cpf = preg_replace("/[^0-9]/", "", $Cpf);
+	$Cpf = str_pad($Cpf, 11, '0', STR_PAD_LEFT);
 	
 	// Verifica se o numero de digitos informados é igual a 11 
-	if (strlen($CpfCnpj) != 11) {
+	if (strlen($Cpf) != 11) {
 		return false;
 	}
 	// Verifica se nenhuma das sequências invalidas abaixo 
 	// foi digitada. Caso afirmativo, retorna falso
-	else if ($CpfCnpj == '00000000000' || 
-		$CpfCnpj == '11111111111' || 
-		$CpfCnpj == '22222222222' || 
-		$CpfCnpj == '33333333333' || 
-		$CpfCnpj == '44444444444' || 
-		$CpfCnpj == '55555555555' || 
-		$CpfCnpj == '66666666666' || 
-		$CpfCnpj == '77777777777' || 
-		$CpfCnpj == '88888888888' || 
-		$CpfCnpj == '99999999999') {
+	else if ($Cpf == '00000000000' || 
+		$Cpf == '11111111111' || 
+		$Cpf == '22222222222' || 
+		$Cpf == '33333333333' || 
+		$Cpf == '44444444444' || 
+		$Cpf == '55555555555' || 
+		$Cpf == '66666666666' || 
+		$Cpf == '77777777777' || 
+		$Cpf == '88888888888' || 
+		$Cpf == '99999999999') {
 		return false;
 	 // Calcula os digitos verificadores para verificar se o
 	 // CPF é válido
@@ -656,10 +760,10 @@ function validaCPF($CpfCnpj = null) {
 		for ($t = 9; $t < 11; $t++) {
 			
 			for ($d = 0, $c = 0; $c < $t; $c++) {
-				$d += $CpfCnpj{$c} * (($t + 1) - $c);
+				$d += $Cpf{$c} * (($t + 1) - $c);
 			}
 			$d = ((10 * $d) % 11) % 10;
-			if ($CpfCnpj{$c} != $d) {
+			if ($Cpf{$c} != $d) {
 				return false;
 			}
 		}
@@ -668,5 +772,67 @@ function validaCPF($CpfCnpj = null) {
 	}
 }
 
+function validaCNPJ($cnpj = null) {
+
+    // Verifica se um número foi informado
+    if(empty($cnpj)) {
+        return false;
+    }
+
+    // Elimina possivel mascara
+    $cnpj = preg_replace("/[^0-9]/", "", $cnpj);
+    $cnpj = str_pad($cnpj, 14, '0', STR_PAD_LEFT);
+    
+    // Verifica se o numero de digitos informados é igual a 11 
+    if (strlen($cnpj) != 14) {
+        return false;
+    }
+    
+    // Verifica se nenhuma das sequências invalidas abaixo 
+    // foi digitada. Caso afirmativo, retorna falso
+    else if ($cnpj == '00000000000000' || 
+        $cnpj == '11111111111111' || 
+        $cnpj == '22222222222222' || 
+        $cnpj == '33333333333333' || 
+        $cnpj == '44444444444444' || 
+        $cnpj == '55555555555555' || 
+        $cnpj == '66666666666666' || 
+        $cnpj == '77777777777777' || 
+        $cnpj == '88888888888888' || 
+        $cnpj == '99999999999999') {
+        return false;
+        
+     // Calcula os digitos verificadores para verificar se o
+     // CPF é válido
+     } else {   
+     
+        $j = 5;
+        $k = 6;
+        $soma1 = "";
+        $soma2 = "";
+
+        for ($i = 0; $i < 13; $i++) {
+
+            $j = $j == 1 ? 9 : $j;
+            $k = $k == 1 ? 9 : $k;
+
+            $soma2 = ($cnpj{$i} * $k) + intval($soma2);
+
+            if ($i < 12) {
+                $soma1 = ($cnpj{$i} * $j) +  intval($soma2);;
+            }
+
+            $k--;
+            $j--;
+
+        }
+
+        $digito1 = $soma1 % 11 < 2 ? 0 : 11 - $soma1 % 11;
+        $digito2 = $soma2 % 11 < 2 ? 0 : 11 - $soma2 % 11;
+
+        // return (($cnpj{12} == $digito1) and ($cnpj{13} == $digito2));
+        return true;
+    }
+}
 
 }

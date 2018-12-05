@@ -49,6 +49,8 @@
             <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
             <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 
+
+
             <!-- Checkbox -->
             <script type="text/javascript" charset="utf8" src="lib/externos/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
             <link rel="stylesheet" type="text/css" href="lib/externos/bootstrap-toggle/css/bootstrap-toggle.min.css"/ >
@@ -57,7 +59,7 @@
             <!--FONT- AWESOME  -->
             <script src="lib/externos/fontawesome/js/all.js"></script>   
             <link href="lib/externos/fontawesome/css/all.css" rel="stylesheet">
-             <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"></script>
+            <!-- <script type="text/javascript" charset="utf8" src="lib/externos/datatables/json/portuguese.json"></script> -->
 
              <!-- CPF VALIDATOR -->
               <script src="lib/externos/CPFValidator/jquery.cpfcnpj.js"></script>   
@@ -185,16 +187,18 @@
                                     "Graficos"
                                 );
                                 
-                                foreach ($operacaoes4 as $operacao4) {
+                                // foreach ($operacaoes4 as $operacao4) {
                                     echo "
                                         <li class='dropdown'>
                                             <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Financeiro<span class='caret'></span></a>
-                                            <ul class='dropdown-menu'>";
-                                                foreach ($tabelas4 as $tabela4) {
-                                                    echo "<li><a href='$operacao4.php?tabela=$tabela4'>$tabela4</a></li>";
-                                                }
-                                            echo "</ul>
-                                            </li> ";
+                                            <ul class='dropdown-menu'>
+                                                <li >
+                                                    <a href='./modal_relatorio.php' >Relatórios</a>
+                                                </li>
+                                                
+
+                                            </ul>
+                                        </li> ";
                                 
 /*
                                     echo "
@@ -215,7 +219,7 @@
                                     </ul>
                                          </li> ";
 */                                         
-                                }
+                                // }
                                 
                             ?>
                             </ul>
