@@ -85,8 +85,11 @@ class gn_tabela
                     } 
                     else {
                         $VALUES[] = "'$valor'" ; 
+
                     }
+
             }
+
             if ($chave == "Cli_Cpf" || $chave == "Prof_Cnpj_Cpf"   ){
                 $cpf = $this->validaCPF($valor);
                 $procura = $valor;
@@ -96,13 +99,62 @@ class gn_tabela
                 $cpf = $this->validaCNPJ($valor);
                 $procura = $valor;                
             }
-            elseif($chave == 'usu_nome' || $chave == 'usu_email')
+            elseif($chave == 'usu_nome'){
                 $procura = $valor;                
-            // var_dump($chave);
+            }
+            elseif($chave == 'CONS_DESC'){
+                $procura = $valor;
+            }
+            elseif($chave == 'sala_desc')
+                $procura = $valor;
+            
+           
+/*
+            //Cliente
+            if($this->tabela == 'tab_clientes'){
+                if(!isset($chave['Cli_Status']))
+                    $VALUES[] = "Cli_Status = 'off'";
+                elseif(isset($chave['Cli_Status']))
+                    $VALUES[] = "Cli_Status = 'on'";
+            }
+            //Profissional
+            if($this->tabela == 'tab_profissionais'){
+                if(!isset($chave['Prof_Status']))
+                    $VALUES[] = "Prof_Status = 'off'";
+                elseif(isset($chave['Prof_Status']))
+                    $VALUES[] = "Prof_Status = 'on'";
+            }
+            //Convenio
+            if($this->tabela == 'tab_convenios'){
+                if(!isset($chave['Conv_Status']))
+                    $VALUES[] = "Conv_Status = 'off'";
+                elseif(isset($chave['Conv_Status']))
+                    $VALUES[] = "Conv_Status = 'on'";
+            }
+            //Usuario
+            if($this->tabela == 'tab_usuarios'){
+                if(!isset($chave['usu_Status']))
+                    $VALUES[] = "usu_Status = 'off'";
+                elseif(isset($chave['usu_Status']))
+                    $VALUES[] = "usu_Status = 'on'";
+            }
+            */
                 
                 // var_dump();
         }
 
+        if(!isset($_POST['usu_status']) || !isset($_POST['usu_status'])){
+            if($this->tabela == 'tab_usuarios')
+                $INSERT[] = 'usu_status';
+            elseif($this->tabela == 'tab_clientes')
+                $INSERT[] = 'cli_status';      
+            elseif($this->tabela == 'tab_profissionais')
+                $INSERT[] = 'prof_status';                 
+            elseif($this->tabela == 'tab_convenios')
+                $INSERT[] = 'conv_status';
+
+            $VALUES[] = '"on"';
+        }
         // var_dump($cpf);
         if( $cpf  != 'false')
            echo($this->tabela == 'tab_convenios' ? "<script>alert('CNPJ INVALIDO!')</script>" :  "<script>alert('CPF INVALIDO!')</script>");
@@ -113,7 +165,7 @@ class gn_tabela
         $VALUES = implode(",",$VALUES);
         
 
-        //Valida se Ja existe CPF CADASTRADO
+        //Valida se Ja existe um registro cadastrado com a mesma informação
         if($this->tabela == 'tab_clientes')
             $val = "SELECT CLI_CPF FROM tab_clientes WHERE CLI_CPF = '".$procura."'";
         elseif($this->tabela == 'tab_profissionais')
@@ -121,22 +173,27 @@ class gn_tabela
         elseif($this->tabela == 'tab_convenios')
             $val = "SELECT CONV_CNPJ FROM tab_convenios WHERE CONV_CNPJ = '".$procura."'";
         elseif($this->tabela == 'tab_usuarios')
-            $val = "SELECT usu_nome FROM tab_usuarios WHERE usu_nome = '".strtoupper($procura)."' OR usu_email = '".strtoupper($procura)."'";
+            $val = "SELECT usu_nome FROM tab_usuarios WHERE usu_nome = '".strtoupper($procura)."' OR usu_email like '".strtoupper($procura)."%@psicosys.com.br'";
+        elseif($this->tabela == 'tab_tpConsulta')
+            $val = "SELECT CONS_DESC FROM tab_tpconsulta WHERE CONS_DESC = '".strtoupper($procura)."'";
+        elseif($this->tabela == 'tab_salas')
+            $val = "SELECT SALA_DESC FROM tab_salas WHERE SALA_DESC = '".strtoupper($procura)."'";
 
         $a = $this->getone($val);
 
         if(!empty($a))
             echo("<script>alert('Impossível cadastrar registro duplicado !')</script>" );
+
         else{
             $SQL = "INSERT INTO `$this->tabela`($INSERT)  VALUES ( ".strtoupper($VALUES).");";
             // $this->ver($SQL);
             $this->executarNoBanco($SQL);
             echo"<script>alert('Cadastrado com sucesso!')</script>";
                 
-            $cache = $this->montarCadastro();
                 
-            return $cache;
             }        
+            $cache = $this->montarCadastro();
+            return $cache;
         } 
     }
     
@@ -229,8 +286,8 @@ class gn_tabela
             $SQL = "UPDATE $this->tabela SET $SQL_COLUNAS WHERE $this->chave = {$_REQUEST[$this->chave]};";
             $this->executarNoBanco($SQL);
             //var_dump($_SESSION['login']);
-            return $this->pesquisar();
         }
+            return $this->pesquisar();
     }
     
     

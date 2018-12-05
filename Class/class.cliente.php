@@ -356,7 +356,7 @@ class cliente extends gn_tabela
 
         $char =  "<i class='fas fa-circle'></i>";
 
-        if ($vl == 'on'){
+        if ($vl == 'on' || $vl == 'ON'){
             $color = '#369939'    ;
             $this->status = true;
 

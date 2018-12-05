@@ -1,5 +1,5 @@
 <?php
-    
+    // session_start();
     
     function makeHeather(){
         
@@ -107,8 +107,13 @@
                     
                     <!-- DropDown Opções Profissionais -->
                         <ul class="nav navbar-nav">
-                            
+                         
+
                             <?php
+                            $disabled = 'disabled="disabled"';
+
+
+
                                 $operacaoes = array(
                                     "Cadastrar",
                                     "Pesquisar",
@@ -126,7 +131,7 @@
                                 
                                 foreach ($operacaoes as $operacao) {
                                     echo "
-                                        <li class='dropdown'>
+                                        <li class='dropdown' ".($_SESSION['tipo'] == 'ADMINISTRATIVO' || $_SESSION['tipo'] == 'INFORMATICA' ? '' : $disabled ).">
                                             <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>$operacao <span class='caret'></span></a>
                                             <ul class='dropdown-menu'>";
                                                 foreach ($tabelas as $tabela) {
