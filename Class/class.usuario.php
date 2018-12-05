@@ -40,7 +40,7 @@ class usuario extends gn_tabela
                 "banco"      => "usu_Status",
                 "id"         => "usu_Status",
                 "callback"   => "lista_callback_check",
-                "label"      => "Ativo",
+                "label"      => "Status",
                 "type"       => "checkbox",
                 // "checked"    => true, // ?? para sempre vir checado
                 // "required"   => false,

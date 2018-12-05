@@ -145,11 +145,17 @@
             $cache.= "<$tagName $HTML_attrs>";
                 $cache.= "$innerHTML";
             $cache.= $closeTag ? "</$tagName>" : "" ;
-            
             return $cache;
             
         }
-        
+        function textarea($attr=array()){
+           // print_r($attr['tamanho']);
+            $imput = "<div class='col-sn-12 col-md-".$attr['tamanho']."'>
+                <label for='{$attr['banco']}'>{$attr['label']}: </label> <br>";
+                $imput.= $this->gnElm('textarea', $attr);
+            $imput.= "</div>";
+            return $imput;
+        }
         
         
         function getStyle($style)

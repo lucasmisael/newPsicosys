@@ -30,11 +30,11 @@ class prontuario extends gn_tabela
                 "tamanho"   => 5,
                 "value"     => $_SESSION['login']
             ),
-            "Pron_IdProf" => array(
+            "Pron_ProfCod" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Pron_IdProf",
-                "id"       => "Pron_IdProf",
+                "banco"    => "Pron_ProfCod",
+                "id"       => "Pron_ProfCod",
                 "label"    => "Id Prof.",
                 "pesquisa" => false,
                 "readonly"  => true,
@@ -49,13 +49,25 @@ class prontuario extends gn_tabela
                 "banco"        => "Pron_Cliente",
                 "id"           => "Pron_Cliente",
                 "label"        => "Cliente",
-                "custonSelect" => "tab_clientes.Pron_Cliente",
-                "custonFrom"   => "LEFT OUTER JOIN tab_clientes ON (tab_clientes.Pron_Cliente = tab_prontuarios.Pron_Cliente)",
+                "custonSelect" => "Pron_Cliente",
+                "custonFrom"   => "LEFT OUTER JOIN tab_clientes ON (tab_clientes.Cli_Cod = tab_prontuarios.Pron_Cliente)",
                 "SQL"          => "SELECT Cli_Cod, Cli_Nome from tab_clientes",
-                "SELECT_VALUE" => 'Cli_Cod' ,
+                "SELECT_VALUE" => 'Cli_Nome' ,
                 "SELECT_NAME"  => 'Cli_Nome',
-                "pesquisa"     => false,
-                "tamanho"      => 6,
+                "pesquisa"     => true,
+                "tamanho"      => 5,
+            ),
+            "Pron_CliCod" => array(
+                "tagname"  => "input",
+                "class"    => 'form-control ' ,
+                "banco"    => "Pron_CliCod",
+                "id"       => "Pron_CliCod",
+                "label"    => "Id Cliente",
+                "pesquisa" => false,
+                "readonly"  => true,
+                "tamanho"  => 1,
+                'style'    => 'visible:false',
+                'value'    => $_SESSION['id'] 
             ),
             "Pron_DataHora" => array(
                 "tagname"  => "input",
@@ -66,25 +78,16 @@ class prontuario extends gn_tabela
                 "pesquisa" => true,
                 "readonly" => true,
                 "callback" => "lista_callback_data",
-                "tamanho"  => 6,
+                "tamanho"  => 5,
                 "value"    => date('Y-m-d H:i')
             ),
-             "Pron_Cli" => array(
-                "tagname"  => "input",
-                "class"    => 'form-control ' ,
-                "banco"    => "Pron_Cliente",
-                "id"       => "Pron_CliDesc",
-                "label"    => "Cli",
-                "pesquisa" => true,
-                "tamanho"  => 6,
-                "callback" => "callback_nomeCli"
-            ),
             "Pron_Desc" => array(
-                "tagname"  => "input",
+                "tagname"  => "textarea",
                 "class"    => 'form-control ' ,
                 "banco"    => "Pron_Desc",
                 "id"       => "Pron_Desc",
                 "label"    => "Prontuário",
+                'style'    => 'height:290px',
                 "pesquisa" => true,
                 "tamanho"  => 12,
             ),
@@ -131,6 +134,32 @@ class prontuario extends gn_tabela
         return date( 'd/m/Y', strtotime( $valor ) ) ; 
     }
 
-   
+/*
+    function lista_callback_cliente($valor)
+    {
+
+        if ($valor == "Cli_Cod" || empty($valor)  ){
+
+            foreach ($this->valor as $valor)
+            {
+                if ( isset( $valor['custonSelect'] ) && !isset($valor['SQL']) )
+                {   
+                    $SELECT[] = $valor['custonSelect'];
+                } else {
+                    $SELECT[] = $valor['banco'];
+                }
+                
+            }
+
+            "LEFT OUTER JOIN tab_clientes ON (tab_clientes.Cli_Cod = tab_prontuarios.Pron_Cliente)",
+                "SQL"          => "SELECT Cli_Cod, Cli_Nome from tab_clientes",
+            return "";
+        }
+        
+        return date( 'd/m/Y', strtotime( $valor ) ) ; 
+    }
+*/
+
+
     
 }

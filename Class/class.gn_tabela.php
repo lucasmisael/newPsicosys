@@ -71,6 +71,7 @@ class gn_tabela
 
         foreach ($_POST as $chave => $valor)
         {
+            //print_r($_POST); exit();
             if (!isset($this->campos[$chave]["gravar"]) || $this->campos[$chave]["gravar"]===true)
             {
         
@@ -88,21 +89,27 @@ class gn_tabela
                     }
             }
             if ($chave == "Cli_Cpf" || $chave == "Prof_Cnpj_Cpf")
+            {
                 $cpf = $this->validaCPF($valor);
-                
-                // var_dump();
+            }
+            
+            if ($chave == "Cli_Data_Cadastro")
+            {   
+                $VALUES[0] = "'".date( 'Y-m-d')."'";
+            }
+            // var_dump();
         }
-
+        
         // var_dump($cpf);
         if( $cpf  != 'false')
-            echo"<script>alert('CPF INVALIDO!')</script>";
+        echo"<script>alert('CPF INVÁLIDO!')</script>";
         
         else{
-  
-        $INSERT = implode(",",$INSERT);
-        $VALUES = implode(",",$VALUES);
-        
-        $SQL = "INSERT INTO `$this->tabela`($INSERT)  VALUES ( $VALUES);";
+            
+            $INSERT = implode(",",$INSERT);
+            $VALUES = implode(",",$VALUES);
+            
+            $SQL = "INSERT INTO `$this->tabela`($INSERT)  VALUES ( $VALUES);";
         // $this->ver($SQL);
         $this->executarNoBanco($SQL);
         echo"<script>alert('Cadastrado com sucesso!')</script>";
@@ -181,22 +188,24 @@ class gn_tabela
                 if($coluna == 'Cli_Cpf' || $coluna == 'Prof_Cnpj_Cpf'){
                     $resquest = (isset($_REQUEST['Cli_Cpf']) ? $_REQUEST['Cli_Cpf'] : $_REQUEST['Prof_Cnpj_Cpf']  );
                     $validaCpf = $this->validaCPF($resquest);
-
                 }    
             }
-
             
         }
         if( isset($validaCpf) && $validaCpf  != 'false')
-           echo"<script>alert('CPF INVALIDO!')</script>";
-        
+            echo"<script>alert('CPF INVÁLIDO!')</script>";
+        else {
         // var_dump($SQL_COLUNAS);
         $SQL_COLUNAS = implode(', ', $SQL_COLUNAS);
         $SQL = "UPDATE $this->tabela SET $SQL_COLUNAS WHERE $this->chave = {$_REQUEST[$this->chave]};";
         $this->executarNoBanco($SQL);
         //var_dump($_SESSION['login']);
         return $this->pesquisar();
+        }
+        return $this->pesquisar();
     }
+
+
     
     
     
@@ -234,9 +243,10 @@ class gn_tabela
         foreach ($banco as $linha){
             foreach ($linha as $chave => $valor){
                 $dados[$chave] = $valor;
-                
-                
+
             }
+            if(isset($dados['Cli_Data_Cadastro']))
+               $dados['Cli_Data_Cadastro'] = date( 'd/m/Y', strtotime( $dados['Cli_Data_Cadastro'] ) );
         }
         
         return $this->montarFormulario($nome="Editar", $action='editar.php', $dados);
@@ -521,7 +531,7 @@ class gn_tabela
             $aux = $this->executarNoBanco($SQL);
 
             if($aux->num_rows > 0)
-                echo "<script>alert('Impossivel excluir. ')</script>";
+                echo "<script>alert('Exclusão não permitida, há movimentações! ')</script>";
             
         }
 
