@@ -71,6 +71,7 @@ class gn_tabela
 
         foreach ($_POST as $chave => $valor)
         {
+            //print_r($_POST); exit();
             if (!isset($this->campos[$chave]["gravar"]) || $this->campos[$chave]["gravar"]===true)
             {
         
@@ -89,6 +90,12 @@ class gn_tabela
                     }
 
             }
+
+            if ($chave == "Cli_Data_Cadastro")
+            {   
+                $VALUES[0] = "'".date( 'Y-m-d')."'";
+            }
+
 
             if ($chave == "Cli_Cpf" || $chave == "Prof_Cnpj_Cpf"   ){
                 $cpf = $this->validaCPF($valor);
@@ -143,6 +150,7 @@ class gn_tabela
                 // var_dump();
         }
 
+
         if(!isset($_POST['usu_status']) || !isset($_POST['usu_status'])){
             if($this->tabela == 'tab_usuarios')
                 $INSERT[] = 'usu_status';
@@ -155,6 +163,7 @@ class gn_tabela
 
             $VALUES[] = '"on"';
         }
+
         // var_dump($cpf);
         if( $cpf  != 'false')
            echo($this->tabela == 'tab_convenios' ? "<script>alert('CNPJ INVALIDO!')</script>" :  "<script>alert('CPF INVALIDO!')</script>");
@@ -273,7 +282,6 @@ class gn_tabela
 
                 }     
             }
-
             
         }
         if( isset($validaCpf) && $validaCpf  != 'false'){
@@ -289,6 +297,8 @@ class gn_tabela
         }
             return $this->pesquisar();
     }
+
+
     
     
     
@@ -326,9 +336,10 @@ class gn_tabela
         foreach ($banco as $linha){
             foreach ($linha as $chave => $valor){
                 $dados[$chave] = $valor;
-                
-                
+
             }
+            if(isset($dados['Cli_Data_Cadastro']))
+               $dados['Cli_Data_Cadastro'] = date( 'd/m/Y', strtotime( $dados['Cli_Data_Cadastro'] ) );
         }
         
         return $this->montarFormulario($nome="Editar", $action='editar.php', $dados);
@@ -613,7 +624,7 @@ class gn_tabela
             $aux = $this->executarNoBanco($SQL);
 
             if($aux->num_rows > 0)
-                echo "<script>alert('Impossivel excluir. ')</script>";
+                echo "<script>alert('Exclusão não permitida, há movimentações! ')</script>";
             
         }
 

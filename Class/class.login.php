@@ -21,7 +21,9 @@ function tryLogin($usuario , $senha){
             // Cria a conexao com o banco
             $conn = new mysqli($servername, $username, $password, $database);
         
+
             $resultado = mysqli_query($conn,"select * from tab_usuarios where usu_nome ='" . strtoupper($usuario) . "' and usu_senha = '" . $senha."' and usu_status = 'ON' or usu_email = '".strtoupper($usuario)."'");
+
             $rows = mysqli_num_rows($resultado );
             
             

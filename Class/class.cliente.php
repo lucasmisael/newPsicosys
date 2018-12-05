@@ -30,7 +30,7 @@ class cliente extends gn_tabela
                 "id"       => "Cli_Data_Cadastro",
                 "label"    => "Data de Cadastro",
                 "callback" => "lista_callback_data",
-                "type"     => "text",
+                //"type"     => "text",
                 "pesquisa" => true,
                 "disabled" => true,
                 "tamanho"  => 6,
