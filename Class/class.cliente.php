@@ -9,7 +9,9 @@ class cliente extends gn_tabela
     // var $status = false;
 
     function __construct(){
-        
+        if(isset($_GET['op']) && $_GET['op'] == 'valcpf')
+            $this->valcpf();
+
         parent::__construct();
         
         $this->classe = "cliente";
@@ -74,8 +76,9 @@ class cliente extends gn_tabela
                 "pesquisa" => true,
                 "required" => true,
                 "tamanho"  => 6,
-                "onchange" => 'validarCPF()',
+                // "onchange" => 'validarCPF()',
                 "maxlength" => 10,
+
                 // "onkeyup" => "maskcpf()",
             ),
             "Cli_Data_Nasc" => array(
@@ -412,13 +415,20 @@ class cliente extends gn_tabela
             };
 
 
-    function validarCpf(){
-        alert('validando...');
-    }
+            function validarCpf(){
+                alert('validando...');
+            }
             
         ";
     }
 
+   /* function valcpf(){
+        // var_dump($_GET['cpf']);
+       $cpf = $this->validaCPF($_GET['cpf']);
+       $a = ($cpf == 1 ? 1 : 0);
+
+       echo $a;
+    }*/
 }
 
 
