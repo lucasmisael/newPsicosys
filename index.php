@@ -34,7 +34,7 @@ body{
     	<div class="col-md-4 col-md-offset-4">
     		<div class="panel panel-default">
 			  	<div class="panel-heading">
-			    	<h3 class="panel-title">Login</h3>
+			    	<h3 class="panel-title">Login do Usuário</h3>
 			 	</div>
 			  	<div class="panel-body">
 			    	<form accept-charset="UTF-8" role="form" method="POST" action="Class/class.login.php">
@@ -47,7 +47,7 @@ body{
 			    		</div>
 			    		<div class="checkbox">
 			    	    	<label>
-			    	    		<input name="remember" type="checkbox" value="Remember You"> Remember You
+			    	    		<input name="remember" type="checkbox" value="Remember You"> Lembrar minha senha
 			    	    	</label>
 			    	    </div>
 			    		<input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">

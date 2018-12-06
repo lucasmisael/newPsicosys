@@ -76,7 +76,7 @@ class profissional extends gn_tabela
                 "class"    => 'form-control selectmultiple' ,
                 "banco"    => "Prof_Tipo_Crianca",
                  "id"      => "Prof_Tipo_Crianca",
-                "label"    => "Atende",
+                "label"    => "Preferencialmente",
                 "pesquisa" => true,
                 "multiple" =>"multiple",
                 "tamanho"  => 6,
