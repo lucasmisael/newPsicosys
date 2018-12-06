@@ -151,25 +151,26 @@ class gn_tabela
         }
 
 
-        if(!isset($_POST['usu_status']) || !isset($_POST['usu_status'])){
-            if($this->tabela == 'tab_usuarios'){
+        // if(!isset($_POST['usu_status']) || !isset($_POST['usu_status'])){
+        
+            if($this->tabela == 'tab_usuarios' && !isset($_POST['usu_Status']) ){
                 $INSERT[] = 'usu_status';
                 $VALUES[] = '"on"';
             }
-            elseif($this->tabela == 'tab_clientes'){
+            elseif($this->tabela == 'tab_clientes' && !isset($_POST['Cli_Status'])){
                 $INSERT[] = 'cli_status';
                 $VALUES[] = '"on"';      
             }
-            elseif($this->tabela == 'tab_profissionais'){
+            elseif($this->tabela == 'tab_profissionais' && !isset($_POST['Prof_Status'])){
                 $INSERT[] = 'prof_status';                 
                 $VALUES[] = '"on"';    
             }
-            elseif($this->tabela == 'tab_convenios'){
+            elseif($this->tabela == 'tab_convenios' && !isset($_POST['Conv_Status'])){
                 $INSERT[] = 'conv_status';
                 $VALUES[] = '"on"';
             }
 
-        }
+        // }
 
         // var_dump($cpf);
         if( $cpf  != 'false')
