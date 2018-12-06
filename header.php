@@ -229,7 +229,15 @@
                                                 echo "
                                                         <li >
                                                                 <a href='./modal_relatorio.php' >Relatórios</a>
-                                                        </li>";
+                                                        </li>
+                                                         <li class='dropdown-submenu'>
+                                                            <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Indicadores</a>
+                                                            <ul class='dropdown-menu'>
+                                                            <li><a href='./modal_tdc.php' >Quantidades de Consultas Geral</a></li>
+                                                            </ul>
+                                                        </li>
+
+                                                        ";
                                             }
                                             else{
                                                 echo "<li onclick='bloqueio()'>
