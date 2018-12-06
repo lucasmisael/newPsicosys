@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 06-Dez-2018 às 05:04
--- Versão do servidor: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: 06-Dez-2018 às 19:02
+-- Versão do servidor: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -64,7 +64,9 @@ CREATE TABLE `tab_clientes` (
 --
 
 INSERT INTO `tab_clientes` (`CLI_COD`, `CLI_NOME`, `CLI_STATUS`, `CLI_CPF`, `CLI_DATA_NASC`, `CLI_ENDERECO`, `CLI_CEP`, `CLI_CONTATO_FONE1`, `CLI_FONE1`, `CLI_CONTATO_CEL1`, `CLI_CEL1`, `CLI_CONTATO_FONE2`, `CLI_FONE2`, `CLI_CONTATO_CEL2`, `CLI_CEL2`, `CLI_EMAIL`, `CLI_COD_CID`, `CLI_LIBERACAO`, `CLI_CONVENIO`, `CLI_OBS`, `CLI_TIPO`, `CLI_RESP`, `CLI_DATA_CADASTRO`, `CLI_PERIODO`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
-(25, 'MARIA HELENA NOGUEIRA FERREIRA', 'ON', '295.664.168-90', '1980-09-04', 'RUA PEDRO GUSSO, 12 - APTO 407', '81.050-200', 'WALTER', '(41) 3079-5449', 'FRANCIELE', '(41) 99205-4224', 'NEIDE', '(41) 3276-6457', 'GISELE', '(41) 98814-5151', 'LENAENF@HOTMAIL.COM', '102030405060708090', 'JPK3080', 2, 'IRRITABILIDADE', 'ADULTO', 'MARIA ISABEL', '0000-00-00', 'TARDE', '2018-12-06 01:39:10', 'TIAGO', '0000-00-00 00:00:00', '');
+(33, 'KASSIANA BARBOSA DO NASCIMENTO', 'on', '314.223.883-28', '2000-10-06', 'JOANA RONCAGLIO BERTOLDI', '81.490-468', '', '', 'MÃ£E', '(41) 99959-5565', '', '', '', '', 'KASSIANABARBOSA@GMAIL.COM', '124567', '123E4567', 6, '', 'Crianca', '', '0000-00-00', 'Manha', '2018-12-06 02:22:25', 'LUCAS', '2018-12-06 15:42:02', 'LUCAS'),
+(34, 'JOSE PEDRO LUIZ', 'ON', '887.245.382-80', '1986-02-10', 'RUA PEDRO FABREGAS 123', '86.543-333', '', '', 'JOSE PEDRO', '(41) 98765-4345', '', '', '', '', 'JOSEPEDRO@HOTMAIL.COM', '', '45545454', 7, '', 'IDOSO', '', '2018-12-06', 'NOITE', '2018-12-06 15:21:15', 'LUCAS', '0000-00-00 00:00:00', ''),
+(35, 'CLAUDIO LIMA SANTOS', 'ON', '880.460.778-52', '1975-09-05', 'JOANA RONCAGLIO BERTOLDI', '81.490-468', '', '', 'MÃ£E', '(41) 99959-5565', '', '', '', '', 'CLAUDIO1345@GMAIL.COM', '', '12213', 6, '', 'ADULTO', '', '2018-12-06', 'TARDE', '2018-12-06 15:33:32', 'LUCAS', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -98,11 +100,10 @@ CREATE TABLE `tab_convenios` (
 --
 
 INSERT INTO `tab_convenios` (`CONV_COD`, `CONV_STATUS`, `CONV_NOME`, `CONV_CNPJ`, `CONV_ENDERECO`, `CONV_CEP`, `CONV_FONE`, `CONV_CONTATO_FONE`, `CONV_CEL`, `CONV_CONTATO_CEL`, `CONV_CONTATO`, `CONV_EMAIL`, `CONV_SITE`, `CONV_OBS`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
-(1, 'on', 'Particular', '00.000.000/0000-00', '', '', '(00) 0000-0000', '', '', '', NULL, '00000@0000.com', '', '', '0000-00-00 00:00:00', '', '2018-11-28 20:58:02', 'admin'),
-(2, 'off', 'Clinipam', '15.995.831/0001-18', 'Alferes Poli 1254', '88.478-151', '(11) 2325-6554', 'RecepÃ§Ã£o', '', '', NULL, 'atendimento@clinipam.com.br', 'clinipam.com.br', '', '0000-00-00 00:00:00', '', '2018-12-05 00:32:57', 'Admin'),
-(3, 'on', 'Unimed', '00.000.000/0000-00', 'Rua Alferes Poli, 5404', '81.000-050', '(41) 3300-5400', 'Alceu', '(41) 98765-4321', 'Ricardo', NULL, 'unimed@unimed.com.br', 'www.unimed.com.br', 'venhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00 00:00:00', '', '2018-12-05 00:33:10', 'Admin'),
-(4, 'on', 'PsicoCentro', '78.784.511/5515-15', 'Rua Joana Roncaglio Bertoldi', '81.490-468', '(11) 2325-6554', 'RecepÃ§Ã£o', '', '', NULL, 'psicodentro@hotmail.com', 'psicocentro.com.br', '', '2018-11-28 20:34:25', 'admin', '0000-00-00 00:00:00', ''),
-(5, 'on', 'Todos', '78.784.511/5515-15', '', '', '(11) 2325-6554', '', '', '', NULL, 'teste@posicosys', '', '', '2018-11-28 20:58:52', 'admin', '0000-00-00 00:00:00', '');
+(6, 'ON', 'PARTICULAR', '15.995.831/0001-18', '', '', '(11) 2325-6554', 'RECEPÃ§Ã£O', '', '', NULL, 'PARTICULAR@PSICOSYS.COM', '', '', '2018-12-06 02:23:04', 'LUCAS', '0000-00-00 00:00:00', ''),
+(7, 'ON', 'UNIMED', '86.236.019/0001-57', 'ALFERES POLI 1254', '', '(41) 3556-7889', 'RECEPÃ§Ã£O', '', '', NULL, 'ATENDIMENTO@UNIMED.COM.BR', 'UNIMED.COM.BR', '', '2018-12-06 02:24:12', 'LUCAS', '0000-00-00 00:00:00', ''),
+(8, 'ON', 'CLINIPAM', '87.494.167/0001-34', 'JOÃ£O NEGRÃ£O 2124', '', '(41) 3898-7654', 'RECEPÃ§Ã£O', '', '', NULL, 'ATENDIMENTO@CLINIPAM.COM.BR', 'CLINIPAM.COM.BR', '', '2018-12-06 02:24:59', 'LUCAS', '0000-00-00 00:00:00', ''),
+(9, 'ON', 'PSICOCENTRO', '78.784.511/5515-15', 'JOANA RONCAGLIO', '81.490-468', '(41) 3455-5656', 'RECEPÃ§Ã£O', '', '', NULL, 'PSICODENTRO@PSICOSYS.COM', 'PSICOCENTRO.COM.BR', '', '2018-12-06 02:27:07', 'LUCAS', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -131,21 +132,11 @@ CREATE TABLE `tab_eventos` (
 --
 
 INSERT INTO `tab_eventos` (`ID`, `title`, `start`, `end`, `PROF_ID`, `CLI_ID`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`, `STATUS`, `ID_TPCONSULTA`, `SALA_ID`) VALUES
-(9, 'Maria Helena Nogueira Ferreira Oliveira', '2018-11-28 21:00:00', '2018-11-28 21:30:00', 12, 1, NULL, NULL, NULL, NULL, 'A', 4, 2),
-(10, 'Lucas Misael Barbosa do Nascimento', '2018-11-29 11:00:00', '2018-11-29 12:00:00', 2, 2, NULL, NULL, NULL, NULL, 'C', 5, 0),
-(11, 'Lucas Misael Barbosa do Nascimento', '2018-11-29 11:00:00', '2018-11-29 12:00:00', 2, 2, NULL, NULL, NULL, NULL, 'C', 5, 0),
-(12, 'Lucas Misael Barbosa do Nascimento', '2018-11-29 11:00:00', '2018-11-29 12:00:00', 2, 2, NULL, NULL, NULL, NULL, 'A', 5, 0),
-(15, 'Maria Helena Nogueira Ferreira Oliveira', '2018-11-15 19:46:00', '2018-11-15 20:16:00', 2, 1, NULL, NULL, NULL, NULL, 'F', 4, 0),
-(17, 'Lucas Misael Barbosa do Nascimento', '2018-11-29 11:00:00', '2018-11-29 12:00:00', 2, 2, NULL, NULL, NULL, NULL, 'D', 5, 0),
-(18, 'Maria Helena Nogueira Ferreira Oliveira', '2018-11-29 12:00:00', '2018-11-29 12:30:00', 2, 1, NULL, NULL, NULL, NULL, 'C', 4, 0),
-(19, 'Ruy Arruda Cassiano', '2018-11-29 10:00:00', '2018-11-29 10:30:00', 7, 2, NULL, NULL, NULL, NULL, 'A', 4, 0),
-(20, 'Maria Helena Nogueira Ferreira Oliveira', '2018-11-28 21:00:00', '2018-11-28 21:30:00', 12, 1, NULL, NULL, NULL, NULL, 'A', 4, 2),
-(21, 'Alexandre Bento', '2018-11-29 12:00:00', '2018-11-29 13:00:00', 10, 10, NULL, NULL, NULL, NULL, 'C', 5, 0),
-(22, 'Alexandre Bento', '2018-11-09 20:00:00', '2018-11-09 20:30:00', 10, 10, NULL, NULL, NULL, NULL, 'C', 4, 0),
-(23, 'JoÃ£o Nascimento Soares', '2018-11-09 19:00:00', '2018-11-09 19:30:00', 10, 4, NULL, NULL, NULL, NULL, 'F', 4, 0),
-(24, 'Lucas Misael Barbosa do Nascimento', '2018-12-03 23:00:00', '2018-12-03 23:30:00', 2, 2, NULL, NULL, NULL, NULL, 'A', 4, 3),
-(25, 'JÃ©ssica do NascimentoS', '2018-12-03 16:00:00', '2018-12-03 16:30:00', 11, 5, NULL, NULL, NULL, NULL, 'A', 4, 1),
-(26, '', '2018-12-06 16:00:00', '2018-12-06 16:30:00', 11, 0, NULL, NULL, NULL, NULL, 'D', 4, 1);
+(3, 'KASSIANA BARBOSA DO NASCIMENTO', '2018-12-06 09:00:00', '2018-12-06 09:30:00', 16, 33, NULL, NULL, NULL, NULL, 'C', 1, 1),
+(4, 'KASSIANA BARBOSA DO NASCIMENTO', '2018-12-06 14:00:00', '2018-12-06 14:30:00', 16, 33, NULL, NULL, NULL, NULL, 'C', 1, 1),
+(5, 'KASSIANA BARBOSA DO NASCIMENTO', '2018-12-07 09:00:00', '2018-12-07 09:30:00', 16, 33, NULL, NULL, NULL, NULL, 'A', 1, 1),
+(6, 'KASSIANA BARBOSA DO NASCIMENTO', '2018-12-06 15:00:00', '2018-12-06 15:30:00', 16, 33, NULL, NULL, NULL, NULL, 'D', 1, 1),
+(7, 'JOSE PEDRO LUIZ', '2018-12-06 16:00:00', '2018-12-06 17:00:00', 16, 34, NULL, NULL, NULL, NULL, 'A', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -185,13 +176,8 @@ CREATE TABLE `tab_profissionais` (
 --
 
 INSERT INTO `tab_profissionais` (`PROF_COD`, `PROF_NOME`, `PROF_STATUS`, `PROF_ESPECIALIDADE`, `PROF_TIPO_CRIANCA`, `PROF_TIPO_ADOLESCENTE`, `PROF_TIPO_ADULTO`, `PROF_TIPO_IDOSO`, `PROF_CNPJ_CPF`, `PROF_CONSELHO`, `PROF_DATA_NASC`, `PROF_ENDERECO`, `PROF_CEP`, `PROF_FONE1`, `PROF_CEL1`, `PROF_EMAIL`, `PROF_CONVENIO`, `PROF_OBS`, `PROF_FONE2`, `PROF_CEL2`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
-(2, 'Lucas Gabriel da Silva', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '098.137.959-13', 'CREA', '1997-07-02', 'Joana roncaglio bertoldi', '81.490-468', '', '(41) 99987-6456', 'lucas.ms.elo84@gmail.com', 1, '', '', '', '0000-00-00 00:00:00', '', '2018-12-05 00:17:49', 'Admin'),
-(4, 'Amarildo da Silva', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '249.395.834-95', '1234354465', '1990-11-22', 'Joao bettega 1123', '', '', '(41) 99999-8876', 'amarildo@psicosys.com', 2, '', '', '', '2018-11-28 20:10:42', 'admin', '0000-00-00 00:00:00', ''),
-(6, 'Amanda da Silva ', 'off', 'Psicologo', NULL, NULL, NULL, NULL, '098.137.959-13', 'CRM', '1985-09-15', 'Joao bettega 8989', '40.985-743', '', '(42) 98898-9898', 'amanda@psicosys.com', 1, '', '', '', '2018-11-28 20:24:59', 'admin', '2018-12-02 15:03:22', 'Tiago'),
-(7, 'Debora Kaynara Patricio da Silva', 'on', 'Psiquiatria', 'C', NULL, NULL, NULL, '534.589.385-40', 'CRM', '1990-06-04', 'lucas barros 1234', '40.859-384', '', '(41) 98989-8988', 'debora@psicosys.com', 3, '', '', '', '2018-11-28 20:28:12', 'admin', '0000-00-00 00:00:00', ''),
-(8, 'Arthur Felipe R. Costa', '', 'Psicologo', 'A', NULL, NULL, NULL, '249.395.834-95', 'CRM', '1995-11-14', 'Alferes Poli 1345', '45.469-809', '', '(41) 87653-4335', 'arthur@psicosys.com', 1, '', '', '', '2018-11-28 20:29:28', 'admin', '0000-00-00 00:00:00', ''),
-(9, 'Paulo Holanda Ribeiro Netto', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '234.567.865-43', 'CRM', '1970-12-09', 'Rua Joana Roncaglio Bertoldi', '81.490-468', '', '(41) 87653-4335', 'paulo@psicosys.com', 1, '', '', '', '2018-11-28 20:30:25', 'admin', '0000-00-00 00:00:00', ''),
-(10, 'Gustavo Gosmatti', 'on', 'Psicologo', 'A', NULL, NULL, NULL, '249.395.834-95', 'CRM', '1998-06-23', 'Rua Alferes Poli 123', '98989898', '', '(41) 87653-4335', '', 1, '', '', '', '2018-11-28 21:31:59', 'admin', '0000-00-00 00:00:00', '');
+(16, 'TIAGO SILVA', 'on', 'PSIQUIATRA', 'C', NULL, NULL, NULL, '581.142.495-79', 'CRM', '1992-10-03', 'JOAO BETTEGA 1123', '81.490-468', '(41) 3448-7847', '(41) 98765-6776', 'LUCAS.MS.ELO84@GMAIL.COM', 6, '', '', '', '2018-12-06 02:30:46', 'LUCAS', '2018-12-06 15:54:14', 'LUCAS'),
+(17, 'LUIZ CLAUDIO LISBOA', 'ON', 'PSICOLOGO', 'A', NULL, NULL, NULL, '448.561.888-95', 'CRM', '1970-12-01', 'JOAO NEGRÃ£O 123', '87.856-556', '', '(41) 98765-4343', 'LUIZ@PSICOSYS.COM.BR', 9, '', '', '', '2018-12-06 15:36:13', 'LUCAS', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -207,6 +193,13 @@ CREATE TABLE `tab_prontuarios` (
   `PRON_DESC` varchar(5000) DEFAULT NULL,
   `PRON_DATAHORA` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tab_prontuarios`
+--
+
+INSERT INTO `tab_prontuarios` (`PRON_ID`, `PRON_PROFISSIONAL`, `PRON_IDPROF`, `PRON_CLIENTE`, `PRON_DESC`, `PRON_DATAHORA`) VALUES
+(1, 'LUCAS', 1, 34, 'PACIENTE APRESENTOU MELHORA NA ULTIMA SESSÃ£O, SENDO ASSIM FOI DIMINUÃ­DO A DE REMÃ©DIOS. ', '2018-12-06 15:50:00');
 
 -- --------------------------------------------------------
 
@@ -228,9 +221,8 @@ CREATE TABLE `tab_salas` (
 --
 
 INSERT INTO `tab_salas` (`SALA_COD`, `SALA_DESC`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
-(1, 'Sala 13', '2018-12-02 16:01:22', 'Tiago', '0000-00-00 00:00:00', ''),
-(2, 'Sala 17', '2018-12-02 16:01:34', 'Tiago', '0000-00-00 00:00:00', ''),
-(3, 'Sala 51', '2018-12-02 16:01:46', 'Tiago', '0000-00-00 00:00:00', '');
+(1, 'SALA 13', '2018-12-06 02:25:42', 'LUCAS', '0000-00-00 00:00:00', ''),
+(2, 'SALA 14', '2018-12-06 02:25:48', 'LUCAS', '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -254,8 +246,8 @@ CREATE TABLE `tab_tpconsulta` (
 --
 
 INSERT INTO `tab_tpconsulta` (`CONS_COD`, `CONS_DESC`, `CONS_VALOR`, `CONS_TEMPO`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
-(4, '30 min.', '50.00', 30, NULL, NULL, NULL, NULL),
-(5, '1 hora', '90.00', 60, NULL, NULL, NULL, NULL);
+(1, '30 MIN.', '50.00', 30, NULL, NULL, NULL, NULL),
+(2, '1 HORA', '90.00', 60, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -281,10 +273,11 @@ CREATE TABLE `tab_usuarios` (
 --
 
 INSERT INTO `tab_usuarios` (`USU_COD`, `USU_NOME`, `USU_EMAIL`, `USU_SENHA`, `USU_STATUS`, `USU_TIPO`, `CRIADO_EM`, `USUARIO_CRI`, `ALTERADO_EM`, `USUARIO_ALT`) VALUES
-(19, 'TIAGO', 'TIAGO@PSICOSYS.COM.BR', 'TIAGO', 'ON', 'SISTEMA', '2018-12-06 00:56:06', 'TIAGO ', '0000-00-00 00:00:00', ''),
-(20, 'LUCAS', 'LUCAS@PSICOSYS.COM.BR', 'LUCAS', 'ON', 'ADMINISTRATIVO', '2018-12-06 00:56:29', 'TIAGO ', '0000-00-00 00:00:00', ''),
-(21, 'ANA PAULA', 'ANAPAULA@PSICOSYS.COM.BR', 'ANA', 'ON', 'PSICOLOGO', '2018-12-06 00:57:10', 'TIAGO ', '0000-00-00 00:00:00', ''),
-(22, 'JULIANA', 'JULIANA@PSICOSYS.COM.BR', 'JULIANA', 'ON', 'PSIQUIATRA', '2018-12-06 00:58:02', 'TIAGO ', '0000-00-00 00:00:00', '');
+(1, 'LUCAS', 'LUCAS@PSICOSYS.COM.BR', '1234', 'ON', 'SISTEMA', '2018-12-06 01:34:41', 'ADMIN', '0000-00-00 00:00:00', ''),
+(2, 'TIAGO', 'TIAGO@PSICOSYS.COM.BR', '1234', 'ON', 'SISTEMA', '2018-12-06 15:43:48', 'LUCAS', '0000-00-00 00:00:00', ''),
+(3, 'ADEMIR', 'ADEMIR@PSICOSY.COM.BR', '1234', 'ON', 'ADMINISTRATIVO', '2018-12-06 15:45:25', 'LUCAS', '0000-00-00 00:00:00', ''),
+(4, 'LUIZ', 'LUIZ@psicosys.COM.BR', '1234', 'on', 'Administrativo', '2018-12-06 15:46:50', 'LUCAS', '2018-12-06 15:49:01', 'LUCAS'),
+(5, 'TIAGOS', 'TIAGOS@PSICOSYS.COM.BR', '1234', 'ON', 'PSIQUIATRA', '2018-12-06 15:48:12', 'LUCAS', '0000-00-00 00:00:00', '');
 
 --
 -- Indexes for dumped tables
@@ -350,42 +343,50 @@ ALTER TABLE `tab_usuarios`
 -- AUTO_INCREMENT for table `tab_clientes`
 --
 ALTER TABLE `tab_clientes`
-  MODIFY `CLI_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `CLI_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
 --
 -- AUTO_INCREMENT for table `tab_convenios`
 --
 ALTER TABLE `tab_convenios`
-  MODIFY `CONV_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CONV_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `tab_eventos`
 --
 ALTER TABLE `tab_eventos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `tab_profissionais`
 --
 ALTER TABLE `tab_profissionais`
-  MODIFY `PROF_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `PROF_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `tab_prontuarios`
 --
 ALTER TABLE `tab_prontuarios`
-  MODIFY `PRON_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `PRON_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tab_salas`
 --
 ALTER TABLE `tab_salas`
-  MODIFY `SALA_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `SALA_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `tab_tpconsulta`
 --
 ALTER TABLE `tab_tpconsulta`
-  MODIFY `CONS_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CONS_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `tab_usuarios`
 --
 ALTER TABLE `tab_usuarios`
-  MODIFY `USU_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `USU_COD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- Constraints for dumped tables
 --
