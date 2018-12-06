@@ -12,7 +12,7 @@ body{
 }
 </style>
     <div class="TextoInicial">
-        <h1>Bem Vindo ao PsicoSys!</h1> 
+        <h1>Bem Vindo ao <?php echo ucfirst($_SESSION['login']);?>!</h1> 
         
     </div>
   

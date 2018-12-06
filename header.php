@@ -110,7 +110,7 @@
                          
 
                             <?php
-                            $disabled = 'disabled="disabled"';
+                            $disabled = 'disabled';
 
 
 
@@ -131,11 +131,14 @@
                                 
                                 foreach ($operacaoes as $operacao) {
                                     echo "
-                                        <li class='dropdown' ".($_SESSION['tipo'] == 'ADMINISTRATIVO' || $_SESSION['tipo'] == 'INFORMATICA' ? '' : $disabled ).">
+                                        <li class='dropdown'>
                                             <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>$operacao <span class='caret'></span></a>
                                             <ul class='dropdown-menu'>";
                                                 foreach ($tabelas as $tabela) {
-                                                    echo "<li><a href='$operacao.php?tabela=$tabela'>$tabela</a></li>";
+                                                    if($_SESSION['tipo'] == 'ADMINISTRATIVO' || $_SESSION['tipo'] == 'SISTEMA' )
+                                                        echo "<li><a href='$operacao.php?tabela=$tabela'>$tabela</a></li>";
+                                                    else
+                                                        echo "<li onclick='bloqueio()'><a>$tabela</a></li>";
                                                 }
                                             echo "</ul>
                                             </li> ";
@@ -145,15 +148,21 @@
                                 echo "
                                     <li class='dropdown'>
                                         <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Agendar<span class='caret'></span></a>
-                                            <ul class='dropdown-menu'>
+                                            <ul class='dropdown-menu'>";
 
-
-                                                <li >
-                                                    <a href='./home_calendar.php' >Calendário</a>
-                                                </li>
-                                                <li>
+                                            if($_SESSION['tipo'] == 'ADMINISTRATIVO' || $_SESSION['tipo'] == 'SISTEMA' ){
+                                                echo "<li >
+                                                        <a href='./home_calendar.php' >Calendário</a>
+                                                      </li>";          
+                                            }
+                                            else{ 
+                                                echo  "<li onclick='bloqueio()'>
+                                                            <a>Calendário</a>
+                                                       </li>";
+                                            }
+                                            echo "<li>
                                                     <a href='Pesquisar.php?tabela=Consulta'>Consulta Agenda</a>
-                                                </li>
+                                                 </li>
 
                                             </ul>
                                     </li> ";
@@ -162,21 +171,39 @@
                                 
                                 
                                 // Serviços
+                                 // var_dump( $_SESSION);
+
                                     echo "
                                         <li class='dropdown'>
                                             <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Serviços<span class='caret'></span></a>
-                                            <ul class='dropdown-menu'>
-                                                <li >
-                                                    <a href='./modal_atestado.php' >Atestado</a>
-                                                </li>
-                                                <li >
-                                                    <a href='Cadastrar.php?tabela=Prontuario' >Prontuário</a>
-                                                </li>
-                                                <li >
-                                                    <a href='Pesquisar.php?tabela=Prontuario' >Consulta Prontuário</a>
-                                                </li>
-
-                                            </ul>
+                                            <ul class='dropdown-menu'>";
+                                                
+                                            if($_SESSION['tipo'] == 'PSICOLOGO' || $_SESSION['tipo'] == 'PSIQUIATRA' || $_SESSION['tipo'] == 'SISTEMA' ){
+                                                echo  "
+                                                    <li >
+                                                        <a href='./modal_atestado.php' >Atestado</a>
+                                                    </li>
+                                                    <li >
+                                                        <a href='Cadastrar.php?tabela=Prontuario' >Prontuário</a>
+                                                    </li>
+                                                    <li >
+                                                        <a href='Pesquisar.php?tabela=Prontuario' >Consulta Prontuário</a>
+                                                    </li>";
+                                            }
+                                            else{
+                                                echo  "
+                                                    <li onclick='bloqueio()'>
+                                                        <a >Atestado</a>
+                                                    </li>
+                                                    <li onclick='bloqueio()'>
+                                                        <a >Prontuário</a>
+                                                    </li>
+                                                    <li onclick='bloqueio()'>
+                                                        <a>Consulta Prontuário</a>
+                                                    </li>";
+                                            }
+                                            
+                                         echo  "</ul>
                                         </li> ";
  
                                 
@@ -196,12 +223,21 @@
                                     echo "
                                         <li class='dropdown'>
                                             <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Financeiro<span class='caret'></span></a>
-                                            <ul class='dropdown-menu'>
-                                                <li >
-                                                    <a href='./modal_relatorio.php' >Relatórios</a>
-                                                </li>
+                                                <ul class='dropdown-menu'>
+                                            ";
+                                            if($_SESSION['tipo'] == 'ADMINISTRATIVO' || $_SESSION['tipo'] == 'SISTEMA'){
+                                                echo "
+                                                        <li >
+                                                                <a href='./modal_relatorio.php' >Relatórios</a>
+                                                        </li>";
+                                            }
+                                            else{
+                                                echo "<li onclick='bloqueio()'>
+                                                        <a >Relatórios</a>
+                                                      </li>";
+                                            }
                                                 
-
+                                    echo"
                                             </ul>
                                         </li> ";
                                 
@@ -235,6 +271,9 @@
                                     </a>
                                 </form>
                             </ul>
+                            <ul class="navbar-right" style='margin-top:10px; margin-bottom:0px' >
+                                <b>Usuario Online = <?php echo ucfirst($_SESSION['login']); ?></b>
+                            </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
                 </nav>
@@ -243,6 +282,11 @@
             
         </body>
 
+        <script>
+            function bloqueio (){
+                alert('Você não tem acesso a esse modulo!');
+            }
+        </script>
         <?php
         
     }
