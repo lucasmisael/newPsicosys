@@ -78,7 +78,7 @@ class profissional extends gn_tabela
                  "id"      => "Prof_Tipo_Crianca",
                 "label"    => "Preferencialmente",
                 "pesquisa" => true,
-                "multiple" =>"multiple",
+                // "multiple" =>"select",
                 "tamanho"  => 6,
                 'options'=> array(
                     'Crianca'    => "Criança"     ,       

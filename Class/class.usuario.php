@@ -75,7 +75,8 @@ class usuario extends gn_tabela
                 'options'=> array(
                     'Administrativo' => "Adminstrativo",       
                     'Psicologo'      => "Psicólogo",           
-                    'Psiquiatra'     => "Psiquiatra",       
+                    'Psiquiatra'     => "Psiquiatra",
+                    'Sistema'        => "Sistema",       
                 ),
             ),
 

@@ -1,9 +1,11 @@
     <?php
             // require_once('./Class/class.gn_tabela.php');
             // require_once("fullcalendar/model/buscar.php");
+            session_start();
             require_once("./header.php");
             require_once("./fullcalendar/model/buscar.php");
             makeHeather();
+
     ?>
 
     <html>
@@ -29,20 +31,22 @@
                     </div> 
                     <div class="container col-xs-12" >
                         <form id="form" action="gerar.php?tabela=relatorio" method="POST">
-                            <div class="container">
-                                <label>De Data:</label>
-                                <input type="date" name="dataini" id="dataini">
+                            <div class="row col-xs-12">
+                                <label for="dataini">De Data:</label>
+                                <input type="date" name="dataini" id="dataini" class="form-control datepicker">
                                 
-                                <label>Até Data:</label>
-                                <input type="date" name="datafim" id="datafim">
+                                <label for="datafim">Até Data:</label>
+                                <input type="date" name="datafim" id="datafim" class="form-control datepicker">
                             </div>
 
-                            <div class="container" style="margin-left:77%;">
-                                <button type="submit" class="btn btn-success">Gerar Relatório</button>
-                            </div>
-                        </form>
                     </div>      
                     <div id="modal-footer" class="modal-footer"></div>    
+                            <div class="container" style="margin-left:73%; margin-bottom: 5px;">
+                                <div class="row">
+                                    <button type="submit" class="btn btn-success">Gerar Relatório</button>
+                                </div>
+                            </div>
+                        </form>
                     </form>
                 </div>
             </div>

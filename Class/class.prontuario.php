@@ -30,11 +30,11 @@ class prontuario extends gn_tabela
                 "tamanho"   => 5,
                 "value"     => $_SESSION['login']
             ),
-            "Pron_ProfCod" => array(
+            "pron_IdProf" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
-                "banco"    => "Pron_ProfCod",
-                "id"       => "Pron_ProfCod",
+                "banco"    => "pron_IdProf",
+                "id"       => "pron_IdProf",
                 "label"    => "Id Prof.",
                 "pesquisa" => false,
                 "readonly"  => true,
@@ -52,23 +52,13 @@ class prontuario extends gn_tabela
                 "custonSelect" => "Pron_Cliente",
                 "custonFrom"   => "LEFT OUTER JOIN tab_clientes ON (tab_clientes.Cli_Cod = tab_prontuarios.Pron_Cliente)",
                 "SQL"          => "SELECT Cli_Cod, Cli_Nome from tab_clientes",
-                "SELECT_VALUE" => 'Cli_Nome' ,
+                "SELECT_VALUE" => 'Cli_Cod' ,
                 "SELECT_NAME"  => 'Cli_Nome',
                 "pesquisa"     => true,
                 "tamanho"      => 5,
+                "callback" => "lista_callback_cliente"
             ),
-            "Pron_CliCod" => array(
-                "tagname"  => "input",
-                "class"    => 'form-control ' ,
-                "banco"    => "Pron_CliCod",
-                "id"       => "Pron_CliCod",
-                "label"    => "Id Cliente",
-                "pesquisa" => false,
-                "readonly"  => true,
-                "tamanho"  => 1,
-                'style'    => 'visible:false',
-                'value'    => $_SESSION['id'] 
-            ),
+            
             "Pron_DataHora" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control ' ,
@@ -134,31 +124,16 @@ class prontuario extends gn_tabela
         return date( 'd/m/Y', strtotime( $valor ) ) ; 
     }
 
-/*
+
     function lista_callback_cliente($valor)
     {
-
-        if ($valor == "Cli_Cod" || empty($valor)  ){
-
-            foreach ($this->valor as $valor)
-            {
-                if ( isset( $valor['custonSelect'] ) && !isset($valor['SQL']) )
-                {   
-                    $SELECT[] = $valor['custonSelect'];
-                } else {
-                    $SELECT[] = $valor['banco'];
-                }
-                
-            }
-
-            "LEFT OUTER JOIN tab_clientes ON (tab_clientes.Cli_Cod = tab_prontuarios.Pron_Cliente)",
-                "SQL"          => "SELECT Cli_Cod, Cli_Nome from tab_clientes",
-            return "";
-        }
+            $SQL = "SELECT CLI_NOME FROM Tab_Clientes WHERE Cli_Cod = ".$valor;
+            $a = $this->getOne($SQL);
+        // var_dump($a);
+            return $a['CLI_NOME'];
         
-        return date( 'd/m/Y', strtotime( $valor ) ) ; 
     }
-*/
+
 
 
     
