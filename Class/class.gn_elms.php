@@ -145,7 +145,7 @@
             if(isset($attrs['tagname']) && $attrs['tagname'] == 'textarea')
             {
                 $cache.= "<$tagName $HTML_attrs>";
-                $cache.= $attrs['value'];
+                $cache.= (isset($attrs['value']) ? $attrs['value'] : '');
                 $cache.= $closeTag ? "</$tagName>" : "" ;                
             }
             else{

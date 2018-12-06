@@ -157,7 +157,7 @@
                         url: url,
                         data: dados,
                         success: function(data){
-                            alert(url);
+                            // alert(url);
                             if(data == "1"){
                                 // alert("Alterado com sucesso! ");
                                 //atualiza a página!

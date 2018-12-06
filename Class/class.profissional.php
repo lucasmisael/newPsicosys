@@ -77,7 +77,7 @@ class profissional extends gn_tabela
                 "banco"    => "Prof_Tipo_Crianca",
                  "id"      => "Prof_Tipo_Crianca",
                 "label"    => "Preferencialmente",
-                "pesquisa" => true,
+                "pesquisa" => false,
                 // "multiple" =>"select",
                 "tamanho"  => 6,
                 'options'=> array(
@@ -87,54 +87,7 @@ class profissional extends gn_tabela
                     'Idoso'      => "Idoso"       ,   
                 ),
             ),
-            // "Prof_Tipo_Crianca" => array(
-            //     "tagname"  => "input",
-            //     "class"    => 'form-control select' ,
-            //     "banco"    => "Prof_Tipo_Crianca",
-            //     "id"       => "Prof_Tipo_Crianca",
-            //     "callback" => "lista_callback_check",
-            //     "label"    => "Criança",
-            //     "type"     => "select",
-            //     "checked"  => true, // ?? para sempre vir checado
-            //     "pesquisa" => true,
-            //     "tamanho"  => 6,
-            // ),
-            // "Prof_Tipo_Adolescente" => array(
-            //     "tagname"  => "input",
-            //     "class"    => 'form-control ' ,
-            //     "banco"    => "Prof_Tipo_Adolescente",
-            //     "id"       => "Prof_Tipo_Adolescente",
-            //     "callback" => "lista_callback_check",
-            //     "label"    => "Adolescente",
-            //     "type"     => "checkbox",
-            //     "checked"  => true, // ?? para sempre vir checado
-            //     "pesquisa" => true,
-            //     "tamanho"  => 3,
-            // ),
-            // "Prof_Tipo_Adulto" => array(
-            //     "tagname"  => "input",
-            //     "class"    => 'form-control ' ,
-            //     "banco"    => "Prof_Tipo_Adulto",
-            //     "id"       => "Prof_Tipo_Adulto",
-            //     "callback" => "lista_callback_check",
-            //     "label"    => "Adulto",
-            //     "type"     => "checkbox",
-            //     "checked"  => true, // ?? para sempre vir checado
-            //     "pesquisa" => true,
-            //     "tamanho"  => 3,
-            // ),
-            // "Prof_Tipo_Idoso" => array(
-            //     "tagname"  => "input",
-            //     "class"    => 'form-control ' ,
-            //     "banco"    => "Prof_Tipo_Idoso",
-            //     "id"       => "Prof_Tipo_Idoso",
-            //     "callback" => "lista_callback_check",
-            //     "label"    => "Idoso",
-            //     "type"     => "checkbox",
-            //     "checked"  => true, // ?? para sempre vir checado
-            //     "pesquisa" => true,
-            //     "tamanho"  => 3,
-            // ),
+
             "Prof_Data_Nasc" => array(
                 "tagname"  => "input",
                 "class"    => 'form-control datepicker ' ,
@@ -272,7 +225,7 @@ class profissional extends gn_tabela
                 "id"       => "Prof_Obs",
                 "label"    => "Observação",
                 "type"     => "textarea",
-                "pesquisa" => true,
+                "pesquisa" => false,
                 "tamanho"  => 3,
             ),
             "criado_em" => array(

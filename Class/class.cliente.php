@@ -300,7 +300,7 @@ class cliente extends gn_tabela
                 "banco"    => "Cli_Obs",
                 "id"       => "Cli_Obs",
                 "label"    => "Observação",
-                "pesquisa" => true,
+                "pesquisa" => false,
                 "tamanho"  => 6,
             ),
             "criado_em" => array(

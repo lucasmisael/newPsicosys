@@ -33,10 +33,16 @@
                         <form id="form" action="gerar.php?tabela=relatorio" method="POST">
                             <div class="row col-xs-12">
                                 <label for="dataini">De Data:</label>
-                                <input type="date" name="dataini" id="dataini" class="form-control datepicker">
+                                <input type="date" name="dataini" id="dataini" class="form-control datepicker" required="true">
                                 
                                 <label for="datafim">Até Data:</label>
-                                <input type="date" name="datafim" id="datafim" class="form-control datepicker">
+                                <input type="date" name="datafim" id="datafim" class="form-control datepicker" required="true">
+                            <label for="tprelatorio">Tipo de relatório</label>
+                            <select  id="tprelatorio" name="tprelatorio" class="form-control">
+                                <option value="geral">Relatório Geral</option>
+                                <option value="efetuadas">Relatório Consultas Efetuadas</option>
+                                <option value="faltas">Relatório Desistências e Faltas</option>
+                            </select>
                             </div>
 
                     </div>      

@@ -1,4 +1,5 @@
 <?php 
+        date_default_timezone_set('America/Sao_Paulo');
         include "conexao.php";
        
         $e = new conexao();
@@ -39,12 +40,14 @@
         
        // var_dump($data < date('Y/m/d').' '.date('H:i'));
         //Já existe evento no horario informado para o colaborador informado
+        
         if($ex->num_rows > 0)
             echo"2";
-        elseif($data < date('Y/m/d').' '.date('H:i'))
+        elseif($data < date('Y/m/d H:i'))
             echo "3";
         else{   
-            $query = "INSERT INTO tab_eventos (status,title,prof_id,cli_id ,start, end, id_tpconsulta , sala_id) VALUES ('A','$nm',$cli,$idprof, '$data','$dtfim_soma',$idTpDta, $sala)";
+            $query = "INSERT INTO tab_eventos (status,title,cli_id ,prof_id,start, end, id_tpconsulta , sala_id) 
+            VALUES                           ('A','$nm',$cli,$idprof, '$data','$dtfim_soma',$idTpDta, $sala)";
 
             $exec = $e->executarNoBanco($query);                         
         
