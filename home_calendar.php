@@ -2,6 +2,7 @@
             // require_once('./Class/class.gn_tabela.php');
             require_once("fullcalendar/model/buscar.php");
             require_once("header.php");
+            session_start();
             makeHeather();
     ?>
 

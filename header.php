@@ -272,7 +272,7 @@
                                 </form>
                             </ul>
                             <ul class="navbar-right" style='margin-top:10px; margin-bottom:0px' >
-                                <b>Usuario Online = <?php echo ucfirst($_SESSION['login']); ?></b>
+                                <b>Usuario Online: <?php echo ucfirst($_SESSION['login']); ?></b>
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->

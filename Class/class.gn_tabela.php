@@ -633,22 +633,22 @@ class gn_tabela
                 echo "<script>alert('Consultas efetuadas não podem ser excluidas. ')</script>";*/
 
         }
-
-        if(isset($SQL)){
+        if(!empty($SQL)){
             $aux = $this->executarNoBanco($SQL);
 
-            if($aux->num_rows > 0)
-                echo "<script>alert('Exclusão não permitida, há movimentações! ')</script>";
+        if($aux->num_rows > 0){
+            echo "<script>alert('Exclusão não permitida, há movimentações! ')</script>";
             
         }
-
-
-        else{
+        
+        
+        if($aux->num_rows == 0)
             $SQL = "DELETE FROM {$this->tabela} WHERE $this->chave = $_REQUEST[chave] ; " ; 
             $this->executarNoBanco($SQL);
             
         }
-        
+
+
         return $this->pesquisar();
         // return $SQL;
         //return "<script>history.go(-1);</script>" ; 
