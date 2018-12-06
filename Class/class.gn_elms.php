@@ -141,18 +141,30 @@
             
             
             $HTML_attrs = $this->gn_attr($attrs);
-            
-            $cache.= "<$tagName $HTML_attrs>";
+       
+            if(isset($attrs['tagname']) && $attrs['tagname'] == 'textarea')
+            {
+                $cache.= "<$tagName $HTML_attrs>";
+                $cache.= $attrs['value'];
+                $cache.= $closeTag ? "</$tagName>" : "" ;                
+            }
+            else{
+                $cache.= "<$tagName $HTML_attrs>";
                 $cache.= "$innerHTML";
-            $cache.= $closeTag ? "</$tagName>" : "" ;
+                $cache.= $closeTag ? "</$tagName>" : "" ;
+                
+            }
+
+
             return $cache;
             
         }
         function textarea($attr=array()){
-           // print_r($attr['tamanho']);
+           
             $imput = "<div class='col-sn-12 col-md-".$attr['tamanho']."'>
                 <label for='{$attr['banco']}'>{$attr['label']}: </label> <br>";
                 $imput.= $this->gnElm('textarea', $attr);
+                // $imput .='<textarea id="'.$attr['id'].'"class="form-control col-xs-12" style="'.$attr['style'].'">'.$attr['value'].'</textarea>';
             $imput.= "</div>";
             return $imput;
         }

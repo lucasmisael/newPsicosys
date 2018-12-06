@@ -152,16 +152,23 @@ class gn_tabela
 
 
         if(!isset($_POST['usu_status']) || !isset($_POST['usu_status'])){
-            if($this->tabela == 'tab_usuarios')
+            if($this->tabela == 'tab_usuarios'){
                 $INSERT[] = 'usu_status';
-            elseif($this->tabela == 'tab_clientes')
-                $INSERT[] = 'cli_status';      
-            elseif($this->tabela == 'tab_profissionais')
+                $VALUES[] = '"on"';
+            }
+            elseif($this->tabela == 'tab_clientes'){
+                $INSERT[] = 'cli_status';
+                $VALUES[] = '"on"';      
+            }
+            elseif($this->tabela == 'tab_profissionais'){
                 $INSERT[] = 'prof_status';                 
-            elseif($this->tabela == 'tab_convenios')
+                $VALUES[] = '"on"';    
+            }
+            elseif($this->tabela == 'tab_convenios'){
                 $INSERT[] = 'conv_status';
+                $VALUES[] = '"on"';
+            }
 
-            $VALUES[] = '"on"';
         }
 
         // var_dump($cpf);
@@ -188,7 +195,11 @@ class gn_tabela
         elseif($this->tabela == 'tab_salas')
             $val = "SELECT SALA_DESC FROM tab_salas WHERE SALA_DESC = '".strtoupper($procura)."'";
 
-        $a = $this->getone($val);
+        // echo $this->tabela;
+        if($this->tabela=='tab_prontuarios')
+                $a = '';
+        else            
+            $a = $this->getone($val);
 
         if(!empty($a))
             echo("<script>alert('Impossível cadastrar registro duplicado !')</script>" );
@@ -341,7 +352,7 @@ class gn_tabela
             if(isset($dados['Cli_Data_Cadastro']))
                $dados['Cli_Data_Cadastro'] = date( 'd/m/Y', strtotime( $dados['Cli_Data_Cadastro'] ) );
         }
-        
+
         return $this->montarFormulario($nome="Editar", $action='editar.php', $dados);
     }
     
@@ -363,6 +374,7 @@ class gn_tabela
         if ($nome == 'Editar'){
             $cache .= "<input type='hidden' name='$this->chave' value='{$dados[$this->chave]}'>";
         }
+
         
         // percorre os campos setados na classe do usuario
         foreach ($this->campos as $campo)
@@ -373,6 +385,7 @@ class gn_tabela
                 if ($nome == 'Editar'){
                     $nomeBanco = $campo['banco'];
                     $campo['value'] = $dados[$nomeBanco];
+                    // var_dump($campo);
                 }
             }
             
