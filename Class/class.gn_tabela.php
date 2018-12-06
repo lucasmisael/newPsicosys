@@ -68,6 +68,7 @@ class gn_tabela
         $VALUES = array();
         $cpf = true;
         //$this->ver($_POST);
+            // var_dump($_POST);
 
         foreach ($_POST as $chave => $valor)
         {
@@ -90,7 +91,6 @@ class gn_tabela
                     }
 
             }
-
             if ($chave == "Cli_Data_Cadastro")
             {   
                 $VALUES[0] = "'".date( 'Y-m-d')."'";
@@ -116,38 +116,6 @@ class gn_tabela
                 $procura = $valor;
             
            
-/*
-            //Cliente
-            if($this->tabela == 'tab_clientes'){
-                if(!isset($chave['Cli_Status']))
-                    $VALUES[] = "Cli_Status = 'off'";
-                elseif(isset($chave['Cli_Status']))
-                    $VALUES[] = "Cli_Status = 'on'";
-            }
-            //Profissional
-            if($this->tabela == 'tab_profissionais'){
-                if(!isset($chave['Prof_Status']))
-                    $VALUES[] = "Prof_Status = 'off'";
-                elseif(isset($chave['Prof_Status']))
-                    $VALUES[] = "Prof_Status = 'on'";
-            }
-            //Convenio
-            if($this->tabela == 'tab_convenios'){
-                if(!isset($chave['Conv_Status']))
-                    $VALUES[] = "Conv_Status = 'off'";
-                elseif(isset($chave['Conv_Status']))
-                    $VALUES[] = "Conv_Status = 'on'";
-            }
-            //Usuario
-            if($this->tabela == 'tab_usuarios'){
-                if(!isset($chave['usu_Status']))
-                    $VALUES[] = "usu_Status = 'off'";
-                elseif(isset($chave['usu_Status']))
-                    $VALUES[] = "usu_Status = 'on'";
-            }
-            */
-                
-                // var_dump();
         }
 
 

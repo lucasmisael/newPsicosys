@@ -31,8 +31,8 @@ class cliente extends gn_tabela
                 "label"    => "Data de Cadastro",
                 "callback" => "lista_callback_data",
                 //"type"     => "text",
-                "pesquisa" => true,
-                "disabled" => true,
+                "pesquisa" => false,
+                // "disabled" => false,
                 "tamanho"  => 6,
                 "value"    => date('d/m/Y'),
                 "readonly" => true
