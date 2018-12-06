@@ -57,7 +57,7 @@
 						var chart = AmCharts.makeChart("chartdiv", {
 						  	"type": "serial",
 						  	"theme": "none",
-						  	"autoMargins": false,
+						  	"autoMargins": true,
 						  	"marginBottom": 30,
 						  	"marginTop": 40,
 						  	"marginRight": 30,
